@@ -17,6 +17,7 @@ import {
 import { SLIDES } from "../data/slidesData"
 import { SlideOverviewModal } from "./SlideOverviewModal"
 import { SpeakerNotesModal } from "./SpeakerNotesModal"
+import { BackgroundMusicPlayer } from "./BackgroundMusicPlayer"
 
 export const SlideEngine: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -130,13 +131,13 @@ export const SlideEngine: React.FC = () => {
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [nextSlide, prevSlide, goToSlide, totalSlides])
 
-  // Motion variants for edge-to-edge slide morphing
+  // Motion variants for PowerPoint-like fluid morph slide transitions
   const slideVariants = {
     initial: (dir: "next" | "prev") => ({
       opacity: 0,
-      scale: 1.02,
-      x: dir === "next" ? 40 : -40,
-      filter: "blur(4px)",
+      scale: 0.98,
+      x: dir === "next" ? 35 : -35,
+      filter: "blur(6px)",
     }),
     animate: {
       opacity: 1,
@@ -144,18 +145,20 @@ export const SlideEngine: React.FC = () => {
       x: 0,
       filter: "blur(0px)",
       transition: {
-        duration: 0.5,
-        ease: [0.16, 1, 0.3, 1] as const,
+        type: "spring" as const,
+        stiffness: 220,
+        damping: 24,
+        mass: 0.8,
       },
     },
     exit: (dir: "next" | "prev") => ({
       opacity: 0,
-      scale: 0.98,
-      x: dir === "next" ? -40 : 40,
-      filter: "blur(4px)",
+      scale: 1.02,
+      x: dir === "next" ? -35 : 35,
+      filter: "blur(6px)",
       transition: {
-        duration: 0.35,
-        ease: [0.16, 1, 0.3, 1] as const,
+        duration: 0.3,
+        ease: [0.22, 1, 0.36, 1] as const,
       },
     }),
   }
@@ -258,6 +261,9 @@ export const SlideEngine: React.FC = () => {
         >
           <Mic className="w-3.5 h-3.5" />
         </button>
+
+        {/* Background Music Player */}
+        <BackgroundMusicPlayer compact={true} />
 
         {/* Fullscreen */}
         <button

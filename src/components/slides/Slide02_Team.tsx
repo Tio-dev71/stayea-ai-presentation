@@ -1,173 +1,382 @@
-import React from "react"
-import { motion } from "motion/react"
-import { Crown, Mic, FileText, CheckCircle2, Sparkles, Award, Shield, UserCheck } from "lucide-react"
+import React, { useState } from "react"
+import { motion, AnimatePresence } from "motion/react"
+import {
+  Crown,
+  Mic,
+  FileText,
+  CheckCircle2,
+  Sparkles,
+  Award,
+  Layers,
+  GraduationCap,
+  Lightbulb,
+  BookOpen,
+  Check,
+  Compass,
+  ArrowUpRight,
+} from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
+import { FacebookAvatar } from "../FacebookAvatar"
+
+interface Member {
+  id: string
+  name: string
+  mssv: string
+  role: string
+  gender: "male" | "female"
+  isLead: boolean
+  tasks: string
+  taskChips: string[]
+  icon: React.ElementType
+  themeColor: {
+    accent: string
+    border: string
+    badge: string
+    glow: string
+    avatarRing: string
+    tagGradient: string
+  }
+  highlightNote: string
+}
 
 export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
-  const members = [
+  const [selectedMemberId, setSelectedMemberId] = useState<string | null>(null)
+
+  const members: Member[] = [
     {
+      id: "tho",
       name: "Nguyễn Đình Thọ",
       mssv: "75DCTT21524",
       role: "Trưởng nhóm",
+      gender: "male",
       isLead: true,
-      tasks: "Lên ý tưởng, làm slide, kiểm tra nội dung",
-      avatar: "/images/team-1.jpg",
+      tasks: "Lên ý tưởng, làm slide, kiểm tra nội dung & điều phối chung",
+      taskChips: ["Lên ý tưởng đề tài", "Thiết kế Slide Canva", "Kiểm duyệt nội dung"],
       icon: Crown,
-      tagColor: "from-amber-500 to-amber-700",
-      borderColor: "border-amber-400",
-      badgeColor: "bg-amber-500/20 text-amber-300 border-amber-400/40",
+      themeColor: {
+        accent: "text-amber-300",
+        border: "border-amber-400/50 hover:border-amber-300",
+        badge: "bg-amber-500/20 text-amber-300 border-amber-400/40",
+        glow: "rgba(245, 184, 56, 0.25)",
+        avatarRing: "border-amber-400",
+        tagGradient: "from-amber-500 to-amber-700",
+      },
+      highlightNote: "Phụ trách định hướng kiến trúc AI 9router, quản lý tiến độ và hoàn thiện slide báo cáo.",
     },
     {
+      id: "tien",
       name: "Nguyễn Việt Tiến",
       mssv: "75DCTT21537",
-      role: "Thành viên",
+      role: "Thành viên · Thuyết trình",
+      gender: "male",
       isLead: false,
-      tasks: "Thuyết trình báo cáo hội đồng",
-      avatar: "/images/team-2.jpg",
+      tasks: "Thuyết trình báo cáo hội đồng & phản biện đề tài",
+      taskChips: ["Thuyết trình hội đồng", "Chuẩn bị demo", "Báo cáo kịch bản AI"],
       icon: Mic,
-      tagColor: "from-emerald-500 to-teal-700",
-      borderColor: "border-emerald-400",
-      badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-400/40",
+      themeColor: {
+        accent: "text-teal-300",
+        border: "border-teal-400/50 hover:border-teal-300",
+        badge: "bg-teal-500/20 text-teal-300 border-teal-400/40",
+        glow: "rgba(45, 212, 191, 0.25)",
+        avatarRing: "border-teal-400",
+        tagGradient: "from-teal-500 to-emerald-700",
+      },
+      highlightNote: "Đại diện nhóm báo cáo trực tiếp trước Hội đồng Đồ án 1, điều phối phiên Demo tương tác.",
     },
     {
+      id: "thuy-linh",
       name: "Ngô Thị Thùy Linh",
       mssv: "75DCTT21411",
-      role: "Thành viên",
+      role: "Thành viên · Nghiên cứu",
+      gender: "female",
       isLead: false,
-      tasks: "Nghiên cứu tài liệu & xây dựng nội dung",
-      avatar: "/images/team-3.jpg",
-      icon: FileText,
-      tagColor: "from-cyan-500 to-blue-700",
-      borderColor: "border-cyan-400",
-      badgeColor: "bg-cyan-500/20 text-cyan-300 border-cyan-400/40",
+      tasks: "Nghiên cứu tài liệu & xây dựng nội dung nghiệp vụ",
+      taskChips: ["Nghiên cứu tài liệu", "Xây dựng Catalog", "Kịch bản CSKH STAYEA"],
+      icon: BookOpen,
+      themeColor: {
+        accent: "text-cyan-300",
+        border: "border-cyan-400/50 hover:border-cyan-300",
+        badge: "bg-cyan-500/20 text-cyan-300 border-cyan-400/40",
+        glow: "rgba(34, 211, 238, 0.25)",
+        avatarRing: "border-cyan-400",
+        tagGradient: "from-cyan-500 to-blue-700",
+      },
+      highlightNote: "Khảo sát thực trạng quy trình CSKH du lịch Phú Quốc, thu thập dữ liệu biệt thự & xe tự lái.",
     },
     {
+      id: "ha-linh",
       name: "Đỗ Hà Linh",
       mssv: "75DCTT21408",
-      role: "Thành viên",
+      role: "Thành viên · Hoàn thiện",
+      gender: "female",
       isLead: false,
-      tasks: "Nghiên cứu tài liệu & hoàn thiện nội dung",
-      avatar: "/images/team-4.jpg",
-      icon: FileText,
-      tagColor: "from-emerald-500 to-cyan-700",
-      borderColor: "border-emerald-400",
-      badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-400/40",
+      tasks: "Nghiên cứu tài liệu & hoàn thiện báo cáo đề tài",
+      taskChips: ["Hoàn thiện nội dung", "Kiểm thử kịch bản AI", "Tổng hợp số liệu"],
+      icon: CheckCircle2,
+      themeColor: {
+        accent: "text-emerald-300",
+        border: "border-emerald-400/50 hover:border-emerald-300",
+        badge: "bg-emerald-500/20 text-emerald-300 border-emerald-400/40",
+        glow: "rgba(52, 211, 153, 0.25)",
+        avatarRing: "border-emerald-400",
+        tagGradient: "from-emerald-500 to-teal-700",
+      },
+      highlightNote: "Kiểm tra độ chính xác thông tin chống ảo giác AI, đồng bộ tài liệu thuyết minh đồ án.",
     },
   ]
 
+  // PowerPoint Morph Stagger Transition container
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.15,
+      },
+    },
+  }
+
+  // Fluid PowerPoint Morph item animation
+  const morphItemVariants = {
+    hidden: {
+      opacity: 0,
+      y: 28,
+      scale: 0.94,
+      filter: "blur(6px)",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: {
+        type: "spring" as const,
+        stiffness: 240,
+        damping: 22,
+        mass: 0.8,
+      },
+    },
+  }
+
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-14 xl:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-5 sm:p-8 md:p-10 lg:p-12 xl:p-14 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Top Header */}
       <motion.div
-        initial={{ opacity: 0, y: -15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        initial={{ opacity: 0, y: -20, filter: "blur(4px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ type: "spring", stiffness: 220, damping: 20 }}
         className="relative z-10 flex items-center justify-between"
       >
-        <div className="flex items-center gap-2.5">
-          <span className="w-3 h-3 rounded-full bg-emerald-400" />
-          <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-emerald-300 uppercase">
-            02 · GIỚI THIỆU THÀNH VIÊN
-          </span>
+        <div className="flex items-center gap-3">
+          <motion.span
+            animate={{ scale: [1, 1.25, 1], opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-3.5 h-3.5 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399]"
+          />
+          <div className="flex flex-col">
+            <span className="text-xs sm:text-sm md:text-base font-heading font-extrabold tracking-[0.25em] text-emerald-300 uppercase">
+              02 · GIỚI THIỆU THÀNH VIÊN
+            </span>
+            <span className="text-[11px] sm:text-xs text-slate-300 font-medium">
+              Đề tài: Chatbot AI Chăm Sóc Khách Hàng STAYEA Phú Quốc
+            </span>
+          </div>
         </div>
 
-        <div className="px-4 py-2 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-200 text-xs sm:text-sm font-mono flex items-center gap-2 shadow-xl backdrop-blur-md">
-          <Award className="w-4 h-4 text-amber-300" />
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          className="px-4 py-2 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-200 text-xs sm:text-sm font-mono flex items-center gap-2 shadow-xl backdrop-blur-md"
+        >
+          <Award className="w-4 h-4 text-amber-300 animate-pulse" />
           <span className="font-semibold">Khoa CNTT · Đồ Án 1</span>
-        </div>
+        </motion.div>
       </motion.div>
 
-      {/* Main Split Layout: Left 4 Members List | Divider | Right Canva Graphic */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 xl:gap-14 my-auto items-center">
-        {/* Left Col (7 cols): 4 Member Cards with Circular Avatars */}
-        <div className="md:col-span-7 space-y-3.5 xl:space-y-4">
+      {/* Main Split Layout: Left 2x2 Morph Cards Grid | Elegant Divider | Right Canva Graphic */}
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-12 my-auto items-center">
+        {/* Left Col (7 cols): Modern 2x2 Morph Cards (NO MORE BOXINESS!) */}
+        <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center">
+          {/* Subheading with Morph entrance */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -25 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-1"
+            transition={{ type: "spring", stiffness: 240, damping: 22 }}
+            className="mb-4 flex items-center justify-between"
           >
-            <span className="text-xs sm:text-sm font-heading font-bold uppercase tracking-widest text-amber-400 block mb-1">
-              DANH SÁCH SINH VIÊN THỰC HIỆN
+            <div>
+              <span className="text-xs sm:text-sm font-heading font-black uppercase tracking-widest text-amber-400 flex items-center gap-2 mb-1">
+                <Sparkles className="w-4 h-4 text-amber-300" />
+                DANH SÁCH SINH VIÊN THỰC HIỆN
+              </span>
+              <p className="text-xs sm:text-sm text-slate-300">
+                4 thành viên phối hợp theo phân chia công việc rõ ràng
+              </p>
+            </div>
+
+            <span className="hidden sm:inline-block text-[11px] font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400">
+              Chạm thẻ để xem chi tiết
             </span>
-            <p className="text-xs sm:text-sm md:text-base text-slate-300">
-              Nhóm sinh viên thực hiện đề tài · Khoa Công Nghệ Thông Tin
-            </p>
           </motion.div>
 
-          <div className="space-y-3 xl:space-y-3.5">
-            {members.map((member, idx) => {
+          {/* 2x2 Morph Cards Grid with organic pillowy borders and smooth spring transitions */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 xl:gap-4"
+          >
+            {members.map((member) => {
               const IconComp = member.icon
+              const isSelected = selectedMemberId === member.id
+
               return (
                 <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 * idx }}
-                  className="flex items-center gap-4 sm:gap-5 p-3.5 sm:p-4 rounded-2xl bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 hover:border-emerald-400/50 transition-all duration-300 group shadow-lg backdrop-blur-md"
+                  key={member.id}
+                  layout
+                  variants={morphItemVariants}
+                  whileHover={{
+                    y: -5,
+                    scale: 1.02,
+                    boxShadow: `0 20px 35px -10px ${member.themeColor.glow}`,
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() =>
+                    setSelectedMemberId(isSelected ? null : member.id)
+                  }
+                  className={`group relative flex flex-col justify-between p-4 sm:p-4.5 rounded-[26px] cursor-pointer transition-all duration-300 backdrop-blur-xl border ${
+                    isSelected
+                      ? `border-amber-400 bg-gradient-to-br from-emerald-950/80 via-[#0a272e]/90 to-black/90 shadow-2xl`
+                      : `bg-white/[0.04] hover:bg-white/[0.08] ${member.themeColor.border}`
+                  } shadow-lg`}
+                  style={{
+                    borderRadius: "24px",
+                  }}
                 >
-                  {/* Circular Avatar Frame (Matching Canva template) */}
-                  <div className="relative shrink-0">
-                    <div className={`w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 rounded-full overflow-hidden border-2 ${member.borderColor} p-0.5 shadow-md shadow-emerald-950/40`}>
-                      <img
-                        src={member.avatar}
-                        alt={member.name}
-                        className="w-full h-full object-cover object-top rounded-full group-hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                    {/* Badge Icon on Avatar */}
-                    <div className={`absolute -bottom-1 -right-1 w-6 h-6 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br ${member.tagColor} border border-white/40 flex items-center justify-center text-white shadow-md`}>
-                      <IconComp className="w-3 h-3" />
+                  {/* Subtle inner ambient light effect */}
+                  <div
+                    className="absolute inset-0 rounded-[24px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background: `radial-gradient(circle at 20% 20%, ${member.themeColor.glow}, transparent 70%)`,
+                    }}
+                  />
+
+                  {/* Top Row: Facebook Avatar + Name & Role */}
+                  <div className="flex items-start gap-3.5 relative z-10">
+                    {/* Facebook Silhouette Avatar */}
+                    <FacebookAvatar
+                      gender={member.gender}
+                      isLead={member.isLead}
+                      size={58}
+                      borderColor={member.themeColor.avatarRing}
+                      tagColor={member.themeColor.tagGradient}
+                      badgeIcon={IconComp}
+                    />
+
+                    <div className="flex-1 min-w-0">
+                      {/* Name with subtle hover transition */}
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="font-heading text-sm sm:text-base md:text-lg font-bold text-white tracking-wide group-hover:text-amber-300 transition-colors leading-snug">
+                          {member.name}
+                        </h3>
+                      </div>
+
+                      {/* Role Pill */}
+                      <div className="flex items-center gap-2 mt-1">
+                        <span
+                          className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-semibold border ${member.themeColor.badge}`}
+                        >
+                          {member.role}
+                        </span>
+                      </div>
+
+                      {/* MSSV Tag */}
+                      <div className="mt-1">
+                        <span className="text-[11px] font-mono font-bold text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded-md border border-emerald-500/30">
+                          MSSV: {member.mssv}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Name, Student ID & Assigned Tasks */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 flex-wrap">
-                      <h3 className="font-heading text-base sm:text-lg md:text-xl font-bold text-white tracking-wide group-hover:text-amber-300 transition-colors">
-                        {member.name}
-                      </h3>
-                      <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold border ${member.badgeColor}`}>
-                        {member.role}
-                      </span>
+                  {/* Tasks Section with PowerPoint Morph Chip tags */}
+                  <div className="mt-3 pt-3 border-t border-white/10 relative z-10">
+                    <span className="text-[11px] font-heading font-semibold text-amber-300 uppercase tracking-wider block mb-1.5 flex items-center justify-between">
+                      <span>Nhiệm vụ chính:</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-300 transition-colors" />
+                    </span>
+
+                    {/* Morphing task tags */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {member.taskChips.map((chip, cIdx) => (
+                        <span
+                          key={cIdx}
+                          className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-white/5 group-hover:bg-white/10 border border-white/10 text-slate-200 transition-colors"
+                        >
+                          {chip}
+                        </span>
+                      ))}
                     </div>
 
-                    <div className="flex items-center gap-2 mt-1">
-                      <span className="text-xs sm:text-sm font-mono font-bold text-emerald-300 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
-                        MSSV: {member.mssv}
-                      </span>
-                    </div>
-
-                    <p className="text-xs sm:text-sm text-slate-200 mt-1.5">
-                      <strong className="text-amber-300 font-semibold">Nhiệm vụ: </strong>
-                      {member.tasks}
-                    </p>
+                    {/* Expanded note on selection (Morphing detail drawer) */}
+                    <AnimatePresence>
+                      {isSelected && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="mt-2.5 pt-2 border-t border-amber-500/30 text-[11px] text-amber-200/90 leading-relaxed font-sans"
+                        >
+                          <span className="font-semibold text-amber-300">Đóng góp: </span>
+                          {member.highlightNote}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </motion.div>
               )
             })}
-          </div>
+          </motion.div>
+
+          {/* Bottom helper pill */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="mt-3.5 flex items-center gap-2 text-[11px] text-slate-400 justify-center sm:justify-start"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <span>
+              Thành viên nam/nữ có biểu tượng nhận diện chuẩn · Phối hợp đồng bộ qua GitHub & Trello
+            </span>
+          </motion.div>
         </div>
 
         {/* Vertical Divider (Classic Canva double green line) */}
-        <div className="hidden md:flex md:col-span-1 justify-center h-88 xl:h-96 items-center">
+        <div className="hidden lg:flex lg:col-span-1 justify-center h-88 xl:h-96 items-center">
           <div className="canva-double-line" />
         </div>
 
         {/* Right Col (4 cols): Canva Large Title & Thematic Visual Card */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="md:col-span-4 space-y-5"
+          initial={{ opacity: 0, x: 35, filter: "blur(6px)" }}
+          animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+          transition={{
+            type: "spring",
+            stiffness: 220,
+            damping: 24,
+            delay: 0.25,
+          }}
+          className="lg:col-span-4 xl:col-span-4 space-y-4 xl:space-y-5"
         >
-          {/* Big Bold Heading matching user's Image 2 */}
+          {/* Big Bold Heading matching Canva style */}
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 text-xs sm:text-sm font-heading font-semibold mb-2.5">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>ĐỒ ÁN 1</span>
+              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+              <span>ĐỒ ÁN 1 · PHÂN CÔNG</span>
             </div>
 
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tight leading-[1.08]">
@@ -175,14 +384,19 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
               <span className="gold-gradient-text-pure">TRONG NHÓM</span>
             </h2>
 
-            <p className="text-xs sm:text-sm md:text-base text-slate-200 font-medium mt-2.5 leading-relaxed">
-              Báo cáo tiến độ phân chia công việc, nghiên cứu kiến trúc hệ thống và kiểm thử đề tài <strong className="text-amber-300 font-bold">Chatbot AI CSKH STAYEA</strong>.
+            <p className="text-xs sm:text-sm md:text-base text-slate-200 font-medium mt-2 leading-relaxed">
+              Báo cáo tiến độ phân chia công việc, nghiên cứu kiến trúc hệ thống và kiểm thử đề tài{" "}
+              <strong className="text-amber-300 font-bold">Chatbot AI CSKH STAYEA</strong>.
             </p>
           </div>
 
           {/* Thematic Visual Card with Real Island Picture */}
-          <div className="relative rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-[#062429]/90 backdrop-blur-xl">
-            <div className="relative h-48 sm:h-56 md:h-60 w-full overflow-hidden">
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="relative rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-[#062429]/90 backdrop-blur-xl"
+          >
+            <div className="relative h-44 sm:h-52 md:h-56 w-full overflow-hidden">
               <img
                 src="/images/phuquoc.jpg"
                 alt="Phú Quốc Island"
@@ -193,7 +407,9 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
                 <span className="text-[11px] font-heading uppercase text-amber-300 tracking-wider font-bold block mb-0.5">
                   ĐỊA BÀN NGHIÊN CỨU & TRIỂN KHAI
                 </span>
-                <h4 className="font-heading font-black text-base sm:text-lg">Hệ Thống Nghỉ Dưỡng Đảo Phú Quốc</h4>
+                <h4 className="font-heading font-black text-base sm:text-lg">
+                  Hệ Thống Nghỉ Dưỡng Đảo Phú Quốc
+                </h4>
               </div>
             </div>
 
@@ -201,14 +417,18 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
             <div className="p-4 space-y-2.5 text-xs sm:text-sm">
               <div className="flex items-center justify-between pb-2 border-b border-white/10">
                 <span className="text-slate-400">Thời gian báo cáo:</span>
-                <span className="text-white font-mono font-bold text-xs sm:text-sm">Tháng 11 / 2026</span>
+                <span className="text-white font-mono font-bold text-xs sm:text-sm">
+                  Tháng 11 / 2026
+                </span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-slate-400">Giảng viên hướng dẫn:</span>
-                <span className="text-emerald-300 font-bold font-heading text-xs sm:text-sm">Bộ môn Kỹ Thuật Phần Mềm</span>
+                <span className="text-emerald-300 font-bold font-heading text-xs sm:text-sm">
+                  Bộ môn Kỹ Thuật Phần Mềm
+                </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>
