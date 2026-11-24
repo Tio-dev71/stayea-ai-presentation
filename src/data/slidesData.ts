@@ -13,7 +13,6 @@ import { Slide10_DatabaseSchema } from "../components/slides/Slide10_DatabaseSch
 import { Slide11_AdminPanel } from "../components/slides/Slide11_AdminPanel"
 import { Slide12_LiveDemo } from "../components/slides/Slide12_LiveDemo"
 import { Slide13_Results } from "../components/slides/Slide13_Results"
-import { Slide14_FutureWork } from "../components/slides/Slide14_FutureWork"
 import { Slide15_Conclusion } from "../components/slides/Slide15_Conclusion"
 
 export const SLIDES: SlideData[] = [
@@ -328,30 +327,8 @@ export const SLIDES: SlideData[] = [
     },
   },
   {
-    id: "future-work",
-    number: 15,
-    title: "Hạn Chế & Hướng Phát Triển",
-    subtitle: "Lộ trình nâng cấp từ Đồ án 1 lên Đồ án Tốt nghiệp",
-    category: "Demo & Results",
-    component: Slide14_FutureWork,
-    speakerNotes: {
-      script:
-        "Về hạn chế: Hiện tại tri thức du lịch sâu vẫn được nhúng trong prompt và mới chỉ hỗ trợ nhắn tin văn bản. Hướng phát triển trong Đồ án tốt nghiệp sắp tới là: 1. Nâng cấp kiến trúc RAG với Vector Database; 2. Tích hợp Voice AI đàm thoại giọng nói qua WebRTC; và 3. Mở rộng kết nối đa kênh sang Zalo OA và Messenger.",
-      keyPoints: [
-        "Thẳng thắn nhìn nhận hạn chế của giai đoạn Đồ án 1.",
-        "Đưa ra lộ trình kỹ thuật cụ thể cho Đồ án tốt nghiệp (RAG, Voicebot, Omnichannel).",
-      ],
-      faq: [
-        {
-          q: "Tại sao chưa làm RAG ngay từ bây giờ?",
-          a: "Vì trong phạm vi Đồ án 1, danh mục dịch vụ tập trung vào 3 nhóm phòng/xe/tour có thể nén gọn vào context; RAG sẽ cần thiết khi mở rộng hàng nghìn cẩm nang và quy định chi tiết.",
-        },
-      ],
-    },
-  },
-  {
     id: "conclusion",
-    number: 16,
+    number: 15,
     title: "Tổng Kết & Hỏi Đáp (Q&A)",
     subtitle: "Lời cảm ơn Hội đồng & Sẵn sàng giải đáp phản biện",
     category: "Demo & Results",
