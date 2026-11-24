@@ -19,14 +19,14 @@ export const Slide03_Objectives: React.FC<{ isActive: boolean }> = () => {
     {
       num: "02",
       title: "Tích Hợp Cổng AI 9router Gateway",
-      desc: "Triển khai hạ tầng trung gian độc lập (Port 20128), cân bằng tải, bảo mật API key và chuẩn hóa dữ liệu streaming SSE.",
-      tags: ["9router Proxy", "OpenAI Spec"],
+      desc: "Độc lập hoàn toàn với một hãng AI duy nhất, tự động cân bằng tải, bảo mật tuyệt đối API key và phản hồi mượt theo thời gian thực.",
+      tags: ["9router Proxy", "Đa Mô Hình"],
     },
     {
       num: "03",
-      title: "Function Calling Sinh Đơn Hàng",
-      desc: "Tự động trích xuất thông tin khách hàng, số người, ngày check-in để tạo đơn giữ chỗ sơ bộ (Draft Booking) trên PostgreSQL.",
-      tags: ["Agentic Tool", "Auto Order"],
+      title: "Tự Động Chốt Đơn & Giữ Chỗ",
+      desc: "Hiểu ý định tự nhiên của khách hàng, tự động trích xuất thông tin và khởi tạo phiếu đặt dịch vụ sơ bộ sẵn sàng cho nhân viên duyệt.",
+      tags: ["Hành Động Tự Động", "Auto Order"],
     },
     {
       num: "04",

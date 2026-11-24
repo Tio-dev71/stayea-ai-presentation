@@ -108,22 +108,22 @@ export const SLIDES: SlideData[] = [
   {
     id: "tech-stack",
     number: 5,
-    title: "Kiến Trúc Công Nghệ & AI 9router",
-    subtitle: "Hạ tầng phân tầng độc lập và cổng điều phối AI Gateway",
+    title: "Kiến Trúc Công Nghệ & Lợi Thế AI 9router",
+    subtitle: "Vì sao lựa chọn kiến trúc độc lập 3 tầng và cổng điều phối 9router",
     category: "Architecture",
     component: Slide04_TechStack,
     speakerNotes: {
       script:
-        "Về kiến trúc công nghệ, hệ thống gồm 3 tầng: Frontend Next.js 15, Backend NestJS chuẩn Domain-Driven Design, và Cổng AI 9router Gateway chạy độc lập trên port 20128. 9router giúp hệ thống độc lập hoàn toàn với các nhà cung cấp cloud, quản lý token bảo mật và tối ưu độ trễ dưới 1.2 giây.",
+        "Điểm mạnh lớn nhất về kiến trúc của hệ thống là mô hình 3 tầng độc lập kết hợp cổng AI 9router Gateway. Thay vì phụ thuộc cứng vào một nhà cung cấp, doanh nghiệp có thể thay đổi mô hình AI bất kỳ lúc nào, bảo mật API key hoàn toàn ở tầng trung gian và đạt tốc độ phản hồi dưới 1.2 giây.",
       keyPoints: [
-        "AI 9router: Cổng Gateway theo chuẩn OpenAI Chat Completions.",
-        "NestJS Backend: Đóng vai trò orchestrator, quản lý database Drizzle ORM.",
-        "Next.js 15: Widget tương tác mượt mà, hỗ trợ cả mobile và desktop.",
+        "AI 9router: Độc lập nhà cung cấp, bảo mật tuyệt đối API key và tối ưu chi phí.",
+        "Tầng xử lý nghiệp vụ: Kiểm soát dữ liệu thật và tự động hóa quy trình đặt lịch.",
+        "Giao diện chat hiện đại: Hiển thị mượt mà trên mọi thiết bị, tích hợp thẻ đơn hàng.",
       ],
       faq: [
         {
           q: "Tại sao phải dùng 9router thay vì gọi thẳng OpenAI/Google?",
-          a: "9router giúp giấu kín API key trên server, cân bằng tải giữa các model (Gemini/Claude) và chuẩn hóa streaming SSE mà không phụ thuộc một hãng cụ thể.",
+          a: "9router giúp giấu kín API key trên server, cân bằng tải giữa các model (Gemini/Claude) và chuẩn hóa streaming mà không phụ thuộc một hãng cụ thể.",
         },
       ],
     },
@@ -131,21 +131,21 @@ export const SLIDES: SlideData[] = [
   {
     id: "architecture-flow",
     number: 6,
-    title: "Sơ Đồ Luồng Hoạt Động Tổng Thể",
-    subtitle: "Luồng dữ liệu khép kín: Khách ➔ Backend ➔ 9router ➔ Tools ➔ Database",
+    title: "Hệ Thống Làm Được Gì?",
+    subtitle: "Quy trình tư vấn thông minh & chốt đơn tự động khép kín 24/7",
     category: "Architecture",
     component: Slide05_ArchitectureFlow,
     speakerNotes: {
       script:
-        "Trên slide là quy trình 5 bước khép kín. Điểm đặc biệt là quá trình này có tính chất lặp 2 lượt (Two-turn cycle): Lượt 1 AI phân tích ý định và phát lệnh gọi Tool, Backend thực thi ghi nhận DB, Lượt 2 AI đọc kết quả của Tool để phản hồi lại cho khách với lời nhắn chu đáo kèm thẻ đơn hàng.",
+        "Trên slide là quy trình 5 bước khép kín cho thấy hệ thống làm được gì: từ tiếp nhận câu hỏi tự nhiên, nạp dữ liệu giá thực tế chống nói sai, phân tích qua cổng 9router bảo mật, tự động tạo phiếu giữ chỗ và trả về Thẻ Xác Nhận Đơn trực quan cho khách hàng.",
       keyPoints: [
-        "Luồng 2 lượt đảm bảo dữ liệu ghi nhận thành công mới thông báo cho khách.",
-        "Tránh tuyệt đối tình trạng AI hứa hẹn đã đặt đơn nhưng hệ thống không có dữ liệu.",
+        "Biến cuộc hội thoại thông thường thành đơn giữ chỗ thực tế 24/7.",
+        "Đảm bảo dữ liệu thật đã được kiểm tra và ghi nhận trước khi thông báo cho khách.",
       ],
       faq: [
         {
-          q: "Nếu mạng bị chập chờn giữa 2 lượt thì sao?",
-          a: "Backend lưu transaction an toàn; nếu lượt 2 lỗi, mã đơn đã tạo vẫn được lưu trong DB để Admin kiểm tra.",
+          q: "Nếu mạng bị chập chờn giữa lúc tạo đơn thì sao?",
+          a: "Hệ thống lưu giao dịch an toàn; nếu bước phản hồi bị gián đoạn, đơn đã tạo vẫn được ghi nhận để quản trị viên xử lý.",
         },
       ],
     },
@@ -154,20 +154,20 @@ export const SLIDES: SlideData[] = [
     id: "catalog-injection",
     number: 7,
     title: "Dynamic Catalog Injection",
-    subtitle: "Kỹ thuật tiêm danh mục dịch vụ thời gian thực chống ảo giác",
+    subtitle: "Điểm mạnh chống ảo giác: Luôn báo đúng giá và đúng tình trạng kho",
     category: "Deep Dive",
     component: Slide06_CatalogInjection,
     speakerNotes: {
       script:
-        "Ảo giác (Hallucination) là rủi ro lớn nhất của AI thương mại. STAYEA giải quyết triệt để bằng giải pháp Dynamic Catalog Injection. Trước mỗi phiên chat, hệ thống truy vấn Database lấy các phòng, xe, tour đang mở bán và tiêm vào System Prompt kèm ràng buộc pháp lý nghiêm ngặt.",
+        "Ảo giác (bịa đặt giá hoặc dịch vụ) là rủi ro lớn nhất của AI thương mại. Hệ thống của chúng tôi giải quyết triệt để nhờ nạp danh mục dịch vụ thực tế theo thời gian thực vào ngữ cảnh tư vấn kèm ràng buộc chặt chẽ, không cần tốn chi phí huấn luyện lại mô hình.",
       keyPoints: [
-        "100% dữ liệu tư vấn (tên villa, giá tiền, địa điểm) lấy từ Database thật.",
-        "Không cần tốn chi phí và thời gian huấn luyện lại mô hình (Zero-retraining).",
+        "100% dữ liệu tư vấn (tên dịch vụ, giá niêm yết, tình trạng còn trống) lấy từ hệ thống thật.",
+        "Cập nhật giá trên Admin là AI cập nhật theo ngay lập tức.",
       ],
       faq: [
         {
           q: "Nếu catalog có hàng nghìn sản phẩm thì prompt có bị quá tải không?",
-          a: "Hệ thống có bộ lọc phân trang và lọc theo địa bàn đang hoạt động, kết hợp hàm search_services động khi danh mục mở rộng lớn hơn.",
+          a: "Hệ thống có bộ lọc thông minh theo danh mục và tìm kiếm động khi danh mục mở rộng lớn hơn.",
         },
       ],
     },
@@ -175,21 +175,21 @@ export const SLIDES: SlideData[] = [
   {
     id: "function-calling",
     number: 8,
-    title: "Cơ Chế Function Calling & Tự Động Lên Đơn",
-    subtitle: "Tự động trích xuất thông tin khách hàng và tạo đơn giữ chỗ sơ bộ",
+    title: "Tự Động Tạo Đơn Từ Hội Thoại",
+    subtitle: "Hiểu nhu cầu tự nhiên, trích xuất thông tin và lên phiếu giữ chỗ ngay lập tức",
     category: "Deep Dive",
     component: Slide07_FunctionCalling,
     speakerNotes: {
       script:
-        "Khi khách nhắn tin muốn đặt xe hoặc villa, mô hình AI kích hoạt Function Calling để trích xuất Tên, SĐT, Ngày đi, số lượng và tính toán tổng tiền, lưu vào bảng stayea_orders với trạng thái pending_admin.",
+        "Khác với chatbot chỉ biết trả lời văn bản, trợ lý AI của chúng tôi có khả năng hành động thực tế: tự trích xuất Tên, SĐT, thời gian, tính toán tổng tiền và tạo thẻ Xác nhận giữ chỗ để quản trị viên duyệt ngay.",
       keyPoints: [
         "AI có khả năng hành động (Agentic AI) thay vì chỉ sinh văn bản thụ động.",
-        "Tạo thẻ Booking Preview Card trực quan ngay trong khung chat cho khách xác nhận.",
+        "Tạo thẻ Booking Card trực quan ngay trong khung chat cho khách xác nhận.",
       ],
       faq: [
         {
           q: "Khách nhập thiếu SĐT thì sao?",
-          a: "AI được chỉ dẫn yêu cầu khách bổ sung số điện thoại trước khi gọi hàm tạo đơn.",
+          a: "AI được chỉ dẫn hỏi lại khéo léo để khách bổ sung số điện thoại trước khi tạo phiếu giữ chỗ.",
         },
       ],
     },
@@ -241,21 +241,21 @@ export const SLIDES: SlideData[] = [
   {
     id: "database",
     number: 11,
-    title: "Thiết Kế Cơ Sở Dữ Liệu",
-    subtitle: "Bảng dữ liệu PostgreSQL quản lý Prompt, Phiên chat và Đơn hàng",
+    title: "Vì Sao Chọn Hệ Thống Của Chúng Tôi?",
+    subtitle: "4 điểm mạnh vượt trội: Tùy biến đa ngành, Nhớ ngữ cảnh, Minh bạch & An toàn chốt đơn",
     category: "Architecture",
     component: Slide10_DatabaseSchema,
     speakerNotes: {
       script:
-        "Toàn bộ dữ liệu được quản trị qua 4 bảng chính: stayea_ai_configs (lưu cấu hình prompt và tham số mô hình), stayea_chat_conversations (quản lý phiên chat), stayea_chat_messages (lịch sử tin nhắn), và stayea_orders (lưu đơn hàng tạo bởi AI). Drizzle ORM đảm bảo tính toàn vẹn và type-safety 100%.",
+        "Điểm khác biệt cốt lõi khiến doanh nghiệp nên lựa chọn giải pháp của nhóm: Thứ nhất, tùy biến đa ngành tức thì chỉ qua cấu hình Prompt mà không cần sửa code. Thứ hai, ghi nhớ mạch hội thoại xuyên suốt để chuyển tiếp AI sang người thật mượt mà. Thứ ba, minh bạch toàn bộ lịch sử để kiểm định chất lượng. Thứ tư, chốt đơn tự động 24/7 nhưng luôn có bước kiểm duyệt an toàn.",
       keyPoints: [
-        "Cấu hình Prompt nằm trong DB giúp cập nhật tức thì không cần redeploy.",
-        "Tối ưu index trên các trường participantId, partnerId, lastMessageAt.",
+        "Cấu hình động giúp đổi kịch bản tức thì mà không cần triển khai lại hệ thống.",
+        "Lưu vết minh bạch 100% và kiểm soát rủi ro giao dịch cho doanh nghiệp.",
       ],
       faq: [
         {
-          q: "Tại sao chọn Drizzle ORM thay vì Prisma?",
-          a: "Drizzle nhẹ hơn, khởi động nhanh hơn, viết cú pháp SQL-like trực quan và không bị overhead nhị phân như Prisma.",
+          q: "Hệ thống này có thể áp dụng cho ngành khác ngoài du lịch không?",
+          a: "Hoàn toàn có thể! Chỉ cần thay đổi System Prompt và nạp danh mục sản phẩm/dịch vụ mới trên trang quản trị là hệ thống vận hành ngay cho Y tế, Giáo dục, Bất động sản hoặc Bán lẻ.",
         },
       ],
     },
@@ -269,10 +269,10 @@ export const SLIDES: SlideData[] = [
     component: Slide11_AdminPanel,
     speakerNotes: {
       script:
-        "Đây là trang quản trị AI dành cho Admin tại route /stayea/ai-agent. Admin có thể thay đổi System Prompt, đổi Tone giọng xưng hô, tinh chỉnh Temperature, thêm các quy tắc kinh doanh dạng tag, và thử nghiệm trực tiếp trên khung Sandbox trước khi nhấn nút Lưu.",
+        "Đây là trang quản trị AI trực quan dành cho người vận hành. Quản trị viên có thể thay đổi System Prompt, đổi phong cách xưng hô, tinh chỉnh mức độ sáng tạo, thêm các quy tắc kinh doanh và kiểm thử trực tiếp trên khung Sandbox trước khi áp dụng.",
       keyPoints: [
         "Quản trị viên toàn quyền kiểm soát hành vi và tính cách của trợ lý AI.",
-        "Môi trường Sandbox kiểm thử an toàn, đo đạc độ dài prompt và model phản hồi.",
+        "Môi trường Sandbox kiểm thử an toàn trước khi đưa vào phục vụ khách hàng thật.",
       ],
       faq: [
         {

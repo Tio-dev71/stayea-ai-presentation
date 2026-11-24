@@ -47,25 +47,25 @@ export const Slide04_TechStack: React.FC<{ isActive: boolean }> = () => {
         >
           {[
             {
-              tier: "TẦNG 1: FRONTEND WIDGET",
-              title: "Next.js 15 & React 19 UI",
-              desc: "Giao diện chat sang trọng, tối ưu hiển thị Mobile/Desktop, hỗ trợ Markdown và hiệu ứng Morphing mượt mà.",
-              badge: "SSR / SSG",
-              tech: ["Tailwind CSS", "Shadcn UI", "Lucide Icons"],
+              tier: "TẦNG 1: TRẢI NGHIỆM NGƯỜI DÙNG",
+              title: "Giao Diện Chat Đa Thiết Bị Tức Thì",
+              desc: "Hiển thị mượt mà trên cả Mobile và Desktop, hỗ trợ thẻ xác nhận đơn trực quan giúp khách hàng dễ dàng thao tác và chốt dịch vụ.",
+              badge: "UX Tối Ưu",
+              tech: ["Next.js 15", "React 19", "Realtime UI"],
             },
             {
-              tier: "TẦNG 2: BACKEND ORCHESTRATOR",
-              title: "NestJS & Drizzle ORM (PostgreSQL)",
-              desc: "Quản lý business logic, lọc dữ liệu dynamic catalog từ DB, thực thi function calling và bảo vệ API qua Throttler Guard.",
-              badge: "Domain-Driven",
-              tech: ["NestJS 10", "Drizzle ORM", "PostgreSQL"],
+              tier: "TẦNG 2: BỘ NÃO NGHIỆP VỤ",
+              title: "Hệ Thống Điều Phối & Chống Sai Lệch",
+              desc: "Nạp danh mục sản phẩm thực tế, xử lý đặt lịch tự động, giới hạn spam và ghi nhận dữ liệu an toàn theo quy trình doanh nghiệp.",
+              badge: "Tin Cậy Cao",
+              tech: ["NestJS", "PostgreSQL", "Zero Hallucination"],
             },
             {
               tier: "TẦNG 3: CỔNG AI GATEWAY",
-              title: "AI 9router Proxy Engine (Port 20128)",
-              desc: "Chuẩn hóa giao tiếp OpenAI Chat Completions, cân bằng tải model, quản lý bảo mật token và xử lý luồng Streaming SSE.",
-              badge: "High Concurrency",
-              tech: ["OpenAI Spec", "Gemini 2.5 Flash", "SSE Streaming"],
+              title: "Cổng Điều Phối AI 9router Độc Lập",
+              desc: "Cầu nối trung gian giúp doanh nghiệp bảo mật khóa API, tự do đổi mô hình AI tốt nhất mà không cần sửa code hay gián đoạn dịch vụ.",
+              badge: "Điểm Mạnh Cốt Lõi",
+              tech: ["AI 9router", "Gemini 2.5 Flash", "Streaming SSE"],
             },
           ].map((item, idx) => (
             <motion.div
