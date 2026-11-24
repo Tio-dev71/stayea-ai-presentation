@@ -2,14 +2,25 @@ import React from "react"
 import { motion } from "motion/react"
 import { Bot, CheckCircle2, ShoppingCart, UserCheck, ArrowRight, Sparkles } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
+import {
+  morphTopVariants,
+  morphLeftVariants,
+  morphRightVariants,
+} from "../MorphTransition"
 
 export const Slide07_FunctionCalling: React.FC<{ isActive: boolean }> = () => {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-14 xl:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
-      {/* Header */}
-      <div className="relative z-10">
+      {/* Header with Morph Top */}
+      <motion.div
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="relative z-10"
+      >
         <div className="flex items-center gap-2.5">
           <span className="w-3 h-3 rounded-full bg-amber-400" />
           <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
@@ -22,12 +33,18 @@ export const Slide07_FunctionCalling: React.FC<{ isActive: boolean }> = () => {
         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
           AI Concierge tự động trích xuất thông tin khách hàng, số lượng khách, ngày check-in và tính toán tổng tiền để khởi tạo đơn giữ chỗ sơ bộ.
         </p>
-      </div>
+      </motion.div>
 
       {/* Main Split Content */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 my-auto items-center">
-        {/* Left Col (6 cols): The Journey from Chat to Booking Card */}
-        <div className="lg:col-span-6 space-y-4 xl:space-y-5">
+        {/* Left Col (6 cols): The Journey from Chat to Booking Card with Morph Left */}
+        <motion.div
+          variants={morphLeftVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="lg:col-span-6 space-y-4 xl:space-y-5"
+        >
           <div className="p-5 sm:p-6 rounded-3xl bg-white/[0.05] border border-amber-500/25 backdrop-blur-md space-y-3">
             <span className="text-xs sm:text-sm font-heading font-bold text-amber-300 uppercase tracking-widest block">
               1. Khách Hàng Yêu Cầu Tự Nhiên
@@ -71,16 +88,17 @@ export const Slide07_FunctionCalling: React.FC<{ isActive: boolean }> = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Right Col (6 cols): Resulting Interactive Booking Preview Card */}
-        <div className="lg:col-span-6 space-y-5">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, x: 20 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="p-6 sm:p-7 md:p-8 rounded-3xl bg-gradient-to-b from-[#08282e]/98 to-[#031518]/98 border-2 border-emerald-400/50 shadow-2xl backdrop-blur-2xl space-y-4"
-          >
+        {/* Right Col (6 cols): Resulting Interactive Booking Preview Card with Morph Right */}
+        <motion.div
+          variants={morphRightVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="lg:col-span-6 space-y-5"
+        >
+          <div className="p-6 sm:p-7 md:p-8 rounded-3xl bg-gradient-to-b from-[#08282e]/98 to-[#031518]/98 border-2 border-emerald-400/50 shadow-2xl backdrop-blur-2xl space-y-4">
             <div className="flex items-center justify-between pb-4 border-b border-emerald-500/20">
               <div className="flex items-center gap-3">
                 <div className="w-11 h-11 rounded-2xl bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center text-emerald-300 shadow-md">
@@ -101,7 +119,7 @@ export const Slide07_FunctionCalling: React.FC<{ isActive: boolean }> = () => {
             </div>
 
             <p className="text-xs sm:text-sm md:text-base text-slate-200 leading-relaxed">
-              Dạ STAYEA đã tiếp nhận thông tin thuê xe <strong>Mitsubishi Xpander 7 chỗ</strong> của anh Tuấn. Phiếu giữ chỗ sơ bộ đã được chuyển vào hệ thống điều phối, chuyên viên STAYEA sẽ liên hệ xác nhận trong 5 phút!
+              Dạ hệ thống CSKH đã tiếp nhận thông tin thuê xe <strong>Mitsubishi Xpander 7 chỗ</strong> của anh Tuấn. Phiếu giữ chỗ sơ bộ đã được chuyển vào hàng chờ điều phối, chuyên viên sẽ liên hệ xác nhận trong 5 phút!
             </p>
 
             {/* Safety & Human in the loop reassurance */}
@@ -111,7 +129,7 @@ export const Slide07_FunctionCalling: React.FC<{ isActive: boolean }> = () => {
                 <strong className="text-white">Kiểm soát con người:</strong> Đơn hàng chỉ chính thức xác nhận sau khi Quản trị viên kiểm tra và phê duyệt.
               </span>
             </div>
-          </motion.div>
+          </div>
 
           {/* Quick value callout */}
           <div className="canva-stat-card p-5 sm:p-6">
@@ -123,7 +141,7 @@ export const Slide07_FunctionCalling: React.FC<{ isActive: boolean }> = () => {
             </span>
             <span className="text-xs sm:text-sm text-slate-400">Khách được phục vụ và chốt đơn ngay cả lúc 2h sáng</span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   )

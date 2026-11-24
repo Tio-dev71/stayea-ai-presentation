@@ -2,6 +2,11 @@ import React from "react"
 import { motion } from "motion/react"
 import { Cpu, Server, Zap, CheckCircle2, Shield, Layers } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
+import {
+  morphTopVariants,
+  morphLeftVariants,
+  morphRightVariants,
+} from "../MorphTransition"
 
 export const Slide04_TechStack: React.FC<{ isActive: boolean }> = () => {
   return (
@@ -9,7 +14,13 @@ export const Slide04_TechStack: React.FC<{ isActive: boolean }> = () => {
       <CanvaAtmosphere />
 
       {/* Header */}
-      <div className="relative z-10">
+      <motion.div
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="relative z-10"
+      >
         <div className="flex items-center gap-2.5">
           <span className="w-3 h-3 rounded-full bg-amber-400" />
           <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
@@ -22,12 +33,18 @@ export const Slide04_TechStack: React.FC<{ isActive: boolean }> = () => {
         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
           Mô hình Full-stack Monorepo tách biệt rõ ràng giữa Client Widget, NestJS Orchestrator và AI Gateway trung gian.
         </p>
-      </div>
+      </motion.div>
 
       {/* Main Split Grid */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 my-auto items-center">
         {/* Left Col (7 cols): 3 Tiers Architecture */}
-        <div className="lg:col-span-7 space-y-4 xl:space-y-5">
+        <motion.div
+          variants={morphLeftVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="lg:col-span-7 space-y-4 xl:space-y-5"
+        >
           {[
             {
               tier: "TẦNG 1: FRONTEND WIDGET",
@@ -81,13 +98,14 @@ export const Slide04_TechStack: React.FC<{ isActive: boolean }> = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Right Col (5 cols): AI 9router Focus Card */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, x: 20 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          variants={morphRightVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
           className="lg:col-span-5 p-7 sm:p-8 rounded-3xl bg-gradient-to-b from-[#082a30]/95 to-[#031518]/98 border-2 border-amber-400/40 shadow-2xl space-y-5 backdrop-blur-2xl"
         >
           <div className="flex items-center gap-4 pb-4 border-b border-amber-500/20">

@@ -2,14 +2,26 @@ import React from "react"
 import { motion } from "motion/react"
 import { Bot, User, ArrowLeftRight, CheckCircle2, Shield, HeartHandshake } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
+import {
+  morphTopVariants,
+  morphLeftVariants,
+  morphRightVariants,
+  morphCenterVariants,
+} from "../MorphTransition"
 
 export const Slide08_HybridCSKH: React.FC<{ isActive: boolean }> = () => {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-14 xl:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
-      {/* Header */}
-      <div className="relative z-10">
+      {/* Header with Morph Top */}
+      <motion.div
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="relative z-10"
+      >
         <div className="flex items-center gap-2.5">
           <span className="w-3 h-3 rounded-full bg-amber-400" />
           <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
@@ -22,15 +34,16 @@ export const Slide08_HybridCSKH: React.FC<{ isActive: boolean }> = () => {
         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
           Mô hình Human-in-the-loop: AI đảm nhiệm 80% câu hỏi thường gặp và tạo đơn sơ bộ; chuyên viên can thiệp xử lý các tình huống cá nhân hóa cao cấp.
         </p>
-      </div>
+      </motion.div>
 
       {/* Main Split Comparison */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 my-auto items-center">
-        {/* Left: AI Mode */}
+        {/* Left: AI Mode with Morph Left */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={morphLeftVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
           className="lg:col-span-5 p-7 sm:p-8 md:p-9 rounded-3xl bg-white/[0.05] border-2 border-emerald-500/40 backdrop-blur-2xl space-y-5 shadow-2xl"
         >
           <div className="flex items-center justify-between pb-4 border-b border-emerald-500/20">
@@ -43,7 +56,7 @@ export const Slide08_HybridCSKH: React.FC<{ isActive: boolean }> = () => {
                   TỰ ĐỘNG HÓA 24/7
                 </span>
                 <h3 className="font-heading text-lg sm:text-xl md:text-2xl font-bold text-white">
-                  STAYEA AI Concierge
+                  AI Concierge Tự Động
                 </h3>
               </div>
             </div>
@@ -72,8 +85,14 @@ export const Slide08_HybridCSKH: React.FC<{ isActive: boolean }> = () => {
           </div>
         </motion.div>
 
-        {/* Center Switch Icon */}
-        <div className="lg:col-span-2 flex flex-col items-center justify-center text-center space-y-3">
+        {/* Center Switch Icon with Morph Center */}
+        <motion.div
+          variants={morphCenterVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="lg:col-span-2 flex flex-col items-center justify-center text-center space-y-3"
+        >
           <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-amber-400 to-emerald-400 p-0.5 shadow-2xl shadow-amber-500/30">
             <div className="w-full h-full rounded-full bg-[#030e10] flex items-center justify-center text-amber-300">
               <ArrowLeftRight className="w-6 h-6 sm:w-7 sm:h-7" />
@@ -85,13 +104,14 @@ export const Slide08_HybridCSKH: React.FC<{ isActive: boolean }> = () => {
           <span className="text-xs text-slate-300 max-w-[140px] leading-snug">
             Chuyển tiếp tức thì chỉ với 1 click
           </span>
-        </div>
+        </motion.div>
 
-        {/* Right: Human Mode */}
+        {/* Right: Human Mode with Morph Right */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={morphRightVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
           className="lg:col-span-5 p-7 sm:p-8 md:p-9 rounded-3xl bg-white/[0.05] border-2 border-amber-500/40 backdrop-blur-2xl space-y-5 shadow-2xl"
         >
           <div className="flex items-center justify-between pb-4 border-b border-amber-500/20">
@@ -104,7 +124,7 @@ export const Slide08_HybridCSKH: React.FC<{ isActive: boolean }> = () => {
                   CÁ NHÂN HÓA CAO CẤP
                 </span>
                 <h3 className="font-heading text-lg sm:text-xl md:text-2xl font-bold text-white">
-                  Chuyên Viên STAYEA VIP
+                  Chuyên Viên CSKH Trực Tiếp
                 </h3>
               </div>
             </div>

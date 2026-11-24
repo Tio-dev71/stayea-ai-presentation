@@ -18,6 +18,11 @@ import {
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
 import { FacebookAvatar } from "../FacebookAvatar"
 import { Card3D } from "../Card3D"
+import {
+  morphTopVariants,
+  morphLeftVariants,
+  morphRightVariants,
+} from "../MorphTransition"
 
 interface Member {
   id: string
@@ -92,7 +97,7 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
       gender: "female",
       isLead: false,
       tasks: "Nghiên cứu tài liệu & xây dựng nội dung nghiệp vụ",
-      taskChips: ["Nghiên cứu tài liệu", "Xây dựng Catalog", "Kịch bản CSKH STAYEA"],
+      taskChips: ["Nghiên cứu tài liệu", "Xây dựng Catalog", "Kịch bản CSKH Đa Ngành"],
       icon: BookOpen,
       themeColor: {
         accent: "text-cyan-300",
@@ -166,9 +171,10 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
 
       {/* Top Header */}
       <motion.div
-        initial={{ opacity: 0, y: -20, filter: "blur(4px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ type: "spring", stiffness: 220, damping: 20 }}
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
         className="relative z-10 flex items-center justify-between"
       >
         <div className="flex items-center gap-3">
@@ -182,7 +188,7 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
               02 · GIỚI THIỆU THÀNH VIÊN
             </span>
             <span className="text-[11px] sm:text-xs text-slate-300 font-medium">
-              Đề tài: Chatbot AI Chăm Sóc Khách Hàng STAYEA Phú Quốc
+              Đề tài: Hệ Thống Chatbot AI Chăm Sóc Khách Hàng Tự Động (Tùy Biến Prompt Đa Kịch Bản)
             </span>
           </div>
         </div>
@@ -199,7 +205,13 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
       {/* Main Split Layout: Left 2x2 Morph Cards Grid | Elegant Divider | Right 3D Visual Card */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-12 2xl:gap-14 my-auto items-center">
         {/* Left Col (7 cols): Modern 2x2 Morph Cards with 3D Parallax Tilt */}
-        <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center">
+        <motion.div
+          variants={morphLeftVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center"
+        >
           {/* Subheading with Morph entrance */}
           <motion.div
             initial={{ opacity: 0, x: -25 }}
@@ -347,23 +359,19 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
               Thành viên nam/nữ có biểu tượng nhận diện chuẩn · Phối hợp đồng bộ qua GitHub & Trello
             </span>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Vertical Divider (Classic Canva double green line) */}
         <div className="hidden lg:flex lg:col-span-1 justify-center h-88 xl:h-96 items-center">
           <div className="canva-double-line" />
         </div>
 
-        {/* Right Col (4 cols): Canva Large Title & 3D Thematic Visual Card */}
+        {/* Right Col (4 cols): Canva Large Title & 3D Thematic Visual Card with Morph Right */}
         <motion.div
-          initial={{ opacity: 0, x: 35, filter: "blur(6px)" }}
-          animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-          transition={{
-            type: "spring",
-            stiffness: 220,
-            damping: 24,
-            delay: 0.25,
-          }}
+          variants={morphRightVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
           className="lg:col-span-4 xl:col-span-4 space-y-4 xl:space-y-5"
         >
           {/* Big Bold Heading matching Canva style */}
@@ -380,7 +388,7 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
 
             <p className="text-xs sm:text-sm md:text-base text-slate-200 font-medium mt-2 leading-relaxed">
               Báo cáo tiến độ phân chia công việc, nghiên cứu kiến trúc hệ thống và kiểm thử đề tài{" "}
-              <strong className="text-amber-300 font-bold">Chatbot AI CSKH STAYEA</strong>.
+              <strong className="text-amber-300 font-bold">Chatbot AI CSKH Tự Động</strong> (Ví dụ áp dụng: Hệ sinh thái du lịch STAYEA).
             </p>
           </div>
 
@@ -404,10 +412,10 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-[#062429]/60 via-transparent to-transparent" />
               <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
                 <span className="text-[11px] font-heading uppercase text-amber-300 tracking-wider font-bold block mb-0.5">
-                  ĐỊA BÀN NGHIÊN CỨU & TRIỂN KHAI
+                  VÍ DỤ ÁP DỤNG THỰC TẾ
                 </span>
                 <h4 className="font-heading font-black text-base sm:text-lg">
-                  Hệ Thống Nghỉ Dưỡng Đảo Phú Quốc
+                  Hệ Thống Dịch Vụ Du Lịch & Nghỉ Dưỡng
                 </h4>
               </div>
             </div>

@@ -3,6 +3,7 @@ import { motion } from "motion/react"
 import { Sparkles, CheckCircle2, Play, Bot } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
 import { InteractiveChatDemo } from "../InteractiveChatDemo"
+import { morphTopVariants, morphCenterVariants } from "../MorphTransition"
 
 export const Slide12_LiveDemo: React.FC<{ isActive: boolean }> = () => {
   return (
@@ -10,7 +11,13 @@ export const Slide12_LiveDemo: React.FC<{ isActive: boolean }> = () => {
       <CanvaAtmosphere />
 
       {/* Header */}
-      <div className="relative z-10 flex items-center justify-between mb-4">
+      <motion.div
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="relative z-10 flex items-center justify-between mb-4"
+      >
         <div>
           <div className="flex items-center gap-2.5">
             <span className="w-3 h-3 rounded-full bg-amber-400" />
@@ -19,10 +26,10 @@ export const Slide12_LiveDemo: React.FC<{ isActive: boolean }> = () => {
             </span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black gold-gradient-text tracking-tight mt-1">
-            Demo Tương Tác: STAYEA AI Concierge Widget
+            Demo Tương Tác: Chatbot AI Chăm Sóc Khách Hàng
           </h2>
           <p className="text-xs sm:text-sm md:text-base text-slate-300 mt-1">
-            Mô phỏng trải nghiệm người dùng thực tế với 3 kịch bản: Tìm kiếm Villa, Tạo đơn đặt xe tự lái và Phòng thủ Prompt Injection.
+            Ví dụ áp dụng thực tế trong việc chăm sóc khách hàng du lịch cho các hệ thống cung cấp dịch vụ du lịch (STAYEA Case Study).
           </p>
         </div>
 
@@ -30,12 +37,18 @@ export const Slide12_LiveDemo: React.FC<{ isActive: boolean }> = () => {
           <Sparkles className="w-4 h-4 text-amber-300" />
           <span className="font-semibold">Interactive Live Showcase</span>
         </div>
-      </div>
+      </motion.div>
 
       {/* Main Interactive Demo Container */}
-      <div className="relative z-10 w-full flex-1 flex items-center justify-center my-auto">
+      <motion.div
+        variants={morphCenterVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="relative z-10 w-full flex-1 flex items-center justify-center my-auto"
+      >
         <InteractiveChatDemo />
-      </div>
+      </motion.div>
     </div>
   )
 }

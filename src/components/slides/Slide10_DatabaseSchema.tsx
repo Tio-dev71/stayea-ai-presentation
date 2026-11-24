@@ -2,6 +2,7 @@ import React from "react"
 import { motion } from "motion/react"
 import { Database, Table, Key, ArrowRight, ShieldCheck, Layers } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
+import { morphTopVariants, morphLeftVariants, morphRightVariants } from "../MorphTransition"
 
 export const Slide10_DatabaseSchema: React.FC<{ isActive: boolean }> = () => {
   const tables = [
@@ -11,6 +12,7 @@ export const Slide10_DatabaseSchema: React.FC<{ isActive: boolean }> = () => {
       desc: "Lưu System Prompt động, Tone giọng, Temperature, Model và các Business Rules.",
       badge: "Config State",
       fields: ["systemPrompt", "tone", "temperature", "modelName", "customRules"],
+      isLeft: true,
     },
     {
       name: "stayea_chat_conversations",
@@ -18,6 +20,7 @@ export const Slide10_DatabaseSchema: React.FC<{ isActive: boolean }> = () => {
       desc: "Quản lý phiên chat giữa khách và hệ thống, lưu trạng thái active và thời gian nhắn cuối.",
       badge: "Session Graph",
       fields: ["id (UUID)", "participantId", "channel", "status", "lastMessageAt"],
+      isLeft: true,
     },
     {
       name: "stayea_chat_messages",
@@ -25,6 +28,7 @@ export const Slide10_DatabaseSchema: React.FC<{ isActive: boolean }> = () => {
       desc: "Lưu toàn bộ tin nhắn đa chiều của User, AI Assistant (kèm tool_calls) và Human Agent.",
       badge: "Event Stream",
       fields: ["conversationId", "senderType", "content", "toolCalls", "metadata"],
+      isLeft: false,
     },
     {
       name: "stayea_orders",
@@ -32,6 +36,7 @@ export const Slide10_DatabaseSchema: React.FC<{ isActive: boolean }> = () => {
       desc: "Lưu đơn hàng do AI tạo tự động từ Function Calling, trạng thái chờ Quản trị viên duyệt.",
       badge: "Transaction Core",
       fields: ["orderCode", "customerName", "phone", "totalAmount", "status"],
+      isLeft: false,
     },
   ]
 
@@ -40,7 +45,13 @@ export const Slide10_DatabaseSchema: React.FC<{ isActive: boolean }> = () => {
       <CanvaAtmosphere />
 
       {/* Header */}
-      <div className="relative z-10">
+      <motion.div
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="relative z-10"
+      >
         <div className="flex items-center gap-2.5">
           <span className="w-3 h-3 rounded-full bg-amber-400" />
           <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
@@ -53,16 +64,17 @@ export const Slide10_DatabaseSchema: React.FC<{ isActive: boolean }> = () => {
         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
           Thiết kế chuẩn hóa Type-safe 100%, phân tách rõ ràng giữa Quản trị Prompt, Quản lý Phiên chat và Lưu trữ Đơn hàng.
         </p>
-      </div>
+      </motion.div>
 
       {/* 4 Database Entities Grid */}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-auto">
         {tables.map((tbl, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 * idx }}
+            variants={tbl.isLeft ? morphLeftVariants : morphRightVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             className="canva-card p-6 sm:p-7 md:p-8 rounded-3xl flex flex-col justify-between hover:border-amber-400/60 transition-all group hover:-translate-y-2 shadow-xl"
           >
             <div>

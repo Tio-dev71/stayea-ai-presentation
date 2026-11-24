@@ -2,6 +2,7 @@ import React from "react"
 import { motion } from "motion/react"
 import { Zap, Clock, ShieldCheck, CheckCircle2, Award } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
+import { morphTopVariants, morphLeftVariants, morphRightVariants } from "../MorphTransition"
 
 export const Slide13_Results: React.FC<{ isActive: boolean }> = () => {
   const metrics = [
@@ -10,24 +11,28 @@ export const Slide13_Results: React.FC<{ isActive: boolean }> = () => {
       label: "ĐỘ TRỄ PHẢN HỒI (TTFT)",
       desc: "Thời gian bắt đầu phát sinh token đầu tiên qua cổng AI 9router nội bộ",
       color: "gold-gradient-text",
+      isLeft: true,
     },
     {
       value: "100%",
       label: "CHÍNH XÁC GIÁ & DỊCH VỤ",
       desc: "Kỹ thuật Dynamic Catalog Injection triệt tiêu hoàn toàn hiện tượng ảo giác",
       color: "emerald-gradient-text",
+      isLeft: true,
     },
     {
       value: "75%+",
       label: "TỰ ĐỘNG HÓA CSKH",
-      desc: "Giải đáp toàn bộ câu hỏi thường gặp về villa, thuê xe tự lái và tour cano",
+      desc: "Giải đáp toàn bộ câu hỏi thường gặp, tra cứu kho và lên phiếu giữ chỗ tự động",
       color: "gold-gradient-text",
+      isLeft: false,
     },
     {
       value: "24/7",
       label: "TÍNH SẴN SÀNG CAO",
-      desc: "Phục vụ khách du lịch mọi lúc, đặc biệt vào khung giờ đêm muộn 22h - 2h sáng",
+      desc: "Phục vụ khách hàng mọi lúc, đặc biệt vào khung giờ đêm muộn từ 22h - 2h sáng",
       color: "emerald-gradient-text",
+      isLeft: false,
     },
   ]
 
@@ -36,7 +41,13 @@ export const Slide13_Results: React.FC<{ isActive: boolean }> = () => {
       <CanvaAtmosphere />
 
       {/* Header */}
-      <div className="relative z-10">
+      <motion.div
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="relative z-10"
+      >
         <div className="flex items-center gap-2.5">
           <span className="w-3 h-3 rounded-full bg-amber-400" />
           <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
@@ -47,18 +58,19 @@ export const Slide13_Results: React.FC<{ isActive: boolean }> = () => {
           Hiệu Quả Thực Nghiệm & Đo Lường Thực Tế
         </h2>
         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
-          Đánh giá dựa trên hơn 500 phiên đối thoại mô phỏng và kiểm thử thực tế trên hệ thống STAYEA.
+          Đánh giá dựa trên hơn 500 phiên đối thoại mô phỏng và kiểm thử thực nghiệm trên kịch bản CSKH (Case Study: Dịch vụ du lịch).
         </p>
-      </div>
+      </motion.div>
 
       {/* 4 Stat Cards Grid (Large, Royal, Impactful) */}
       <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-auto">
         {metrics.map((m, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 * idx }}
+            variants={m.isLeft ? morphLeftVariants : morphRightVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             className="canva-stat-card p-7 sm:p-8 md:p-9 flex flex-col justify-between hover:border-amber-400/60 transition-all duration-300 group hover:-translate-y-2 shadow-2xl"
           >
             <div>

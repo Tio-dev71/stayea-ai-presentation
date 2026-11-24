@@ -133,7 +133,7 @@ export const BackgroundMusicPlayer: React.FC<BackgroundMusicPlayerProps> = ({
               ? "bg-emerald-500/25 text-emerald-300 border border-emerald-400/50 shadow-[0_0_12px_rgba(52,211,153,0.35)]"
               : "hover:bg-white/15 text-slate-400 hover:text-white"
           }`}
-          title={isPlaying ? "Dừng nhạc nền" : "Bật nhạc nền STAYEA"}
+          title={isPlaying ? "Dừng nhạc nền" : "Bật nhạc nền thuyết trình"}
           aria-label="Nhạc nền"
         >
           {isPlaying ? (
@@ -204,7 +204,7 @@ export const BackgroundMusicPlayer: React.FC<BackgroundMusicPlayerProps> = ({
 
           <div className="flex flex-col text-left">
             <span className="text-[10px] font-heading font-semibold text-emerald-300 uppercase tracking-wider leading-none">
-              STAYEA Music
+              Ambient Audio
             </span>
             <span className="text-[9px] text-slate-400 leading-tight">
               {isPlaying ? "Looping" : "Paused"}

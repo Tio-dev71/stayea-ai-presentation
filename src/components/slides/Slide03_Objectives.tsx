@@ -2,13 +2,18 @@ import React from "react"
 import { motion } from "motion/react"
 import { Target, Zap, Layers, RefreshCw, ShieldCheck, Check } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
+import {
+  morphTopVariants,
+  morphLeftVariants,
+  morphRightVariants,
+} from "../MorphTransition"
 
 export const Slide03_Objectives: React.FC<{ isActive: boolean }> = () => {
   const items = [
     {
       num: "01",
-      title: "Trợ Lý Du Lịch Thông Minh 24/7",
-      desc: "Xây dựng AI Concierge mang phong cách Luxury Hospitality, am hiểu tường tận hệ sinh thái biệt thự ven biển, xe tự lái và tour cano đảo.",
+      title: "Trợ Lý AI CSKH Tùy Biến Prompt 24/7",
+      desc: "Xây dựng Chatbot AI CSKH có khả năng tùy biến ngữ cảnh & kịch bản linh hoạt qua System Prompt, thử nghiệm chuyên sâu trên dịch vụ du lịch.",
       tags: ["Gemini 2.5 Flash", "Zero Latency"],
     },
     {
@@ -35,8 +40,14 @@ export const Slide03_Objectives: React.FC<{ isActive: boolean }> = () => {
     <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-14 xl:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
-      {/* Header */}
-      <div className="relative z-10">
+      {/* Header with Morph Top */}
+      <motion.div
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="relative z-10"
+      >
         <div className="flex items-center gap-2.5">
           <span className="w-3 h-3 rounded-full bg-amber-400" />
           <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
@@ -49,16 +60,17 @@ export const Slide03_Objectives: React.FC<{ isActive: boolean }> = () => {
         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
           Chuyển đổi từ mô hình Chatbot hỏi-đáp thông thường sang Agentic AI có khả năng tương tác, ra quyết định và tạo giao dịch thật.
         </p>
-      </div>
+      </motion.div>
 
-      {/* 4 Pillars Grid */}
+      {/* 4 Pillars Grid with Directional Morph (Left items from left, Right items from right) */}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-auto">
         {items.map((item, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 * idx }}
+            variants={idx < 2 ? morphLeftVariants : morphRightVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             className="canva-card p-6 sm:p-7 md:p-8 rounded-3xl flex flex-col justify-between hover:border-amber-400/60 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl"
           >
             <div>

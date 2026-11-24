@@ -20,20 +20,20 @@ export const SLIDES: SlideData[] = [
     id: "title",
     number: 1,
     title: "Chatbot AI Chăm Sóc Khách Hàng",
-    subtitle: "STAYEA Luxury Concierge & Điều Phối Dịch Vụ Du Lịch Phú Quốc",
+    subtitle: "Trợ Lý Ảo CSKH Tự Động Đa Kịch Bản & Cổng AI 9router (Ví dụ: Du lịch STAYEA)",
     category: "Overview",
     component: Slide01_Title,
     speakerNotes: {
       script:
-        "Kính thưa quý thầy cô trong hội đồng chấm Đồ án 1. Hôm nay em xin phép được báo cáo đề tài 'Hệ thống Chatbot AI Chăm Sóc Khách Hàng và Tự Động Điều Phối Dịch Vụ' được phát triển trên nền tảng du lịch STAYEA Phú Quốc với cổng điều phối AI 9router.",
+        "Kính thưa quý thầy cô trong hội đồng chấm Đồ án 1. Hôm nay em xin phép được báo cáo đề tài 'Hệ thống Chatbot AI Chăm Sóc Khách Hàng Tự Động Đa Kịch Bản' với khả năng tùy biến System Prompt linh hoạt, kết hợp cổng điều phối AI 9router. Đề tài lựa chọn case study thực tế là hệ thống du lịch STAYEA để minh họa và kiểm thử toàn diện khả năng tư vấn, tra cứu kho phòng và tạo đơn giữ chỗ tự động.",
       keyPoints: [
         "Giới thiệu ngắn gọn tên đề tài và công nghệ chính (AI 9router, Gemini 2.5 Flash, NestJS).",
-        "Nêu bật phạm vi ứng dụng: Dịch vụ lưu trú Villa, Xe tự lái, Tour cano Phú Quốc.",
+        "Nêu rõ: Hệ thống có thể tùy biến prompt cho nhiều ngành nghề; áp dụng case study du lịch (Villa, Xe tự lái, Tour cano) để minh họa trực quan.",
       ],
       faq: [
         {
           q: "Tại sao chọn đề tài này?",
-          a: "Vì bài toán CSKH du lịch Phú Quốc có tính chất 24/7 và đòi hỏi thông tin chính xác về phòng/xe thực tế, các chatbot kịch bản cũ không đáp ứng được.",
+          a: "Vì bài toán CSKH đòi hỏi tính phản hồi tức thì 24/7 và khả năng kết nối database thực tế, các chatbot kịch bản cũ không đáp ứng được.",
         },
       ],
     },
@@ -64,7 +64,7 @@ export const SLIDES: SlideData[] = [
     id: "problem",
     number: 3,
     title: "Thực Trạng & Vấn Đề Cốt Lõi",
-    subtitle: "Sự bế tắc của Rule-based Bot và Nhu cầu cấp thiết của nền tảng STAYEA",
+    subtitle: "Sự bế tắc của Rule-based Bot và Nhu cầu chuyển đổi sang AI Agent CSKH",
     category: "Overview",
     component: Slide02_Problem,
     speakerNotes: {
@@ -286,7 +286,7 @@ export const SLIDES: SlideData[] = [
     id: "demo",
     number: 13,
     title: "Demo Tương Tác Trực Tiếp",
-    subtitle: "Trải nghiệm thực tế STAYEA AI Concierge Widget",
+    subtitle: "Demo Trực Quan: Chatbot AI CSKH Đa Kịch Bản (Minh họa trên hệ thống du lịch)",
     category: "Demo & Results",
     component: Slide12_LiveDemo,
     speakerNotes: {

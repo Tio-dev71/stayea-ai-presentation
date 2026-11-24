@@ -14,31 +14,37 @@ import {
 } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
 import { Card3D } from "../Card3D"
+import {
+  morphTopVariants,
+  morphLeftVariants,
+  morphRightVariants,
+  morphBottomVariants,
+} from "../MorphTransition"
 
 export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
-  // Interactive service tabs showcasing the STAYEA ecosystem
+  // Interactive service tabs showcasing a real-world case study (Tourism & Hospitality CSKH)
   const [activeService, setActiveService] = useState<number>(0)
 
   const services = [
     {
-      title: "Biệt Thự Ven Biển 5 Sao",
-      tag: "LƯU TRÚ LUXURY",
+      title: "Biệt Thự Nghỉ Dưỡng Ven Biển",
+      tag: "LƯU TRÚ VILLA",
       image: "/images/villa.jpg",
-      sub: "Khu biệt thự nghỉ dưỡng cao cấp view biển Phú Quốc, bể bơi vô cực riêng.",
+      sub: "Hệ thống biệt thự nghỉ dưỡng cao cấp view biển, hồ bơi riêng, tự động tra cứu kho phòng trống theo thời gian thực.",
       metric: "Chính xác kho phòng 100%",
     },
     {
-      title: "Xe Tự Lái 4-7 Chỗ",
-      tag: "VẬN CHUYỂN VIP",
+      title: "Dịch Vụ Thuê Xe Tự Lái 4-7 Chỗ",
+      tag: "XE TỰ LÁI",
       image: "/images/car.jpg",
-      sub: "Đưa đón sân bay Phú Quốc, bàn giao xe tại resort trong vòng 30 phút.",
+      sub: "Đưa đón sân bay, giao nhận xe tận nơi, tự động kích hoạt function calling để lên phiếu giữ xe sơ bộ vào database.",
       metric: "Tự động lên phiếu giữ xe",
     },
     {
-      title: "Tour Cano 4 Đảo Nam Phú Quốc",
-      tag: "TRẢI NGHIỆM ĐỘC BẢN",
+      title: "Tour Trải Nghiệm & Cano Tham Quan Đảo",
+      tag: "TOUR TRẢI NGHIỆM",
       image: "/images/cano.jpg",
-      sub: "Lặn ngắm san hô Hòn Mây Rút, chụp flycam, tư vấn lịch trình theo con nước.",
+      sub: "Lặn ngắm san hô, chụp flycam, tư vấn lịch trình chi tiết theo con nước và dự báo thời tiết đảo.",
       metric: "Điều phối tour thông minh",
     },
   ]
@@ -51,9 +57,10 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
 
       {/* Top Header Tagline */}
       <motion.div
-        initial={{ opacity: 0, y: -20, filter: "blur(6px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ type: "spring", stiffness: 220, damping: 20 }}
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
         className="relative z-10 flex items-center justify-between"
       >
         <div className="flex items-center gap-3">
@@ -67,13 +74,15 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
       {/* Main Split Body: Left Typography & Stats | Right 3D Interactive Showcase */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 2xl:gap-16 my-auto items-center">
         {/* Left Column (7 cols): Giant Title, Value Pillars & Stats with Generous Spacing */}
-        <div className="lg:col-span-7 space-y-6 xl:space-y-7">
+        <motion.div
+          variants={morphLeftVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="lg:col-span-7 space-y-6 xl:space-y-7"
+        >
           {/* Main Giant Title with Generous Line-Height & Distance */}
-          <motion.div
-            initial={{ opacity: 0, x: -35, filter: "blur(6px)" }}
-            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-            transition={{ type: "spring", stiffness: 220, damping: 22, delay: 0.1 }}
-          >
+          <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-heading font-semibold mb-4 shadow-md backdrop-blur-md">
               <Star className="w-3.5 h-3.5 fill-amber-300" />
               <span>Đề tài Đồ án 1 · Kỹ Thuật Phần Mềm</span>
@@ -88,24 +97,18 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
             </h2>
 
             <p className="text-sm sm:text-base md:text-lg text-slate-200 font-medium tracking-wide mt-4 mb-2 leading-relaxed sm:leading-[1.9] max-w-3xl">
-              Hệ thống Trợ lý ảo Du lịch & Tự động điều phối dịch vụ độc bản trên nền tảng{" "}
-              <strong className="text-amber-300 font-bold">STAYEA Phú Quốc</strong> kết hợp cổng định tuyến{" "}
-              <strong className="text-emerald-300 font-bold">AI 9router Gateway</strong>.
+              Hệ thống Trợ lý ảo Chăm sóc khách hàng tự động đa kịch bản với khả năng tùy biến linh hoạt qua System Prompt, kết hợp cổng định tuyến{" "}
+              <strong className="text-emerald-300 font-bold">AI 9router Gateway</strong> và tự động hóa quy trình nghiệp vụ (Function Calling).
             </p>
-          </motion.div>
+          </div>
 
           {/* 3 Value Pillars with Generous Line-Height & Vertical Distance */}
-          <motion.div
-            initial={{ opacity: 0, y: 25, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ type: "spring", stiffness: 200, damping: 22, delay: 0.2 }}
-            className="space-y-4 xl:space-y-5 pt-2"
-          >
+          <div className="space-y-4 xl:space-y-5 pt-2">
             {[
               {
                 letter: "01",
-                text: "Tư Vấn Tự Nhiên & Chuẩn 5 Sao",
-                sub: "Phong cách phục vụ ân cần (Luxury Hospitality Tone), am hiểu tường tận hệ sinh thái nghỉ dưỡng.",
+                text: "Tư Vấn Tự Nhiên & Cá Nhân Hóa Đa Ngành",
+                sub: "Dễ dàng tùy biến ngữ cảnh, văn phong phục vụ và quy tắc ứng xử qua System Prompt phù hợp từng doanh nghiệp.",
               },
               {
                 letter: "02",
@@ -114,14 +117,12 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
               },
               {
                 letter: "03",
-                text: "Function Calling & Tự Động Tạo Phiếu Giữ Chỗ",
-                sub: "Tự động trích xuất thông tin khách và khởi tạo đơn đặt sơ bộ vào cơ sở dữ liệu PostgreSQL.",
+                text: "Function Calling & Tự Động Tạo Đơn / Giữ Chỗ",
+                sub: "Tự động trích xuất thông tin khách và khởi tạo đơn đặt sơ bộ trực tiếp vào cơ sở dữ liệu PostgreSQL.",
               },
             ].map((item, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                whileHover={{ x: 6, scale: 1.01 }}
-                transition={{ type: "spring", stiffness: 350, damping: 25 }}
                 className="flex items-start gap-4 p-4 sm:p-4.5 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-400/50 transition-all duration-300 shadow-md backdrop-blur-md cursor-pointer group"
               >
                 <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-emerald-500/30 via-teal-500/20 to-amber-500/20 border border-emerald-400/50 flex items-center justify-center shrink-0 text-emerald-300 font-heading font-black text-sm sm:text-base shadow-[0_0_15px_rgba(52,211,153,0.3)] group-hover:scale-110 transition-transform">
@@ -135,17 +136,12 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
                     {item.sub}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
           {/* Key Metric Highlights with Generous Padding & Margin */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 200, damping: 22, delay: 0.3 }}
-            className="grid grid-cols-3 gap-4 sm:gap-6 pt-4 sm:pt-6"
-          >
+          <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-4 sm:pt-6">
             <div className="canva-stat-card p-4 sm:p-5 rounded-2xl hover:border-amber-400/60 transition-colors">
               <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black gold-gradient-text block leading-none mb-2">
                 &lt; 1.2s
@@ -181,14 +177,15 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
                 Chốt đơn tức thì
               </span>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
 
         {/* Right Column (5 cols): Crisp High-Quality Cover Image with 3D Tilt */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.94, x: 40, filter: "blur(8px)" }}
-          animate={{ opacity: 1, scale: 1, x: 0, filter: "blur(0px)" }}
-          transition={{ type: "spring", stiffness: 180, damping: 24, delay: 0.25 }}
+          variants={morphRightVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
           className="lg:col-span-5 relative w-full flex items-center justify-center"
         >
           {/* Ambient 3D Glow Aura */}
@@ -200,6 +197,15 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
             glare={true}
             className="w-full rounded-[28px] overflow-hidden bg-gradient-to-b from-[#062429]/95 to-[#021114]/98 border-2 border-emerald-500/40 shadow-[0_30px_90px_rgba(0,0,0,0.85)] backdrop-blur-2xl"
           >
+            {/* Context Badge: Real-World Case Study Highlight */}
+            <div className="px-4 py-2 bg-emerald-950/80 border-b border-emerald-500/30 flex items-center justify-between text-[11px] font-mono">
+              <span className="flex items-center gap-1.5 font-bold text-amber-300">
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                VÍ DỤ ÁP DỤNG THỰC TẾ
+              </span>
+              <span className="text-emerald-300 font-semibold">Hệ Thống Dịch Vụ Du Lịch</span>
+            </div>
+
             {/* Interactive Service Switcher Ribbon on Top */}
             <div className="p-3 bg-black/50 border-b border-white/10 flex items-center gap-2 justify-between">
               {services.map((svc, sIdx) => (
@@ -240,9 +246,9 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#062429] via-transparent to-black/30 pointer-events-none" />
 
               {/* Floating 3D Pill on Image */}
-              <div className="absolute top-4 left-4 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white text-xs font-semibold shadow-lg">
+              <div className="absolute top-4 left-4 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-white text-xs font-semibold shadow-lg">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Phú Quốc Sanctuary</span>
+                <span>Ví dụ áp dụng: CSKH Du Lịch (STAYEA)</span>
               </div>
 
               {/* Dynamic Service Title on Image with Generous Spacing */}

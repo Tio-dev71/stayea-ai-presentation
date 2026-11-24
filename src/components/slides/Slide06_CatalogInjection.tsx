@@ -2,6 +2,11 @@ import React from "react"
 import { motion } from "motion/react"
 import { ShieldCheck, Database, CheckCircle2, Sparkles } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
+import {
+  morphTopVariants,
+  morphLeftVariants,
+  morphRightVariants,
+} from "../MorphTransition"
 
 export const Slide06_CatalogInjection: React.FC<{ isActive: boolean }> = () => {
   const sampleProducts = [
@@ -35,8 +40,14 @@ export const Slide06_CatalogInjection: React.FC<{ isActive: boolean }> = () => {
     <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-14 xl:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
-      {/* Header */}
-      <div className="relative z-10">
+      {/* Header with Morph Top */}
+      <motion.div
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="relative z-10"
+      >
         <div className="flex items-center gap-2.5">
           <span className="w-3 h-3 rounded-full bg-amber-400" />
           <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
@@ -49,12 +60,18 @@ export const Slide06_CatalogInjection: React.FC<{ isActive: boolean }> = () => {
         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
           Giải pháp tiêm danh mục dịch vụ đang mở bán từ PostgreSQL vào System Prompt giúp AI luôn nói đúng giá, đúng loại phòng và đúng lịch xe.
         </p>
-      </div>
+      </motion.div>
 
       {/* Main Content: Real Product Showcase + Architectural Benefits */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 my-auto items-center">
         {/* Left Col (7 cols): 3 Real Service Showcase Cards */}
-        <div className="lg:col-span-7 space-y-4">
+        <motion.div
+          variants={morphLeftVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="lg:col-span-7 space-y-4"
+        >
           <div className="flex items-center justify-between pb-1">
             <span className="text-xs sm:text-sm font-heading font-bold uppercase tracking-wider text-amber-300">
               KHO DỊCH VỤ THỰC TẾ TRUY VẤN TỪ DATABASE
@@ -117,16 +134,17 @@ export const Slide06_CatalogInjection: React.FC<{ isActive: boolean }> = () => {
               <strong className="text-white">Ràng buộc bảo mật:</strong> "AI chỉ được tư vấn sản phẩm thuộc danh mục trên; tuyệt đối từ chối tự tiện giảm giá hoặc bịa đặt dịch vụ."
             </span>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Right Col (5 cols): Core Technical Advantages */}
-        <div className="lg:col-span-5 space-y-4 xl:space-y-5">
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="p-5 sm:p-6 rounded-3xl bg-white/[0.05] border border-amber-500/25 backdrop-blur-md"
-          >
+        {/* Right Col (5 cols): Core Technical Advantages with Morph Right */}
+        <motion.div
+          variants={morphRightVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="lg:col-span-5 space-y-4 xl:space-y-5"
+        >
+          <div className="p-5 sm:p-6 rounded-3xl bg-white/[0.05] border border-amber-500/25 backdrop-blur-md">
             <h3 className="font-heading font-bold text-white text-base sm:text-lg flex items-center gap-2.5 mb-2">
               <ShieldCheck className="w-5 h-5 text-emerald-400" />
               Triệt Tiêu Hoàn Toàn Ảo Giác (Zero-Hallucination)
@@ -134,14 +152,9 @@ export const Slide06_CatalogInjection: React.FC<{ isActive: boolean }> = () => {
             <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed">
               Mô hình AI thông thường có thể tự bịa đặt giá rẻ để làm vui lòng người dùng. Nhờ Dynamic Injection, <strong>100% dữ liệu tư vấn</strong> đều phản ánh trung thực kho phòng và giá xe thực tế.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="p-5 sm:p-6 rounded-3xl bg-white/[0.05] border border-amber-500/25 backdrop-blur-md"
-          >
+          <div className="p-5 sm:p-6 rounded-3xl bg-white/[0.05] border border-amber-500/25 backdrop-blur-md">
             <h3 className="font-heading font-bold text-white text-base sm:text-lg flex items-center gap-2.5 mb-2">
               <Database className="w-5 h-5 text-amber-400" />
               Cập Nhật Tức Thì Không Cần Fine-Tuning
@@ -149,7 +162,7 @@ export const Slide06_CatalogInjection: React.FC<{ isActive: boolean }> = () => {
             <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed">
               Khi đối tác thêm Villa mới hoặc điều chỉnh giá xe ngày Lễ/Tết, hệ thống cập nhật tức thì vào phiên chat kế tiếp mà <strong>không tốn chi phí huấn luyện lại mô hình</strong>.
             </p>
-          </motion.div>
+          </div>
 
           {/* Stat Card */}
           <div className="canva-stat-card p-5 sm:p-6">
@@ -161,7 +174,7 @@ export const Slide06_CatalogInjection: React.FC<{ isActive: boolean }> = () => {
             </span>
             <span className="text-xs sm:text-sm text-slate-400">Dữ liệu nguồn duy nhất từ bảng dịch vụ PostgreSQL</span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   )

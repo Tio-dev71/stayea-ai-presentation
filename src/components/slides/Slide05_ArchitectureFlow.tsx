@@ -2,6 +2,12 @@ import React from "react"
 import { motion } from "motion/react"
 import { ArrowRight, Bot, Database, User, Server, Cpu, CheckCircle } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
+import {
+  morphTopVariants,
+  morphLeftVariants,
+  morphRightVariants,
+  morphCenterVariants,
+} from "../MorphTransition"
 
 export const Slide05_ArchitectureFlow: React.FC<{ isActive: boolean }> = () => {
   const steps = [
@@ -9,7 +15,7 @@ export const Slide05_ArchitectureFlow: React.FC<{ isActive: boolean }> = () => {
       num: "1",
       actor: "Khách Hàng (User)",
       title: "Gửi Yêu Cầu Chat",
-      desc: "Gửi tin nhắn từ Website Widget với nhu cầu tìm villa, thuê xe hoặc tour đảo Phú Quốc.",
+      desc: "Gửi tin nhắn từ Website Widget với nhu cầu tìm dịch vụ (villa, thuê xe, đặt tour, tư vấn).",
       tag: "HTTP / SSE",
     },
     {
@@ -46,8 +52,14 @@ export const Slide05_ArchitectureFlow: React.FC<{ isActive: boolean }> = () => {
     <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-14 xl:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
-      {/* Header */}
-      <div className="relative z-10">
+      {/* Header with Morph Top */}
+      <motion.div
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="relative z-10"
+      >
         <div className="flex items-center gap-2.5">
           <span className="w-3 h-3 rounded-full bg-amber-400" />
           <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
@@ -60,16 +72,17 @@ export const Slide05_ArchitectureFlow: React.FC<{ isActive: boolean }> = () => {
         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
           Luồng dữ liệu khép kín đảm bảo dữ liệu ghi nhận thành công vào cơ sở dữ liệu trước khi AI thông báo cho khách.
         </p>
-      </div>
+      </motion.div>
 
-      {/* Step Cards Horizontal / Grid */}
+      {/* Step Cards Horizontal / Grid with Directional Morph */}
       <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 my-auto">
         {steps.map((step, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 * idx }}
+            variants={idx < 2 ? morphLeftVariants : idx === 2 ? morphCenterVariants : morphRightVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             className="canva-card p-5 sm:p-6 rounded-3xl flex flex-col justify-between relative group hover:border-amber-400/60 transition-all hover:-translate-y-2 shadow-xl"
           >
             <div>

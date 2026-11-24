@@ -2,6 +2,11 @@ import React from "react"
 import { motion } from "motion/react"
 import { AlertTriangle, Clock, Bot, XCircle, CheckCircle2, TrendingDown } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
+import {
+  morphTopVariants,
+  morphLeftVariants,
+  morphRightVariants,
+} from "../MorphTransition"
 
 export const Slide02_Problem: React.FC<{ isActive: boolean }> = () => {
   return (
@@ -9,7 +14,13 @@ export const Slide02_Problem: React.FC<{ isActive: boolean }> = () => {
       <CanvaAtmosphere />
 
       {/* Header */}
-      <div className="relative z-10">
+      <motion.div
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="relative z-10"
+      >
         <div className="flex items-center gap-2.5">
           <span className="w-3 h-3 rounded-full bg-amber-400" />
           <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
@@ -17,17 +28,23 @@ export const Slide02_Problem: React.FC<{ isActive: boolean }> = () => {
           </span>
         </div>
         <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black gold-gradient-text tracking-tight mt-1.5">
-          Hạn Chế Của Chatbot Kịch Bản Cũ
+          Hạn Chế Của Chatbot Kịch Bản Cũ Trong CSKH
         </h2>
         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
-          Doanh nghiệp du lịch Phú Quốc vừa tốn chi phí nhân sự trực ca đêm, vừa đánh mất doanh thu vì độ trễ phản hồi vào các khung giờ vàng.
+          Doanh nghiệp vừa tốn chi phí nhân sự trực ca đêm, vừa đánh mất doanh thu vì độ trễ phản hồi và phản hồi cứng nhắc vào các khung giờ vàng.
         </p>
-      </div>
+      </motion.div>
 
       {/* Main Split Grid */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 my-auto items-center">
         {/* Left Col (7 cols): Pain Points with Circular Badges */}
-        <div className="lg:col-span-7 space-y-5">
+        <motion.div
+          variants={morphLeftVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="lg:col-span-7 space-y-5"
+        >
           <div className="space-y-4">
             {[
               {
@@ -46,11 +63,8 @@ export const Slide02_Problem: React.FC<{ isActive: boolean }> = () => {
                 desc: "Không thể tự tra cứu lịch xe còn trống hay tình trạng phòng villa, không có khả năng chốt đơn tạo phiếu giữ chỗ.",
               },
             ].map((item, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * (idx + 1) }}
                 className="flex items-start gap-4 group p-4 sm:p-5 rounded-2xl bg-white/[0.05] border border-red-500/25 backdrop-blur-md"
               >
                 <div className="w-11 h-11 rounded-2xl bg-red-500/20 border border-red-400/40 flex items-center justify-center shrink-0 text-red-300 text-lg font-bold shadow-[0_0_12px_rgba(239,68,68,0.35)]">
@@ -60,7 +74,7 @@ export const Slide02_Problem: React.FC<{ isActive: boolean }> = () => {
                   <h4 className="text-base sm:text-lg md:text-xl font-heading font-bold text-white tracking-wide">{item.title}</h4>
                   <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed mt-1">{item.desc}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
@@ -86,13 +100,14 @@ export const Slide02_Problem: React.FC<{ isActive: boolean }> = () => {
               <span className="text-xs sm:text-sm text-slate-400">Về vị trí villa, giá xe, lịch tour cano</span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Col (5 cols): Solution Card */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, x: 20 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          variants={morphRightVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
           className="lg:col-span-5 p-7 sm:p-8 rounded-3xl bg-gradient-to-b from-[#07252a]/95 to-[#041619]/98 border-2 border-amber-400/40 shadow-2xl space-y-5 backdrop-blur-2xl"
         >
           <div className="flex items-center gap-4 pb-4 border-b border-amber-500/20">
@@ -104,8 +119,9 @@ export const Slide02_Problem: React.FC<{ isActive: boolean }> = () => {
                 LỜI GIẢI ĐỀ TÀI
               </span>
               <h3 className="font-heading text-lg sm:text-xl md:text-2xl font-black text-white">
-                STAYEA AI Concierge 24/7
+                Chatbot AI CSKH Đa Kịch Bản
               </h3>
+              <span className="text-[11px] font-mono text-emerald-300">Case Study: Dịch vụ du lịch STAYEA</span>
             </div>
           </div>
 

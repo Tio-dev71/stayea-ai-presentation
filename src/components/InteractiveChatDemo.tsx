@@ -68,7 +68,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
       id: "m-welcome",
       role: "assistant",
       content:
-        "Dạ em chào Quý khách! Em là STAYEA Luxury Concierge — Cố vấn kỳ nghỉ và trải nghiệm độc bản tại Đảo Ngọc Phú Quốc.\n\nEm có thể giúp Quý khách:\n• 🏡 Tra cứu biệt thự nghỉ dưỡng, homestay ven biển còn phòng\n• 🚗 Đặt thuê xe tự lái hoặc đưa đón sân bay\n• 🚤 Tư vấn tour cano ngắm hoàng hôn & lặn san hô\n• 📋 Tạo phiếu giữ chỗ chuyển Admin STAYEA duyệt điều phối ngay\n\nQuý khách đang quan tâm dịch vụ nào cho chuyến đi sắp tới ạ?",
+        "Dạ em chào Quý khách! Em là Trợ lý AI Chăm sóc khách hàng tự động (Minh họa kịch bản hệ sinh thái dịch vụ du lịch).\n\nEm có thể giúp Quý khách:\n• 🏡 Tra cứu biệt thự nghỉ dưỡng, homestay ven biển còn phòng\n• 🚗 Đặt thuê xe tự lái hoặc đưa đón sân bay\n• 🚤 Tư vấn tour cano ngắm hoàng hôn & lặn san hô\n• 📋 Tự động tạo phiếu giữ chỗ chuyển tiếp quản trị viên duyệt ngay\n\nQuý khách đang quan tâm dịch vụ nào cho chuyến đi sắp tới ạ?",
       timestamp: "19:30",
     },
   ])
@@ -91,7 +91,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
         id: `welcome-${Date.now()}`,
         role: "assistant",
         content:
-          "Dạ em chào Quý khách! Em là STAYEA Luxury Concierge — Trợ lý AI kết nối trực tiếp với hệ thống dịch vụ Phú Quốc. Em có thể hỗ trợ anh/chị chọn phòng villa, xe tự lái hay tour cano hôm nay ạ?",
+          "Dạ em chào Quý khách! Em là Trợ lý AI CSKH tự động. Em có thể hỗ trợ anh/chị chọn phòng villa, xe tự lái hay tour cano hôm nay ạ?",
         timestamp: new Date().toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }),
       },
     ])
@@ -134,7 +134,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
             id: `ai-${Date.now()}`,
             role: "assistant",
             content:
-              "🛡️ [STAYEA Safety Guardrails]: Em là STAYEA Luxury Concierge — chuyên viên tư vấn du lịch Phú Quốc. Em tuyệt đối không có quyền truy cập hệ thống máy chủ và không được phép tiết lộ thông tin kỹ thuật nội bộ.\n\nDạ em xin phép quay lại hỗ trợ anh/chị tìm kiếm biệt thự nghỉ dưỡng, đặt xe hoặc tour cano tại Phú Quốc ạ!",
+              "🛡️ [AI Safety Guardrails]: Em là Trợ lý AI Chăm sóc khách hàng. Em tuyệt đối không có quyền truy cập hệ thống máy chủ và không được phép tiết lộ thông tin kỹ thuật nội bộ.\n\nDạ em xin phép quay lại hỗ trợ anh/chị giải đáp thông tin dịch vụ ạ!",
             timestamp: new Date().toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }),
             isSecurityWarning: true,
           },
@@ -232,7 +232,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
           id: `ai-${Date.now()}`,
           role: "assistant",
           content:
-            "Dạ STAYEA Concierge đã ghi nhận yêu cầu của anh/chị. Anh/chị đang cần tư vấn biệt thự nghỉ dưỡng, đặt xe tự lái hay tour cano 4 đảo tại Phú Quốc để em kiểm tra lịch trống và hỗ trợ mình ngay ạ?",
+            "Dạ Trợ lý AI CSKH đã ghi nhận yêu cầu của anh/chị. Anh/chị đang cần tư vấn biệt thự nghỉ dưỡng, đặt xe tự lái hay tour cano 4 đảo để em kiểm tra lịch trống và hỗ trợ mình ngay ạ?",
           timestamp: new Date().toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }),
         },
       ])
@@ -259,7 +259,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
           <div>
             <div className="flex items-center gap-2">
               <h3 className="text-sm font-bold text-white tracking-wide font-playfair">
-                {chatMode === "ai" ? "STAYEA AI Concierge" : "Chuyên Viên CSKH VIP"}
+                {chatMode === "ai" ? "Trợ Lý AI CSKH (Case Study: Du Lịch)" : "Chuyên Viên CSKH VIP"}
               </h3>
               <span
                 className={`px-1.5 py-0.5 text-[9px] font-bold uppercase rounded border ${
@@ -303,7 +303,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
           }`}
         >
           <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-          <span>STAYEA AI (Auto)</span>
+          <span>AI Trợ Lý (Auto)</span>
         </button>
         <button
           type="button"
@@ -315,7 +315,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
           }`}
         >
           <Headphones className="w-3.5 h-3.5 text-amber-300" />
-          <span>Chuyên Viên Người Thật</span>
+          <span>Chuyên Viên Trực Tiếp</span>
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
         </button>
       </div>
@@ -343,7 +343,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
           <div className="p-2.5 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-200 text-[11px] flex items-center gap-2">
             <Headphones className="w-4 h-4 text-amber-400 shrink-0" />
             <span>
-              Kênh kết nối nhân viên tư vấn: Mọi yêu cầu được chuyển tiếp trực tiếp đến Quản trị viên STAYEA để hỗ trợ 1:1.
+              Kênh kết nối nhân viên tư vấn: Mọi yêu cầu được chuyển tiếp trực tiếp đến Quản trị viên để hỗ trợ 1:1.
             </span>
           </div>
         )}
@@ -360,7 +360,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
               {m.role === "assistant" && <Bot className="w-3 h-3 text-emerald-400" />}
               {m.role === "admin" && <Headphones className="w-3 h-3 text-amber-400" />}
               {m.role === "user" && <User className="w-3 h-3 text-slate-300" />}
-              <span>{m.role === "user" ? "Bạn" : m.role === "admin" ? "Chuyên viên STAYEA" : "STAYEA AI"}</span>
+              <span>{m.role === "user" ? "Bạn" : m.role === "admin" ? "Chuyên viên CSKH" : "AI CSKH"}</span>
               <span>•</span>
               <span>{m.timestamp}</span>
               {m.toolExecuted && (
@@ -461,7 +461,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
             <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
             <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
             <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-bounce" />
-            <span className="text-[10px] text-emerald-300/80 ml-1">STAYEA AI đang soạn trả lời...</span>
+            <span className="text-[10px] text-emerald-300/80 ml-1">AI đang soạn trả lời...</span>
           </div>
         )}
         <div ref={messagesEndRef} />
@@ -481,8 +481,8 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
           onChange={(e) => setInputText(e.target.value)}
           placeholder={
             chatMode === "ai"
-              ? "Nhập câu hỏi (ví dụ: tư vấn villa, xe tự lái, tour đảo)..."
-              : "Nhập tin nhắn gửi chuyên viên STAYEA VIP..."
+              ? "Nhập câu hỏi (ví dụ: tư vấn villa, xe tự lái, tour cano)..."
+              : "Nhập tin nhắn gửi chuyên viên CSKH..."
           }
           className="flex-1 bg-[#092b30] text-white placeholder-slate-400 text-xs px-3.5 py-2.5 rounded-xl border border-emerald-500/30 focus:outline-none focus:border-emerald-400 transition-colors"
         />

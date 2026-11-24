@@ -2,6 +2,7 @@ import React from "react"
 import { motion } from "motion/react"
 import { Sliders, Play, Save, CheckCircle2, Bot, Sparkles, Terminal } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
+import { morphTopVariants, morphLeftVariants, morphRightVariants } from "../MorphTransition"
 
 export const Slide11_AdminPanel: React.FC<{ isActive: boolean }> = () => {
   return (
@@ -9,7 +10,13 @@ export const Slide11_AdminPanel: React.FC<{ isActive: boolean }> = () => {
       <CanvaAtmosphere />
 
       {/* Header */}
-      <div className="relative z-10">
+      <motion.div
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="relative z-10"
+      >
         <div className="flex items-center gap-2.5">
           <span className="w-3 h-3 rounded-full bg-amber-400" />
           <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
@@ -20,19 +27,25 @@ export const Slide11_AdminPanel: React.FC<{ isActive: boolean }> = () => {
           Admin Control Panel & Prompt Sandbox
         </h2>
         <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
-          Giao diện trực quan dành riêng cho Quản trị viên tại route /stayea/ai-agent: Tùy biến tính cách AI, gắn thẻ quy tắc kinh doanh và kiểm thử an toàn trước khi lưu.
+          Giao diện trực quan dành riêng cho Quản trị viên: Tùy biến System Prompt theo từng kịch bản ngành nghề, thiết lập phong cách xưng hô, gắn thẻ quy tắc kinh doanh và thử nghiệm trực tiếp trước khi lưu DB.
         </p>
-      </div>
+      </motion.div>
 
       {/* Main Split UI Mockup */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 my-auto items-center">
         {/* Left Col (6 cols): Admin Config Form */}
-        <div className="lg:col-span-6 space-y-4 xl:space-y-5">
+        <motion.div
+          variants={morphLeftVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="lg:col-span-6 space-y-4 xl:space-y-5"
+        >
           <div className="p-6 sm:p-7 md:p-8 rounded-3xl bg-white/[0.05] border-2 border-amber-500/25 backdrop-blur-2xl space-y-4 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <span className="text-xs sm:text-sm font-heading font-bold text-amber-300 uppercase flex items-center gap-2">
                 <Sliders className="w-4 h-4" />
-                Cấu Hình Tham Số AI Concierge
+                Cấu Hình Prompt & Tham Số AI CSKH
               </span>
               <span className="text-xs font-mono font-bold text-emerald-300 bg-emerald-950/70 px-3 py-0.5 rounded border border-emerald-500/30">
                 DB Dynamic
@@ -44,7 +57,7 @@ export const Slide11_AdminPanel: React.FC<{ isActive: boolean }> = () => {
                 <label className="text-slate-300 block mb-1.5 font-heading text-xs uppercase tracking-wider font-bold">PHONG CÁCH GIAO TIẾP (TONE):</label>
                 <div className="grid grid-cols-3 gap-2.5">
                   <span className="px-3 py-2 rounded-xl bg-amber-500/20 border border-amber-400/50 text-amber-300 font-bold text-center">
-                    Luxury & 5-Sao
+                    Tư vấn tận tâm
                   </span>
                   <span className="px-3 py-2 rounded-xl bg-black/50 border border-white/10 text-slate-300 text-center">
                     Thân thiện trẻ trung
@@ -69,7 +82,7 @@ export const Slide11_AdminPanel: React.FC<{ isActive: boolean }> = () => {
                 <label className="text-slate-300 block mb-1.5 font-heading text-xs uppercase tracking-wider font-bold">QUY TẮC NGHIỆP VỤ BỔ SUNG (CUSTOM RULES):</label>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-3 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-300 text-xs font-medium">
-                    ✓ Gợi ý thuê xe khi khách hỏi villa
+                    ✓ Gợi ý combo khi khách hỏi dịch vụ
                   </span>
                   <span className="px-3 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-300 text-xs font-medium">
                     ✓ Thu thập SĐT trước khi chốt đơn
@@ -81,13 +94,14 @@ export const Slide11_AdminPanel: React.FC<{ isActive: boolean }> = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Col (6 cols): Sandbox Live Preview */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, x: 20 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={morphRightVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
           className="lg:col-span-6 p-6 sm:p-7 md:p-8 rounded-3xl bg-gradient-to-b from-[#082a30]/95 to-[#031518]/98 border-2 border-emerald-400/50 shadow-2xl backdrop-blur-2xl space-y-4"
         >
           <div className="flex items-center justify-between pb-3 border-b border-emerald-500/20">
@@ -103,12 +117,12 @@ export const Slide11_AdminPanel: React.FC<{ isActive: boolean }> = () => {
           <div className="space-y-3 text-xs sm:text-sm">
             <div className="p-4 rounded-2xl bg-black/60 border border-white/10 text-slate-200">
               <span className="text-xs text-amber-300/90 block font-heading font-bold mb-1">ADMIN TEST INPUT:</span>
-              "Thử hỏi: Mình muốn thuê biệt thự cho 8 người vào cuối tuần này, có xe đưa đón không?"
+              "Thử hỏi: Mình muốn đặt lịch dịch vụ cho đoàn 8 người vào cuối tuần này, có ưu đãi gì không?"
             </div>
 
             <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-100 text-xs sm:text-sm leading-relaxed">
               <span className="text-xs text-emerald-400 font-bold font-heading block mb-1">AI RESPONSE:</span>
-              "Dạ STAYEA trân trọng kính chào Quý khách! Đối với đoàn 8 người, em xin gợi ý <strong>Sunset Luxury Pool Villa 4PN</strong> tại Bãi Trường. Về phương tiện, bên em có sẵn xe 7 chỗ tự lái hoặc xe đưa đón sân bay tận nơi..."
+              "Dạ em trân trọng kính chào Quý khách! Đối với đoàn 8 người, em xin giới thiệu gói dịch vụ phù hợp nhất kèm ưu đãi theo chính sách hiện hành. Em có thể hỗ trợ anh/chị kiểm tra lịch trống và lên phiếu đặt trước ngay ạ..."
             </div>
           </div>
 

@@ -2,6 +2,7 @@ import React from "react"
 import { motion } from "motion/react"
 import { Sparkles, MessageCircleQuestion, Bot } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
+import { morphTopVariants, morphCenterVariants } from "../MorphTransition"
 
 export const Slide15_Conclusion: React.FC<{ isActive: boolean }> = () => {
   return (
@@ -9,7 +10,13 @@ export const Slide15_Conclusion: React.FC<{ isActive: boolean }> = () => {
       <CanvaAtmosphere />
 
       {/* Header */}
-      <div className="relative z-10 text-center max-w-3xl mx-auto">
+      <motion.div
+        variants={morphTopVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="relative z-10 text-center max-w-3xl mx-auto"
+      >
         <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 text-xs sm:text-sm font-heading font-bold mb-3 shadow-xl">
           <Sparkles className="w-4 h-4 text-amber-300" />
           <span>TỔNG KẾT BÁO CÁO ĐỒ ÁN 1</span>
@@ -20,13 +27,14 @@ export const Slide15_Conclusion: React.FC<{ isActive: boolean }> = () => {
         <p className="text-sm sm:text-base md:text-lg text-slate-200 mt-2.5">
           Nhóm sinh viên thực hiện đề tài rất mong nhận được những câu hỏi và ý kiến đóng góp quý báu từ Hội đồng chấm Đồ án.
         </p>
-      </div>
+      </motion.div>
 
       {/* Main Q&A Callout (Large, Royal Canva Box) */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.2 }}
+        variants={morphCenterVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
         className="relative z-10 max-w-4xl w-full mx-auto p-8 sm:p-10 md:p-12 rounded-3xl bg-gradient-to-b from-[#082a30]/95 to-[#031518]/98 border-2 border-amber-400/50 shadow-2xl backdrop-blur-2xl text-center space-y-6"
       >
         <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-3xl bg-gradient-to-br from-amber-400 to-amber-600 mx-auto flex items-center justify-center text-black shadow-2xl shadow-amber-500/40 p-4">
@@ -43,7 +51,7 @@ export const Slide15_Conclusion: React.FC<{ isActive: boolean }> = () => {
         </div>
 
         <p className="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed">
-          Đề tài <strong>"Chatbot AI Chăm Sóc Khách Hàng Nền Tảng STAYEA"</strong> sẵn sàng trình diễn trực tiếp các kịch bản kiểm thử API, Dynamic Catalog Injection và luồng Function Calling theo yêu cầu của Hội đồng.
+          Đề tài <strong>"Hệ Thống Chatbot AI Chăm Sóc Khách Hàng Tự Động Đa Kịch Bản"</strong> sẵn sàng trình diễn trực tiếp các kịch bản kiểm thử API, Dynamic Catalog Injection và luồng Function Calling trên case study du lịch theo yêu cầu của Hội đồng.
         </p>
 
         {/* 3 Pillars Summary Badges */}
