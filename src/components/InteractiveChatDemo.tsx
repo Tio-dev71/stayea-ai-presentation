@@ -241,26 +241,26 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
 
   return (
     <div
-      className={`flex flex-col bg-[#051c20] border border-emerald-500/30 rounded-2xl shadow-2xl overflow-hidden font-sans ${
-        isEmbedded ? "w-full h-full max-h-[580px]" : "w-full max-w-2xl h-[620px]"
+      className={`flex flex-col bg-gradient-to-b from-[#08292f]/95 to-[#031518]/95 border border-amber-400/40 rounded-3xl shadow-2xl overflow-hidden font-sans backdrop-blur-xl ${
+        isEmbedded ? "w-full h-full max-h-[500px]" : "w-full max-w-2xl h-[600px]"
       }`}
     >
       {/* Widget Header */}
-      <div className="px-4 py-3 bg-gradient-to-r from-[#0c3b40] to-[#082226] border-b border-emerald-500/20 flex items-center justify-between">
+      <div className="px-4 py-3 bg-[#04191d] border-b border-amber-500/20 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="relative">
-            <div className="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-400/50 flex items-center justify-center">
               {chatMode === "ai" ? (
-                <Bot className="w-5 h-5 text-emerald-300" />
+                <Bot className="w-5 h-5 text-amber-300" />
               ) : (
                 <Headphones className="w-5 h-5 text-amber-300" />
               )}
             </div>
-            <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 rounded-full border border-[#051c20]" />
+            <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-amber-400 rounded-full border border-[#04191d]" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-sm font-bold text-white tracking-wide">
+              <h3 className="text-sm font-bold text-white tracking-wide font-playfair">
                 {chatMode === "ai" ? "STAYEA AI Concierge" : "Chuyên Viên CSKH VIP"}
               </h3>
               <span

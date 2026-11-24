@@ -24,15 +24,19 @@ export const SlideEngine: React.FC = () => {
   const [isOverviewOpen, setIsOverviewOpen] = useState(false)
   const [isNotesOpen, setIsNotesOpen] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const [showToolbar, setShowToolbar] = useState(true)
 
   const currentSlide = SLIDES[currentIndex]
   const totalSlides = SLIDES.length
 
-  const goToSlide = useCallback((newIndex: number) => {
-    if (newIndex < 0 || newIndex >= totalSlides) return
-    setDirection(newIndex > currentIndex ? "next" : "prev")
-    setCurrentIndex(newIndex)
-  }, [currentIndex, totalSlides])
+  const goToSlide = useCallback(
+    (newIndex: number) => {
+      if (newIndex < 0 || newIndex >= totalSlides) return
+      setDirection(newIndex > currentIndex ? "next" : "prev")
+      setCurrentIndex(newIndex)
+    },
+    [currentIndex, totalSlides]
+  )
 
   const nextSlide = useCallback(() => {
     if (currentIndex < totalSlides - 1) {
@@ -63,10 +67,10 @@ export const SlideEngine: React.FC = () => {
     if (currentIndex === totalSlides - 1) {
       try {
         confetti({
-          particleCount: 80,
-          spread: 70,
+          particleCount: 100,
+          spread: 80,
           origin: { y: 0.6 },
-          colors: ["#3aa6b3", "#fbbf24", "#10b981", "#ffffff"],
+          colors: ["#ffd47a", "#34d399", "#f5b838", "#ffffff"],
         })
       } catch {
         // ignore
@@ -77,7 +81,6 @@ export const SlideEngine: React.FC = () => {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Don't trigger if user is typing in an input
       if (
         e.target instanceof HTMLInputElement ||
         e.target instanceof HTMLTextAreaElement
@@ -127,28 +130,28 @@ export const SlideEngine: React.FC = () => {
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [nextSlide, prevSlide, goToSlide, totalSlides])
 
-  // Motion variants for slide transition
+  // Motion variants for edge-to-edge slide morphing
   const slideVariants = {
     initial: (dir: "next" | "prev") => ({
-      x: dir === "next" ? 60 : -60,
       opacity: 0,
-      scale: 0.98,
+      scale: 1.02,
+      x: dir === "next" ? 40 : -40,
       filter: "blur(4px)",
     }),
     animate: {
-      x: 0,
       opacity: 1,
       scale: 1,
+      x: 0,
       filter: "blur(0px)",
       transition: {
-        duration: 0.45,
+        duration: 0.5,
         ease: [0.16, 1, 0.3, 1] as const,
       },
     },
     exit: (dir: "next" | "prev") => ({
-      x: dir === "next" ? -60 : 60,
       opacity: 0,
       scale: 0.98,
+      x: dir === "next" ? -40 : 40,
       filter: "blur(4px)",
       transition: {
         duration: 0.35,
@@ -160,130 +163,111 @@ export const SlideEngine: React.FC = () => {
   const SlideComponent = currentSlide.component
 
   return (
-    <div className="relative w-screen h-screen bg-[#041517] text-slate-100 flex flex-col justify-between overflow-hidden select-none">
+    <div className="relative w-screen h-screen w-[100vw] h-[100vh] h-[100dvh] bg-[#030e10] text-slate-100 overflow-hidden select-none m-0 p-0 flex flex-col justify-between">
       {/* Top Slide Progress Bar */}
-      <div className="absolute top-0 left-0 right-0 z-40 h-1 bg-[#062024]">
+      <div className="absolute top-0 left-0 right-0 z-50 h-[3px] bg-black/40">
         <motion.div
-          className="h-full bg-gradient-to-r from-emerald-500 via-teal-400 to-amber-400 shadow-md shadow-emerald-400/50"
+          className="h-full bg-gradient-to-r from-amber-400 via-emerald-400 to-amber-300 shadow-[0_0_12px_rgba(245,184,56,0.8)]"
           animate={{
             width: `${((currentIndex + 1) / totalSlides) * 100}%`,
           }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
         />
       </div>
 
-      {/* Main Slide Container */}
-      <main className="relative flex-1 w-full h-full overflow-hidden flex items-center justify-center p-3 sm:p-6 md:p-8">
-        <div className="w-full h-full max-w-7xl max-h-[92vh] glass-panel rounded-3xl shadow-2xl relative overflow-hidden flex flex-col">
-          <AnimatePresence custom={direction} mode="wait">
-            <motion.div
-              key={currentSlide.id}
-              custom={direction}
-              variants={slideVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              className="w-full h-full flex-1"
-            >
-              <SlideComponent isActive={true} />
-            </motion.div>
-          </AnimatePresence>
-        </div>
+      {/* Full-bleed Presentation Canvas (NO inner box, 100% Edge-to-Edge like Canva) */}
+      <main className="relative w-full h-full flex-1 overflow-hidden m-0 p-0 flex flex-col">
+        <AnimatePresence custom={direction} mode="wait">
+          <motion.div
+            key={currentSlide.id}
+            custom={direction}
+            variants={slideVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="w-full h-full flex-1 flex flex-col overflow-hidden"
+          >
+            <SlideComponent isActive={true} />
+          </motion.div>
+        </AnimatePresence>
       </main>
 
-      {/* Floating Bottom Control Bar */}
-      <footer className="relative z-40 px-6 py-3 bg-[#041618]/90 backdrop-blur-md border-t border-emerald-500/20 flex items-center justify-between text-xs text-slate-300">
-        {/* Left: Branding & Current Slide Name */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-extrabold tracking-wide text-white">STAYEA AI</span>
-          </div>
-          <span className="text-slate-500 hidden sm:inline">•</span>
-          <span className="text-slate-400 hidden sm:inline max-w-xs truncate">
-            {currentSlide.title}
-          </span>
-        </div>
+      {/* Floating Canva-style Minimalist Controls Dock (Bottom Right / Center) */}
+      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-2 rounded-full bg-black/70 backdrop-blur-xl border border-amber-500/30 shadow-[0_10px_30px_rgba(0,0,0,0.8)] text-xs text-slate-200 transition-all hover:bg-black/85">
+        {/* Prev */}
+        <button
+          onClick={prevSlide}
+          disabled={currentIndex === 0}
+          className="p-1.5 rounded-full hover:bg-white/15 disabled:opacity-30 disabled:hover:bg-transparent text-amber-300 transition-all active:scale-90"
+          title="Slide trước (Phím ⬅)"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
 
-        {/* Center: Slide Number and Navigation Buttons */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={prevSlide}
-            disabled={currentIndex === 0}
-            className="p-2 rounded-xl bg-[#082226] hover:bg-[#0c3b40] disabled:opacity-30 disabled:hover:bg-[#082226] text-white border border-emerald-500/20 transition-all active:scale-95"
-            title="Slide trước (Phím ⬅)"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
+        {/* Slide Counter */}
+        <button
+          onClick={() => setIsOverviewOpen(true)}
+          className="px-2.5 py-1 rounded-full font-mono font-bold text-xs tracking-wider flex items-center gap-1 hover:text-amber-300 transition-colors"
+          title="Bấm để xem danh sách 15 slides (Phím O)"
+        >
+          <span className="text-amber-400">{String(currentIndex + 1).padStart(2, "0")}</span>
+          <span className="text-slate-500">/</span>
+          <span className="text-slate-400">{String(totalSlides).padStart(2, "0")}</span>
+        </button>
 
-          <div
-            onClick={() => setIsOverviewOpen(true)}
-            className="px-3.5 py-1.5 rounded-xl bg-[#082226] border border-emerald-500/30 text-white font-mono text-xs font-semibold cursor-pointer hover:border-emerald-400 hover:bg-[#0c3b40] transition-all flex items-center gap-1.5"
-            title="Mở danh sách slide (Phím O)"
-          >
-            <span className="text-emerald-400">{String(currentIndex + 1).padStart(2, "0")}</span>
-            <span className="text-slate-500">/</span>
-            <span className="text-slate-400">{String(totalSlides).padStart(2, "0")}</span>
-          </div>
+        {/* Next */}
+        <button
+          onClick={nextSlide}
+          disabled={currentIndex === totalSlides - 1}
+          className="p-1.5 rounded-full hover:bg-white/15 disabled:opacity-30 disabled:hover:bg-transparent text-amber-300 transition-all active:scale-90"
+          title="Slide tiếp theo (Phím ➔ hoặc Space)"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
 
-          <button
-            onClick={nextSlide}
-            disabled={currentIndex === totalSlides - 1}
-            className="p-2 rounded-xl bg-[#082226] hover:bg-[#0c3b40] disabled:opacity-30 disabled:hover:bg-[#082226] text-white border border-emerald-500/20 transition-all active:scale-95"
-            title="Slide kế tiếp (Phím ➔ hoặc Space)"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
+        <span className="w-px h-4 bg-white/20 mx-1" />
 
-        {/* Right: Tools & Utilities */}
-        <div className="flex items-center gap-2">
-          {/* Quick jump to Slide 12 Demo */}
-          <button
-            onClick={() => goToSlide(11)}
-            className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-400/40 text-[11px] font-semibold transition-all active:scale-95"
-            title="Nhảy nhanh tới Slide Demo tương tác"
-          >
-            <Play className="w-3 h-3 fill-amber-300" />
-            <span>Live Demo</span>
-          </button>
+        {/* Quick jump to Slide 12 Demo */}
+        <button
+          onClick={() => goToSlide(11)}
+          className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-400/40 text-[11px] font-semibold transition-all active:scale-95"
+          title="Xem Demo Widget trực tiếp"
+        >
+          <Play className="w-3 h-3 fill-amber-300" />
+          <span className="hidden sm:inline">Demo</span>
+        </button>
 
-          {/* Overview Grid button */}
-          <button
-            onClick={() => setIsOverviewOpen(true)}
-            className={`p-2 rounded-xl border transition-all ${
-              isOverviewOpen
-                ? "bg-emerald-600 text-white border-emerald-400"
-                : "bg-[#082226] text-slate-300 hover:text-white hover:bg-[#0c3b40] border-emerald-500/20"
-            }`}
-            title="Tổng quan tất cả Slide (Phím O)"
-          >
-            <LayoutGrid className="w-4 h-4" />
-          </button>
+        {/* Overview button */}
+        <button
+          onClick={() => setIsOverviewOpen(true)}
+          className="p-1.5 rounded-full hover:bg-white/15 text-slate-300 hover:text-white transition-all"
+          title="Lưới Slide (Phím O)"
+        >
+          <LayoutGrid className="w-3.5 h-3.5" />
+        </button>
 
-          {/* Speaker Notes Toggle */}
-          <button
-            onClick={() => setIsNotesOpen(!isNotesOpen)}
-            className={`p-2 rounded-xl border transition-all ${
-              isNotesOpen
-                ? "bg-amber-600 text-white border-amber-400"
-                : "bg-[#082226] text-slate-300 hover:text-white hover:bg-[#0c3b40] border-emerald-500/20"
-            }`}
-            title="Ghi chú người thuyết trình (Phím S)"
-          >
-            <Mic className="w-4 h-4" />
-          </button>
+        {/* Speaker Notes */}
+        <button
+          onClick={() => setIsNotesOpen(!isNotesOpen)}
+          className={`p-1.5 rounded-full transition-all ${
+            isNotesOpen
+              ? "bg-amber-500 text-black font-bold"
+              : "hover:bg-white/15 text-slate-300 hover:text-white"
+          }`}
+          title="Ghi chú người thuyết trình (Phím S)"
+        >
+          <Mic className="w-3.5 h-3.5" />
+        </button>
 
-          {/* Fullscreen Toggle */}
-          <button
-            onClick={toggleFullscreen}
-            className="p-2 rounded-xl bg-[#082226] text-slate-300 hover:text-white hover:bg-[#0c3b40] border border-emerald-500/20 transition-all"
-            title="Toàn màn hình (Phím F)"
-          >
-            {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
-          </button>
-        </div>
-      </footer>
+        {/* Fullscreen */}
+        <button
+          onClick={toggleFullscreen}
+          className="p-1.5 rounded-full hover:bg-white/15 text-slate-300 hover:text-white transition-all"
+          title="Toàn màn hình (Phím F)"
+        >
+          {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
+        </button>
+      </div>
 
       {/* Overview Modal */}
       <SlideOverviewModal
