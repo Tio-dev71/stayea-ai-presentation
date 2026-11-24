@@ -208,7 +208,7 @@ export const SlideEngine: React.FC = () => {
         <button
           onClick={() => setIsOverviewOpen(true)}
           className="px-2.5 py-1 rounded-full font-mono font-bold text-xs tracking-wider flex items-center gap-1 hover:text-amber-300 transition-colors"
-          title="Bấm để xem danh sách 15 slides (Phím O)"
+          title="Bấm để xem danh sách slide (Phím O)"
         >
           <span className="text-amber-400">{String(currentIndex + 1).padStart(2, "0")}</span>
           <span className="text-slate-500">/</span>
@@ -227,11 +227,11 @@ export const SlideEngine: React.FC = () => {
 
         <span className="w-px h-4 bg-white/20 mx-1" />
 
-        {/* Quick jump to Slide 12 Demo */}
+        {/* Quick jump to Slide 13 Demo */}
         <button
-          onClick={() => goToSlide(11)}
+          onClick={() => goToSlide(12)}
           className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-400/40 text-[11px] font-semibold transition-all active:scale-95"
-          title="Xem Demo Widget trực tiếp"
+          title="Xem Demo Widget trực tiếp (Slide 13)"
         >
           <Play className="w-3 h-3 fill-amber-300" />
           <span className="hidden sm:inline">Demo</span>

@@ -1,122 +1,137 @@
 import React from "react"
 import { motion } from "motion/react"
-import { Bot, Headphones, CheckCircle2, ArrowLeftRight } from "lucide-react"
+import { Bot, User, ArrowLeftRight, CheckCircle2, Shield, HeartHandshake } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
 
 export const Slide08_HybridCSKH: React.FC<{ isActive: boolean }> = () => {
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-8 md:p-14 lg:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Header */}
       <div className="relative z-10">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-amber-400" />
-          <span className="text-xs md:text-sm font-cinzel font-bold tracking-[0.25em] text-amber-300 uppercase">
-            08 · MÔ HÌNH VẬN HÀNH HYBRID
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+          <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.2em] text-amber-300 uppercase">
+            09 · MÔ HÌNH CSKH HYBRID (AI + CHUYÊN VIÊN)
           </span>
         </div>
-        <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-extrabold gold-gradient-text tracking-tight mt-1">
-          Mô Hình Hybrid: AI + Con Người Giám Sát
+        <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black gold-gradient-text tracking-tight mt-1">
+          Hợp Lực Giữa AI Concierge & Chuyên Viên Trực Tiếp
         </h2>
-        <p className="text-xs md:text-sm text-slate-300 mt-1">
-          Sự kết hợp giữa tốc độ tự động hóa 24/7 của AI và sự chu đáo, thấu cảm của chuyên viên trực tiếp.
+        <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+          Mô hình Human-in-the-loop: AI đảm nhiệm 80% câu hỏi thường gặp và tạo đơn sơ bộ; chuyên viên can thiệp xử lý các tình huống cá nhân hóa cao cấp.
         </p>
       </div>
 
-      {/* Main Grid */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 my-auto items-center">
+      {/* Main Split Comparison */}
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto items-center">
         {/* Left: AI Mode */}
-        <div className="p-6 rounded-3xl bg-black/40 border border-amber-500/30 backdrop-blur-md flex flex-col justify-between h-full">
-          <div>
-            <div className="flex items-center justify-between pb-3 mb-4 border-b border-amber-500/20">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-300">
-                  <Bot className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-playfair font-bold text-white text-base">Tầng 1: STAYEA AI Concierge</h3>
-                  <span className="text-xs text-amber-300 font-cinzel">Tự động 24/7 (Zero Latency)</span>
-                </div>
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-5 p-6 rounded-3xl bg-white/[0.04] border border-emerald-500/30 backdrop-blur-xl space-y-4"
+        >
+          <div className="flex items-center justify-between pb-3 border-b border-emerald-500/20">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center text-emerald-300 shadow-lg shadow-emerald-500/20">
+                <Bot className="w-6 h-6" />
               </div>
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 uppercase">
-                80% Khối lượng
-              </span>
-            </div>
-
-            <ul className="space-y-3.5 text-xs text-slate-300">
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Giải đáp tức thì câu hỏi thường gặp về vị trí villa, số phòng ngủ, giá thuê xe.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Tư vấn gợi ý lịch trình tour cano ngắm hoàng hôn, lặn san hô theo số người.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Thu thập họ tên, SĐT và tạo phiếu giữ chỗ sơ bộ (Draft Booking).</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="mt-4 p-3 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-xs text-emerald-200">
-            ⚡ <strong>Ưu điểm:</strong> Khách nhắn tin đêm muộn vẫn nhận được câu trả lời chu đáo ngay lập tức.
-          </div>
-        </div>
-
-        {/* Right: Human Consultant */}
-        <div className="p-6 rounded-3xl bg-gradient-to-b from-[#092b30]/90 to-[#041619]/90 border border-amber-400/50 shadow-2xl flex flex-col justify-between h-full">
-          <div>
-            <div className="flex items-center justify-between pb-3 mb-4 border-b border-amber-500/20">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-300">
-                  <Headphones className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-playfair font-bold text-white text-base">Tầng 2: Chuyên Viên STAYEA VIP</h3>
-                  <span className="text-xs text-amber-300 font-cinzel">Human-in-the-Loop Trực Tiếp</span>
-                </div>
+              <div>
+                <span className="text-[10px] font-heading font-bold text-emerald-300 uppercase tracking-wider block">
+                  TỰ ĐỘNG HÓA 24/7
+                </span>
+                <h3 className="font-heading text-base font-bold text-white">
+                  STAYEA AI Concierge
+                </h3>
               </div>
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30 uppercase">
-                20% Chuyên sâu
-              </span>
             </div>
-
-            <ul className="space-y-3.5 text-xs text-slate-200">
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>Kiểm tra thực tế với đối tác chủ villa / nhà xe trước khi xác nhận đơn.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>Xử lý các yêu cầu cá nhân hóa cao: tiệc nướng BBQ riêng, setup tân hôn, đón rước VIP.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>Giải quyết các trường hợp phát sinh hoàn hủy hoặc đổi lịch do thời tiết biển đảo.</span>
-              </li>
-            </ul>
+            <span className="px-2.5 py-1 rounded-full text-[10px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              Active Bot
+            </span>
           </div>
 
-          <div className="mt-4 p-3 rounded-2xl bg-amber-950/40 border border-amber-500/30 text-xs text-amber-200">
-            🛡️ <strong>Chốt chặn an toàn:</strong> Không bao giờ để AI tự ý thu tiền hay hủy hợp đồng.
+          <ul className="space-y-2.5 text-xs text-slate-300">
+            <li className="flex items-start gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+              <span>Phản hồi dưới 1.2s vào bất kỳ khung giờ nào trong ngày.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+              <span>Tư vấn thông số villa, giá thuê xe và lịch trình tour chuẩn xác 100%.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+              <span>Tự động thu thập thông tin khách và tạo đơn sơ bộ vào CSDL.</span>
+            </li>
+          </ul>
+
+          <div className="p-3 rounded-2xl bg-emerald-950/40 border border-emerald-500/20 text-[11px] text-emerald-200">
+            <strong>Hiệu quả:</strong> Giải tỏa 80% khối lượng công việc lặp lại cho đội ngũ hỗ trợ.
           </div>
-        </div>
-      </div>
+        </motion.div>
 
-      {/* Switch Tab Banner */}
-      <div className="relative z-10 p-3.5 rounded-2xl bg-black/40 border border-amber-500/20 flex items-center justify-between text-xs text-slate-300">
-        <div className="flex items-center gap-2">
-          <ArrowLeftRight className="w-4 h-4 text-amber-400 shrink-0" />
-          <span><strong>Trải nghiệm liền mạch trên 1 Widget:</strong> Khách chỉ cần bấm chuyển tab giữa <code>STAYEA AI</code> và <code>Chat Chuyên Viên</code> mà không bị ngắt kết nối.</span>
+        {/* Center Switch Icon */}
+        <div className="lg:col-span-2 flex flex-col items-center justify-center text-center space-y-2">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-emerald-400 p-0.5 shadow-xl shadow-amber-500/20">
+            <div className="w-full h-full rounded-full bg-[#030e10] flex items-center justify-center text-amber-300">
+              <ArrowLeftRight className="w-5 h-5" />
+            </div>
+          </div>
+          <span className="text-[10px] font-heading font-bold text-amber-300 uppercase tracking-widest block">
+            DUAL-MODE CHAT
+          </span>
+          <span className="text-[10px] text-slate-400 max-w-[120px] leading-tight">
+            Chuyển tiếp tức thì chỉ với 1 click
+          </span>
         </div>
-      </div>
 
-      {/* Footer */}
-      <div className="relative z-10 pt-3 border-t border-amber-500/20 flex items-center justify-between text-xs text-slate-400">
-        <span>Đồ án 1 • Chiến lược Vận hành Hybrid</span>
-        <span className="text-amber-300 font-cinzel">PHÍM MŨI TÊN (➔) ĐỂ CHUYỂN SLIDE</span>
+        {/* Right: Human Mode */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-5 p-6 rounded-3xl bg-white/[0.04] border border-amber-500/30 backdrop-blur-xl space-y-4"
+        >
+          <div className="flex items-center justify-between pb-3 border-b border-amber-500/20">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-400/50 flex items-center justify-center text-amber-300 shadow-lg shadow-amber-500/20">
+                <User className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-[10px] font-heading font-bold text-amber-300 uppercase tracking-wider block">
+                  CÁ NHÂN HÓA CAO CẤP
+                </span>
+                <h3 className="font-heading text-base font-bold text-white">
+                  Chuyên Viên STAYEA VIP
+                </h3>
+              </div>
+            </div>
+            <span className="px-2.5 py-1 rounded-full text-[10px] font-mono bg-amber-500/20 text-amber-300 border border-amber-400/30">
+              Human Live
+            </span>
+          </div>
+
+          <ul className="space-y-2.5 text-xs text-slate-300">
+            <li className="flex items-start gap-2">
+              <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+              <span>Tiếp quản ngay khi khách có yêu cầu riêng biệt hoặc khiếu nại.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+              <span>Toàn quyền phê duyệt, chỉnh sửa hoặc áp mã giảm giá đặc biệt cho đơn đặt.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+              <span>Nắm toàn bộ lịch sử trò chuyện mà AI đã ghi nhận trước đó.</span>
+            </li>
+          </ul>
+
+          <div className="p-3 rounded-2xl bg-amber-950/40 border border-amber-500/20 text-[11px] text-amber-200">
+            <strong>Trải nghiệm:</strong> Khách hàng an tâm tuyệt đối vì luôn có con người đồng hành.
+          </div>
+        </motion.div>
       </div>
     </div>
   )

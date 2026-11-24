@@ -32,7 +32,7 @@ export const SlideOverviewModal: React.FC<SlideOverviewModalProps> = ({
           <div className="px-6 py-4 bg-[#08282c] border-b border-emerald-500/20 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <LayoutGrid className="w-5 h-5 text-emerald-400" />
-              <h3 className="font-bold text-white text-base">Tổng Quan Tất Cả Các Slide (15 Slides)</h3>
+              <h3 className="font-bold text-white text-base">Tổng Quan Tất Cả Các Slide ({SLIDES.length} Slides)</h3>
             </div>
             <button
               onClick={onClose}

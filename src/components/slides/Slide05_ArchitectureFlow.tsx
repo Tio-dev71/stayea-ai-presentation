@@ -1,108 +1,108 @@
 import React from "react"
 import { motion } from "motion/react"
-import { User, Server, Cpu, Database, Sparkles, ArrowRight } from "lucide-react"
+import { ArrowRight, Bot, Database, User, Server, Cpu, CheckCircle } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
 
 export const Slide05_ArchitectureFlow: React.FC<{ isActive: boolean }> = () => {
   const steps = [
     {
-      num: "01",
-      title: "Khách Gửi Tin",
-      sub: "User Request",
-      desc: "Khách hỏi thông tin phòng villa hoặc yêu cầu đặt xe tự lái qua Widget.",
-      icon: User,
+      num: "1",
+      actor: "Khách Hàng (User)",
+      title: "Gửi Yêu Cầu Chat",
+      desc: "Gửi tin nhắn từ Website Widget với nhu cầu tìm villa, thuê xe hoặc tour đảo Phú Quốc.",
+      tag: "HTTP / SSE",
     },
     {
-      num: "02",
+      num: "2",
+      actor: "NestJS Backend",
       title: "Context Enrichment",
-      sub: "NestJS Backend",
-      desc: "Đọc System Prompt, tiêm catalog đang mở bán và đóng gói Tools.",
-      icon: Server,
+      desc: "Truy vấn DB lấy Catalog dịch vụ thực tế và cấu hình Prompt từ bảng stayea_ai_configs.",
+      tag: "Drizzle ORM",
     },
     {
-      num: "03",
-      title: "9router LLM",
-      sub: "AI Gateway: 20128",
-      desc: "Gemini 2.5 Flash phân tích ý định và phát lệnh gọi Tool (`tool_calls`).",
-      icon: Cpu,
+      num: "3",
+      actor: "9router Gateway",
+      title: "Định Tuyến & Gọi LLM",
+      desc: "Gửi prompt kèm định nghĩa Tools sang Google Gemini 2.5 Flash qua cổng trung gian 20128.",
+      tag: "OpenAI Spec",
     },
     {
-      num: "04",
+      num: "4",
+      actor: "Tool Execution",
       title: "Thực Thi Nghiệp Vụ",
-      sub: "PostgreSQL DB",
-      desc: "Backend gọi `partnerService.createDraftOrder()` lưu vào DB.",
-      icon: Database,
+      desc: "Nếu LLM kích hoạt Tool, Backend kiểm tra kho và tạo đơn đặt sơ bộ vào PostgreSQL.",
+      tag: "Function Call",
     },
     {
-      num: "05",
-      title: "Thẻ Đơn & Phản Hồi",
-      sub: "Second Turn Synthesis",
-      desc: "AI trả lời lịch thiệp kèm thẻ Booking Preview Card cho khách.",
-      icon: Sparkles,
+      num: "5",
+      actor: "AI Concierge",
+      title: "Phản Hồi & Thẻ Đơn",
+      desc: "Tổng hợp lời phản hồi chu đáo kèm Thẻ xác nhận đơn (Booking Card) trực quan cho khách.",
+      tag: "Card UI",
     },
   ]
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-8 md:p-14 lg:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Header */}
       <div className="relative z-10">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-amber-400" />
-          <span className="text-xs md:text-sm font-cinzel font-bold tracking-[0.25em] text-amber-300 uppercase">
-            05 · LUỒNG THỰC THI NGHIỆP VỤ
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+          <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.2em] text-amber-300 uppercase">
+            06 · SƠ ĐỒ LUỒNG HOẠT ĐỘNG TỔNG THỂ
           </span>
         </div>
-        <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-extrabold gold-gradient-text tracking-tight mt-1">
-          Chu Trình 2 Lượt (Two-Turn Execution)
+        <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black gold-gradient-text tracking-tight mt-1">
+          Quy Trình Xử Lý Hai Lượt (Two-Turn Cycle)
         </h2>
-        <p className="text-xs md:text-sm text-slate-300 mt-1">
-          Luồng xử lý khép kín đảm bảo tính chính xác và an toàn trước khi thông báo đơn đặt cho khách hàng.
+        <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+          Luồng dữ liệu khép kín đảm bảo dữ liệu ghi nhận thành công vào cơ sở dữ liệu trước khi AI thông báo cho khách.
         </p>
       </div>
 
-      {/* 5 Steps Horizontal Cards */}
+      {/* Step Cards Horizontal / Grid */}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-5 gap-3.5 my-auto">
-        {steps.map((st, i) => (
+        {steps.map((step, idx) => (
           <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
+            key={idx}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 * i }}
-            className="p-5 rounded-3xl bg-black/40 border border-amber-500/30 backdrop-blur-md hover:border-amber-400/60 transition-all flex flex-col justify-between group"
+            transition={{ duration: 0.5, delay: 0.1 * idx }}
+            className="canva-card p-4 rounded-3xl flex flex-col justify-between relative group hover:border-amber-400/60 transition-all hover:-translate-y-1"
           >
             <div>
+              {/* Step indicator */}
               <div className="flex items-center justify-between mb-3">
-                <span className="font-cinzel text-xs font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40">
-                  {st.num}
+                <span className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400/20 to-emerald-500/20 border border-amber-400/40 flex items-center justify-center font-heading font-bold text-amber-300 text-xs">
+                  {step.num}
                 </span>
-                <st.icon className="w-5 h-5 text-amber-300 group-hover:scale-110 transition-transform" />
+                <span className="text-[9px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+                  {step.tag}
+                </span>
               </div>
-              <h3 className="font-playfair font-bold text-white text-sm mb-0.5">{st.title}</h3>
-              <span className="text-[10px] text-amber-200/80 font-mono block mb-2">{st.sub}</span>
-              <p className="text-[11px] text-slate-300 leading-snug">{st.desc}</p>
+
+              <span className="text-[10px] font-heading uppercase text-amber-300 tracking-wider font-semibold block mb-1">
+                {step.actor}
+              </span>
+
+              <h3 className="font-heading font-bold text-white text-sm group-hover:text-amber-200 transition-colors mb-1.5">
+                {step.title}
+              </h3>
+
+              <p className="text-[11px] text-slate-300/80 leading-relaxed">
+                {step.desc}
+              </p>
             </div>
 
-            <div className="mt-3 pt-2 border-t border-white/10 text-[10px] text-amber-400 font-cinzel flex items-center justify-between">
-              <span>{i < 4 ? "Tiếp theo ➔" : "Hoàn tất ✓"}</span>
+            {/* Micro progress line */}
+            <div className="pt-3 border-t border-white/10 mt-3 flex items-center gap-1 text-[10px] text-slate-400">
+              <CheckCircle className="w-3 h-3 text-emerald-400" />
+              <span>Giai đoạn {step.num}/5</span>
             </div>
           </motion.div>
         ))}
-      </div>
-
-      {/* Deep-dive Callout */}
-      <div className="relative z-10 p-4 rounded-2xl bg-gradient-to-r from-[#07252a]/80 to-[#031518]/80 border border-amber-500/30 flex items-center gap-3 text-xs text-slate-300">
-        <Sparkles className="w-5 h-5 text-amber-400 shrink-0" />
-        <div>
-          <strong className="text-amber-200 font-cinzel">Điểm then chốt:</strong> Không để AI phản hồi mơ hồ. Khi khách cung cấp đủ Tên, SĐT và ngày đi, AI bắt buộc phải hoàn thành <strong>Bước 04 (Lưu đơn vào Database)</strong> rồi mới được phép phát hành thẻ đơn hàng cho khách.
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="relative z-10 pt-3 border-t border-amber-500/20 flex items-center justify-between text-xs text-slate-400">
-        <span>Đồ án 1 • Two-Turn Cycle Architecture</span>
-        <span className="text-amber-300 font-cinzel">PHÍM MŨI TÊN (➔) ĐỂ CHUYỂN SLIDE</span>
       </div>
     </div>
   )

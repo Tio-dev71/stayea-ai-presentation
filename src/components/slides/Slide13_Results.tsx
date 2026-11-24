@@ -9,88 +9,71 @@ export const Slide13_Results: React.FC<{ isActive: boolean }> = () => {
       value: "< 1.2s",
       label: "ĐỘ TRỄ PHẢN HỒI (TTFT)",
       desc: "Thời gian bắt đầu phát sinh token đầu tiên qua cổng AI 9router nội bộ",
+      color: "gold-gradient-text",
     },
     {
       value: "100%",
       label: "CHÍNH XÁC GIÁ & DỊCH VỤ",
       desc: "Kỹ thuật Dynamic Catalog Injection triệt tiêu hoàn toàn hiện tượng ảo giác",
+      color: "emerald-gradient-text",
     },
     {
       value: "75%+",
       label: "TỰ ĐỘNG HÓA CSKH",
       desc: "Giải đáp toàn bộ câu hỏi thường gặp về villa, thuê xe tự lái và tour cano",
+      color: "gold-gradient-text",
     },
     {
       value: "24/7",
       label: "TÍNH SẴN SÀNG CAO",
-      desc: "Cơ chế Smart Local Fallback đảm bảo không bao giờ gián đoạn dịch vụ",
+      desc: "Phục vụ khách du lịch mọi lúc, đặc biệt vào khung giờ đêm muộn 22h - 2h sáng",
+      color: "emerald-gradient-text",
     },
   ]
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-8 md:p-14 lg:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Header */}
       <div className="relative z-10">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-amber-400" />
-          <span className="text-xs md:text-sm font-cinzel font-bold tracking-[0.25em] text-amber-300 uppercase">
-            13 · KẾT QUẢ THỰC NGHIỆM
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+          <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.2em] text-amber-300 uppercase">
+            14 · KẾT QUẢ ĐẠT ĐƯỢC
           </span>
         </div>
-        <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-extrabold gold-gradient-text tracking-tight mt-1">
-          Các Chỉ Số Đạt Được & Hiệu Quả Thực Tế
+        <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black gold-gradient-text tracking-tight mt-1">
+          Hiệu Quả Thực Nghiệm & Đo Lường Thực Tế
         </h2>
-        <p className="text-xs md:text-sm text-slate-300 mt-1">
-          Kiểm thử toàn diện trên hơn 500 phiên hội thoại mẫu với dữ liệu du lịch Phú Quốc thực tế.
+        <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+          Đánh giá dựa trên hơn 500 phiên đối thoại mô phỏng và kiểm thử thực tế trên hệ thống STAYEA.
         </p>
       </div>
 
-      {/* 4 Large Canva Stat Cards (Matching Image 2 Style) */}
-      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 my-auto">
-        {metrics.map((m, i) => (
+      {/* 4 Stat Cards Grid (Matching Canva Image 2 Luxury Royal Box Cards) */}
+      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-auto">
+        {metrics.map((m, idx) => (
           <motion.div
-            key={i}
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 * i }}
-            className="canva-stat-card p-6 flex flex-col justify-between"
+            key={idx}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 * idx }}
+            className="canva-stat-card p-6 flex flex-col justify-between hover:border-amber-400/60 transition-all duration-300 group hover:-translate-y-1"
           >
             <div>
-              <span className="font-playfair text-4xl sm:text-5xl font-black gold-gradient-text block leading-none mb-3">
+              <span className={`font-heading text-4xl sm:text-5xl font-black ${m.color} block leading-none mb-3`}>
                 {m.value}
               </span>
-              <h3 className="font-cinzel text-xs font-bold tracking-wider text-amber-200 uppercase mb-2">
+              <h3 className="font-heading font-bold text-xs sm:text-sm text-amber-200 tracking-wider uppercase mb-2">
                 {m.label}
               </h3>
-              <p className="text-xs text-slate-400 leading-relaxed">{m.desc}</p>
             </div>
-            <div className="mt-4 pt-3 border-t border-white/10 flex items-center gap-1.5 text-xs text-emerald-400 font-cinzel font-semibold">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>ĐẠT TIÊU CHÍ ĐỒ ÁN 1</span>
-            </div>
+            <p className="text-xs text-slate-300/80 leading-relaxed pt-3 border-t border-white/10">
+              {m.desc}
+            </p>
           </motion.div>
         ))}
-      </div>
-
-      {/* Business Value Highlight */}
-      <div className="relative z-10 p-5 rounded-3xl bg-gradient-to-r from-[#07252a]/90 to-[#031518]/90 border border-amber-400/40 shadow-xl flex items-center justify-between text-xs text-slate-300">
-        <div className="flex items-center gap-3.5">
-          <div className="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-300 flex items-center justify-center shrink-0 border border-amber-400/40">
-            <Award className="w-6 h-6" />
-          </div>
-          <div>
-            <strong className="text-amber-200 text-sm font-playfair block">Đóng góp cho bài toán doanh nghiệp:</strong>
-            Giải quyết triệt để vấn đề thiếu nhân sự trực đêm, biến mỗi lượt tư vấn thành cơ hội chốt đơn dịch vụ giá trị cao cho đối tác du lịch Phú Quốc.
-          </div>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="relative z-10 pt-3 border-t border-amber-500/20 flex items-center justify-between text-xs text-slate-400">
-        <span>Đồ án 1 • Kết quả nghiên cứu</span>
-        <span className="text-amber-300 font-cinzel">PHÍM MŨI TÊN (➔) ĐỂ CHUYỂN SLIDE</span>
       </div>
     </div>
   )

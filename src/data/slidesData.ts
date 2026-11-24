@@ -1,5 +1,6 @@
 import { SlideData } from "../types/presentation"
 import { Slide01_Title } from "../components/slides/Slide01_Title"
+import { Slide02_Team } from "../components/slides/Slide02_Team"
 import { Slide02_Problem } from "../components/slides/Slide02_Problem"
 import { Slide03_Objectives } from "../components/slides/Slide03_Objectives"
 import { Slide04_TechStack } from "../components/slides/Slide04_TechStack"
@@ -39,8 +40,30 @@ export const SLIDES: SlideData[] = [
     },
   },
   {
-    id: "problem",
+    id: "team",
     number: 2,
+    title: "Thành Viên Trong Nhóm & Phân Công Nhiệm Vụ",
+    subtitle: "Danh sách sinh viên thực hiện & phân chia công việc đề tài Đồ án 1",
+    category: "Overview",
+    component: Slide02_Team,
+    speakerNotes: {
+      script:
+        "Kính thưa quý thầy cô, nhóm thực hiện đề tài gồm 4 thành viên: Em Nguyễn Đình Thọ - Trưởng nhóm phụ trách lên ý tưởng, thiết kế slide và kiểm tra nội dung; bạn Nguyễn Việt Tiến phụ trách thuyết trình báo cáo; bạn Ngô Thị Thùy Linh và bạn Đỗ Hà Linh phụ trách nghiên cứu tài liệu và hoàn thiện nội dung đề tài.",
+      keyPoints: [
+        "Giới thiệu 4 thành viên nhóm và mã số sinh viên.",
+        "Nêu rõ vai trò và phân chia nhiệm vụ cụ thể của từng thành viên trong quá trình thực hiện đồ án.",
+      ],
+      faq: [
+        {
+          q: "Nhóm phân chia công việc và phối hợp như thế nào?",
+          a: "Nhóm họp định kỳ hàng tuần, sử dụng Git để quản lý mã nguồn và Trello để theo dõi tiến độ từng đầu việc.",
+        },
+      ],
+    },
+  },
+  {
+    id: "problem",
+    number: 3,
     title: "Thực Trạng & Vấn Đề Cốt Lõi",
     subtitle: "Sự bế tắc của Rule-based Bot và Nhu cầu cấp thiết của nền tảng STAYEA",
     category: "Overview",
@@ -63,7 +86,7 @@ export const SLIDES: SlideData[] = [
   },
   {
     id: "objectives",
-    number: 3,
+    number: 4,
     title: "Mục Tiêu & Phạm Vi Nghiên Cứu",
     subtitle: "4 Trụ cột giải pháp kỹ thuật của đề tài",
     category: "Overview",
@@ -85,7 +108,7 @@ export const SLIDES: SlideData[] = [
   },
   {
     id: "tech-stack",
-    number: 4,
+    number: 5,
     title: "Kiến Trúc Công Nghệ & AI 9router",
     subtitle: "Hạ tầng phân tầng độc lập và cổng điều phối AI Gateway",
     category: "Architecture",
@@ -108,14 +131,14 @@ export const SLIDES: SlideData[] = [
   },
   {
     id: "architecture-flow",
-    number: 5,
-    title: "Chu Trình Thực Thi 2 Lượt",
+    number: 6,
+    title: "Sơ Đồ Luồng Hoạt Động Tổng Thể",
     subtitle: "Luồng dữ liệu khép kín: Khách ➔ Backend ➔ 9router ➔ Tools ➔ Database",
     category: "Architecture",
     component: Slide05_ArchitectureFlow,
     speakerNotes: {
       script:
-        "Trên slide là chu trình 2 lượt (Two-turn cycle). Lượt 1: AI tiếp nhận ngữ cảnh và phát lệnh tool_calls nếu khách có nhu cầu đặt dịch vụ. Backend thực thi kiểm tra dịch vụ và tạo đơn trong PostgreSQL. Lượt 2: AI đọc kết quả trả về từ Tool và tổng hợp thành lời nhắn lịch thiệp kèm mã đơn hàng cho khách.",
+        "Trên slide là quy trình 5 bước khép kín. Điểm đặc biệt là quá trình này có tính chất lặp 2 lượt (Two-turn cycle): Lượt 1 AI phân tích ý định và phát lệnh gọi Tool, Backend thực thi ghi nhận DB, Lượt 2 AI đọc kết quả của Tool để phản hồi lại cho khách với lời nhắn chu đáo kèm thẻ đơn hàng.",
       keyPoints: [
         "Luồng 2 lượt đảm bảo dữ liệu ghi nhận thành công mới thông báo cho khách.",
         "Tránh tuyệt đối tình trạng AI hứa hẹn đã đặt đơn nhưng hệ thống không có dữ liệu.",
@@ -130,14 +153,14 @@ export const SLIDES: SlideData[] = [
   },
   {
     id: "catalog-injection",
-    number: 6,
+    number: 7,
     title: "Dynamic Catalog Injection",
     subtitle: "Kỹ thuật tiêm danh mục dịch vụ thời gian thực chống ảo giác",
     category: "Deep Dive",
     component: Slide06_CatalogInjection,
     speakerNotes: {
       script:
-        "Ảo giác (Hallucination) là rủi ro lớn nhất của AI thương mại. STAYEA giải quyết triệt để bằng hàm buildCatalogContext(). Trước mỗi phiên chat, hệ thống truy vấn Database lấy các phòng, xe, tour đang mở bán và nén thành Markdown tiêm vào System Prompt kèm ràng buộc pháp lý nghiêm ngặt.",
+        "Ảo giác (Hallucination) là rủi ro lớn nhất của AI thương mại. STAYEA giải quyết triệt để bằng giải pháp Dynamic Catalog Injection. Trước mỗi phiên chat, hệ thống truy vấn Database lấy các phòng, xe, tour đang mở bán và tiêm vào System Prompt kèm ràng buộc pháp lý nghiêm ngặt.",
       keyPoints: [
         "100% dữ liệu tư vấn (tên villa, giá tiền, địa điểm) lấy từ Database thật.",
         "Không cần tốn chi phí và thời gian huấn luyện lại mô hình (Zero-retraining).",
@@ -152,17 +175,17 @@ export const SLIDES: SlideData[] = [
   },
   {
     id: "function-calling",
-    number: 7,
-    title: "Cơ Chế Function Calling",
-    subtitle: "Tự động trích xuất thông tin và tạo đơn giữ chỗ sơ bộ",
+    number: 8,
+    title: "Cơ Chế Function Calling & Tự Động Lên Đơn",
+    subtitle: "Tự động trích xuất thông tin khách hàng và tạo đơn giữ chỗ sơ bộ",
     category: "Deep Dive",
     component: Slide07_FunctionCalling,
     speakerNotes: {
       script:
-        "Khi khách nhắn tin muốn đặt xe hoặc villa, mô hình AI không chỉ trả lời bằng chữ mà kích hoạt hàm create_booking_draft(). Hàm này tự động trích xuất Tên, SĐT, Ngày đi, số lượng và tính toán tổng tiền, lưu vào bảng stayea_orders với trạng thái pending_admin.",
+        "Khi khách nhắn tin muốn đặt xe hoặc villa, mô hình AI kích hoạt Function Calling để trích xuất Tên, SĐT, Ngày đi, số lượng và tính toán tổng tiền, lưu vào bảng stayea_orders với trạng thái pending_admin.",
       keyPoints: [
-        "2 Tools chính: search_services (truy vấn) và create_booking_draft (hành động).",
-        "Có cơ chế Text-parser Fallback phòng trường hợp LLM trả về JSON thuần.",
+        "AI có khả năng hành động (Agentic AI) thay vì chỉ sinh văn bản thụ động.",
+        "Tạo thẻ Booking Preview Card trực quan ngay trong khung chat cho khách xác nhận.",
       ],
       faq: [
         {
@@ -174,8 +197,8 @@ export const SLIDES: SlideData[] = [
   },
   {
     id: "hybrid-support",
-    number: 8,
-    title: "Mô Hình Hybrid CSKH",
+    number: 9,
+    title: "Mô Hình CSKH Hybrid (AI + Chuyên Viên)",
     subtitle: "AI Concierge 24/7 kết hợp Chuyên viên Quản trị viên trực tiếp",
     category: "Deep Dive",
     component: Slide08_HybridCSKH,
@@ -196,7 +219,7 @@ export const SLIDES: SlideData[] = [
   },
   {
     id: "security",
-    number: 9,
+    number: 10,
     title: "Bảo Mật Guardrails & Resilient Fallback",
     subtitle: "Phòng chống Prompt Injection và Cơ chế cứu sinh khi mất kết nối",
     category: "Security & Ops",
@@ -218,7 +241,7 @@ export const SLIDES: SlideData[] = [
   },
   {
     id: "database",
-    number: 10,
+    number: 11,
     title: "Thiết Kế Cơ Sở Dữ Liệu",
     subtitle: "Bảng dữ liệu PostgreSQL quản lý Prompt, Phiên chat và Đơn hàng",
     category: "Architecture",
@@ -240,7 +263,7 @@ export const SLIDES: SlideData[] = [
   },
   {
     id: "admin-panel",
-    number: 11,
+    number: 12,
     title: "Admin Panel & Prompt Sandbox",
     subtitle: "Môi trường quản trị tính cách AI và thử nghiệm an toàn",
     category: "Security & Ops",
@@ -262,7 +285,7 @@ export const SLIDES: SlideData[] = [
   },
   {
     id: "demo",
-    number: 12,
+    number: 13,
     title: "Demo Tương Tác Trực Tiếp",
     subtitle: "Trải nghiệm thực tế STAYEA AI Concierge Widget",
     category: "Demo & Results",
@@ -284,7 +307,7 @@ export const SLIDES: SlideData[] = [
   },
   {
     id: "results",
-    number: 13,
+    number: 14,
     title: "Kết Quả Đạt Được & Hiệu Quả",
     subtitle: "Các chỉ số đo lường thực tế qua hơn 500 phiên thử nghiệm",
     category: "Demo & Results",
@@ -306,7 +329,7 @@ export const SLIDES: SlideData[] = [
   },
   {
     id: "future-work",
-    number: 14,
+    number: 15,
     title: "Hạn Chế & Hướng Phát Triển",
     subtitle: "Lộ trình nâng cấp từ Đồ án 1 lên Đồ án Tốt nghiệp",
     category: "Demo & Results",
@@ -328,7 +351,7 @@ export const SLIDES: SlideData[] = [
   },
   {
     id: "conclusion",
-    number: 15,
+    number: 16,
     title: "Tổng Kết & Hỏi Đáp (Q&A)",
     subtitle: "Lời cảm ơn Hội đồng & Sẵn sàng giải đáp phản biện",
     category: "Demo & Results",

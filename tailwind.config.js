@@ -27,9 +27,10 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['Cinzel', 'Playfair Display', 'serif'],
-        display: ['Playfair Display', 'Cinzel', 'serif'],
-        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
+        display: ['Montserrat', 'Playfair Display', 'sans-serif'],
+        heading: ['Montserrat', 'Be Vietnam Pro', 'sans-serif'],
+        sans: ['Be Vietnam Pro', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       animation: {

@@ -18,13 +18,39 @@
   }
 }
 
-/* Luxury Canva Gold Typography & Effects */
+/* Luxury Canva Modern Typography & Effects */
 .font-cinzel {
-  font-family: 'Cinzel', serif;
+  font-family: 'Montserrat', 'Be Vietnam Pro', sans-serif;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.font-heading {
+  font-family: 'Montserrat', 'Be Vietnam Pro', sans-serif;
+  font-weight: 800;
 }
 
 .font-playfair {
   font-family: 'Playfair Display', serif;
+}
+
+/* Double vertical divider matching user's template */
+.canva-double-line {
+  position: relative;
+  width: 6px;
+  height: 100%;
+}
+.canva-double-line::before, .canva-double-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(245, 184, 56, 0.2) 0%, rgba(52, 211, 153, 0.9) 50%, rgba(245, 184, 56, 0.2) 100%);
+  border-radius: 9999px;
+}
+.canva-double-line::after {
+  left: 4px;
 }
 
 .gold-gradient-text {

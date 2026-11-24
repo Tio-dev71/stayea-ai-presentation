@@ -1,97 +1,167 @@
 import React from "react"
 import { motion } from "motion/react"
-import { ShieldCheck, Database, Code, CheckCircle2 } from "lucide-react"
+import { ShieldCheck, Database, CheckCircle2, Sparkles } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
 
 export const Slide06_CatalogInjection: React.FC<{ isActive: boolean }> = () => {
+  const sampleProducts = [
+    {
+      title: "Sunset Luxury Pool Villa",
+      category: "LƯU TRÚ PHÚ QUỐC",
+      price: "3.500.000 ₫ / đêm",
+      meta: "4 Phòng ngủ · Hồ bơi vô cực · Bãi Trường",
+      image: "/images/villa.jpg",
+      status: "Còn trống 2 căn",
+    },
+    {
+      title: "Mitsubishi Xpander 7 Chỗ",
+      category: "XE TỰ LÁI & ĐƯA ĐÓN",
+      price: "1.200.000 ₫ / ngày",
+      meta: "Đời 2024 · Giao nhận tận sân bay Phú Quốc",
+      image: "/images/car.jpg",
+      status: "Sẵn sàng nhận xe",
+    },
+    {
+      title: "Tour Cano 4 Đảo & Lặn San Hô",
+      category: "TOUR TRẢI NGHIỆM VIP",
+      price: "1.150.000 ₫ / khách",
+      meta: "Cano SB cao tốc · Flycam tặng kèm · An Thới",
+      image: "/images/cano.jpg",
+      status: "Khởi hành hàng ngày",
+    },
+  ]
+
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-8 md:p-14 lg:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Header */}
       <div className="relative z-10">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-amber-400" />
-          <span className="text-xs md:text-sm font-cinzel font-bold tracking-[0.25em] text-amber-300 uppercase">
-            06 · KỸ THUẬT CỐT LÕI
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+          <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.2em] text-amber-300 uppercase">
+            07 · KỸ THUẬT DYNAMIC CATALOG INJECTION
           </span>
         </div>
-        <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-extrabold gold-gradient-text tracking-tight mt-1">
-          Dynamic Catalog Injection & Chống Ảo Giác
+        <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black gold-gradient-text tracking-tight mt-1">
+          Đồng Bộ Kho Dữ Liệu Thực Tế Chống Ảo Giác
         </h2>
-        <p className="text-xs md:text-sm text-slate-300 mt-1">
-          Giải pháp tiêm danh mục dịch vụ thực tế từ cơ sở dữ liệu vào System Prompt giúp AI luôn nói đúng giá và đúng sản phẩm.
+        <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+          Giải pháp tiêm danh mục dịch vụ đang mở bán từ PostgreSQL vào System Prompt giúp AI luôn nói đúng giá, đúng loại phòng và đúng lịch xe.
         </p>
       </div>
 
-      {/* Main Split */}
+      {/* Main Content: Real Product Showcase + Architectural Benefits */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto items-center">
-        {/* Left: Code Snippet Card */}
-        <div className="lg:col-span-6 p-5 rounded-3xl bg-black/50 border border-amber-500/30 backdrop-blur-md font-mono text-[11px]">
-          <div className="flex items-center justify-between pb-2 mb-3 border-b border-amber-500/20 text-slate-400">
-            <span className="flex items-center gap-1.5 text-amber-300 font-semibold font-mono">
-              <Code className="w-4 h-4" />
-              formatDynamicCatalogPrompt()
+        {/* Left Col (7 cols): 3 Real Service Showcase Cards */}
+        <div className="lg:col-span-7 space-y-3">
+          <div className="flex items-center justify-between pb-1">
+            <span className="text-xs font-heading font-bold uppercase tracking-wider text-amber-300">
+              KHO DỊCH VỤ THỰC TẾ TRUY VẤN TỪ DATABASE
             </span>
-            <span className="text-[10px] text-slate-500">PostgreSQL ➔ Prompt Context</span>
+            <span className="text-[10px] font-mono text-emerald-300 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
+              Auto-Injected Prompt
+            </span>
           </div>
 
-          <div className="space-y-2 text-slate-300">
-            <p className="text-slate-500">// Bơm danh mục thực tế đang mở bán</p>
-            <p className="text-amber-400 font-bold">DANH MỤC THỰC TẾ (ĐỒNG BỘ REAL-TIME):</p>
-            <div className="p-3 rounded-2xl bg-amber-950/30 border border-amber-500/20 text-[10px] space-y-1 text-amber-200">
-              <p>1. [MÃ: svc_01] "Sunset Luxury Villa" — 3.500.000 ₫/đêm (Bãi Trường)</p>
-              <p>2. [MÃ: svc_02] "Mitsubishi Xpander 7 chỗ" — 1.200.000 ₫/ngày (Tự lái)</p>
-              <p>3. [MÃ: svc_03] "Tour cano 4 đảo VIP" — 1.150.000 ₫/khách (An Thới)</p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {sampleProducts.map((p, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * idx }}
+                className="rounded-2xl overflow-hidden bg-black/40 border border-white/10 hover:border-emerald-400/50 transition-all group flex flex-col"
+              >
+                {/* Real Image */}
+                <div className="relative h-28 w-full overflow-hidden">
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[9px] font-mono text-emerald-300 border border-emerald-500/30">
+                    {p.status}
+                  </span>
+                </div>
 
-            <p className="text-slate-500 pt-1">// Ràng buộc an toàn & pháp lý</p>
-            <div className="p-2.5 rounded-2xl bg-red-950/30 border border-red-500/20 text-[10px] text-red-200 space-y-1">
-              <p>⚠️ "BẠN CHỈ ĐƯỢC TƯ VẤN CÁC DỊCH VỤ TRÊN."</p>
-              <p>⚠️ "TUYỆT ĐỐI KHÔNG TỰ Ý HẠ GIÁ HOẶC BỊA ĐẶT DỊCH VỤ."</p>
-            </div>
+                {/* Details */}
+                <div className="p-3 flex-1 flex flex-col justify-between">
+                  <div>
+                    <span className="text-[9px] font-heading font-semibold text-amber-300 block mb-0.5">
+                      {p.category}
+                    </span>
+                    <h4 className="text-xs font-heading font-bold text-white group-hover:text-amber-200 transition-colors line-clamp-1">
+                      {p.title}
+                    </h4>
+                    <p className="text-[10px] text-slate-300 mt-1 line-clamp-1">
+                      {p.meta}
+                    </p>
+                  </div>
+
+                  <div className="pt-2 mt-2 border-t border-white/10 flex items-center justify-between">
+                    <span className="text-[11px] font-mono font-bold text-emerald-400">
+                      {p.price}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Prompt constraint box */}
+          <div className="p-3 rounded-2xl bg-amber-950/30 border border-amber-500/30 text-xs text-amber-200 flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
+            <span>
+              <strong>Ràng buộc bảo mật:</strong> "AI chỉ được tư vấn sản phẩm thuộc danh mục trên; tuyệt đối từ chối tự tiện giảm giá hoặc bịa đặt dịch vụ."
+            </span>
           </div>
         </div>
 
-        {/* Right: Value Pillars & Stat Cards */}
-        <div className="lg:col-span-6 space-y-4">
-          <div className="p-5 rounded-3xl bg-black/40 border border-amber-500/30 backdrop-blur-md">
-            <h3 className="font-playfair font-bold text-white text-base flex items-center gap-2 mb-1.5">
-              <ShieldCheck className="w-5 h-5 text-emerald-400" />
-              Triệt Tiêu Ảo Giác (Zero-Hallucination)
+        {/* Right Col (5 cols): Core Technical Advantages */}
+        <div className="lg:col-span-5 space-y-3.5">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="p-4 rounded-3xl bg-white/[0.04] border border-amber-500/25 backdrop-blur-md"
+          >
+            <h3 className="font-heading font-bold text-white text-sm flex items-center gap-2 mb-1">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              Triệt Tiêu Hoàn Toàn Ảo Giác (Zero-Hallucination)
             </h3>
             <p className="text-xs text-slate-300 leading-relaxed">
-              Mô hình LLM thông thường hay tự bịa giá rẻ hơn để làm hài lòng người hỏi. Bằng việc ép chặt ngữ cảnh theo danh mục Database, STAYEA AI cam kết <strong>100% thông tin tư vấn là chính xác</strong>.
+              Mô hình AI thông thường có thể tự bịa đặt giá rẻ để làm vui lòng người dùng. Nhờ Dynamic Injection, <strong>100% dữ liệu tư vấn</strong> đều phản ánh trung thực kho phòng và giá xe thực tế.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="p-5 rounded-3xl bg-black/40 border border-amber-500/30 backdrop-blur-md">
-            <h3 className="font-playfair font-bold text-white text-base flex items-center gap-2 mb-1.5">
-              <Database className="w-5 h-5 text-amber-400" />
-              Cập Nhật Tức Thì Không Cần Huấn Luyện Lại
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="p-4 rounded-3xl bg-white/[0.04] border border-amber-500/25 backdrop-blur-md"
+          >
+            <h3 className="font-heading font-bold text-white text-sm flex items-center gap-2 mb-1">
+              <Database className="w-4 h-4 text-amber-400" />
+              Cập Nhật Tức Thì Không Cần Fine-Tuning
             </h3>
             <p className="text-xs text-slate-300 leading-relaxed">
-              Khi đối tác thêm Villa mới hoặc tăng giá xe mùa cao điểm, hệ thống cập nhật ngay lập tức vào phiên chat kế tiếp mà <strong>không cần fine-tuning tốn kém</strong>.
+              Khi đối tác thêm Villa mới hoặc điều chỉnh giá xe ngày Lễ/Tết, hệ thống cập nhật tức thì vào phiên chat kế tiếp mà <strong>không tốn chi phí huấn luyện lại mô hình</strong>.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Stat Box */}
+          {/* Stat Card */}
           <div className="canva-stat-card p-4">
-            <span className="font-playfair text-3xl font-black gold-gradient-text block leading-none mb-1">
-              &lt; 1.500
+            <span className="font-heading text-3xl font-black gold-gradient-text block leading-none mb-1">
+              100%
             </span>
-            <span className="text-[10px] font-cinzel font-bold tracking-wider text-amber-200 uppercase block">
-              TOKENS TỐI ƯU CHO PROMPT
+            <span className="text-[10px] font-heading font-bold tracking-wider text-amber-200 uppercase block">
+              CHÍNH XÁC KHO GIÁ & THÔNG SỐ
             </span>
-            <span className="text-[10px] text-slate-400">Rút gọn Markdown cô đọng, giảm 60% chi phí token</span>
+            <span className="text-[10px] text-slate-400">Dữ liệu nguồn duy nhất từ bảng dịch vụ PostgreSQL</span>
           </div>
         </div>
-      </div>
-
-      {/* Footer */}
-      <div className="relative z-10 pt-3 border-t border-amber-500/20 flex items-center justify-between text-xs text-slate-400">
-        <span>Đồ án 1 • Giải pháp Chống Ảo Giác</span>
-        <span className="text-amber-300 font-cinzel">PHÍM MŨI TÊN (➔) ĐỂ CHUYỂN SLIDE</span>
       </div>
     </div>
   )

@@ -7,7 +7,6 @@ export const Slide14_FutureWork: React.FC<{ isActive: boolean }> = () => {
   const plans = [
     {
       num: "01",
-      letter: "壹",
       title: "Kiến Trúc RAG & Vector Database",
       sub: "Retrieval-Augmented Generation",
       desc: "Tích hợp pgvector / Qdrant để lưu trữ kho cẩm nang du lịch Phú Quốc và chính sách hoàn hủy chi tiết từng đối tác.",
@@ -15,7 +14,6 @@ export const Slide14_FutureWork: React.FC<{ isActive: boolean }> = () => {
     },
     {
       num: "02",
-      letter: "贰",
       title: "Voice AI Concierge Trực Tiếp",
       sub: "WebRTC + Speech-to-Speech",
       desc: "Đàm thoại giọng nói tự nhiên với khách du lịch, hỗ trợ gọi điện thoại trực tiếp hoặc rảnh tay khi đang lái xe.",
@@ -23,81 +21,70 @@ export const Slide14_FutureWork: React.FC<{ isActive: boolean }> = () => {
     },
     {
       num: "03",
-      letter: "叁",
-      title: "Mở Rộng Đa Kênh (Omnichannel)",
-      sub: "Zalo Official Account & Messenger",
-      desc: "Đồng bộ webhook từ Zalo OA và Facebook Fanpage về chung một NestJS Backend xử lý, tạo đơn hàng đồng nhất.",
-      badge: "Mở Rộng Kinh Doanh",
+      title: "Tích Hợp Đa Kênh (Omnichannel)",
+      sub: "Zalo OA & Facebook Messenger",
+      desc: "Đồng bộ tin nhắn AI trên đa nền tảng mạng xã hội, giúp khách hàng nhắn tin từ kênh nào cũng được hỗ trợ liền mạch.",
+      badge: "Mở Rộng Quy Mô",
     },
   ]
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-8 md:p-14 lg:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Header */}
       <div className="relative z-10">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-amber-400" />
-          <span className="text-xs md:text-sm font-cinzel font-bold tracking-[0.25em] text-amber-300 uppercase">
-            14 · ĐỊNH HƯỚNG PHÁT TRIỂN
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+          <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.2em] text-amber-300 uppercase">
+            15 · HẠN CHẾ & HƯỚNG PHÁT TRIỂN
           </span>
         </div>
-        <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-extrabold gold-gradient-text tracking-tight mt-1">
-          Hạn Chế & Lộ Trình Đồ Án Tốt Nghiệp
+        <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black gold-gradient-text tracking-tight mt-1">
+          Lộ Trình Nâng Cấp Lên Đồ Án Tốt Nghiệp
         </h2>
-        <p className="text-xs md:text-sm text-slate-300 mt-1">
-          Các bước hoàn thiện tiếp theo để nâng cấp từ Đồ án 1 lên một sản phẩm thương mại hoàn chỉnh.
+        <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+          Từ nền tảng Đồ án 1, hoàn thiện hệ sinh thái AI Concierge thông minh toàn diện với Voicebot và Đa kênh.
         </p>
       </div>
 
-      {/* 3 Cards Grid */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 my-auto">
-        {plans.map((p, i) => (
+      {/* 3 Expansion Roadmap Cards */}
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-5 my-auto">
+        {plans.map((p, idx) => (
           <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
+            key={idx}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 * i }}
-            className="p-6 rounded-3xl bg-black/40 border border-amber-500/30 backdrop-blur-md hover:border-amber-400/60 transition-all flex flex-col justify-between group"
+            transition={{ duration: 0.6, delay: 0.1 * idx }}
+            className="canva-card p-6 rounded-3xl flex flex-col justify-between hover:border-amber-400/60 transition-all group hover:-translate-y-1.5"
           >
             <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 font-cinzel font-bold text-xs flex items-center justify-center">
-                  {p.letter}
+              <div className="flex items-center justify-between mb-4">
+                <span className="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400/20 to-emerald-500/20 border border-amber-400/40 flex items-center justify-center font-heading font-bold text-amber-300 text-sm">
+                  {p.num}
                 </span>
-                <span className="text-[10px] text-amber-300 font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-400/30 font-cinzel">
+                <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 font-semibold">
                   {p.badge}
                 </span>
               </div>
 
-              <h3 className="font-playfair font-bold text-white text-base mb-1 group-hover:text-amber-300 transition-colors">
+              <h3 className="font-heading font-bold text-white text-base group-hover:text-amber-200 transition-colors mb-1">
                 {p.title}
               </h3>
-              <span className="text-xs text-amber-200/80 font-mono block mb-2">{p.sub}</span>
-              <p className="text-xs text-slate-300/90 leading-relaxed">{p.desc}</p>
+              <span className="text-[10px] font-mono text-amber-300/80 block mb-2.5">
+                {p.sub}
+              </span>
+              <p className="text-xs text-slate-300/80 leading-relaxed">
+                {p.desc}
+              </p>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-white/10 text-xs text-amber-300 font-cinzel flex items-center gap-1">
-              <span>Mở rộng hệ sinh thái</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+            <div className="pt-4 border-t border-white/10 mt-4 flex items-center justify-between text-xs text-amber-300 font-heading font-semibold">
+              <span>Giai đoạn nghiên cứu kế tiếp</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </div>
           </motion.div>
         ))}
-      </div>
-
-      {/* Vision Statement */}
-      <div className="relative z-10 p-4 rounded-3xl bg-black/40 border border-amber-500/20 text-xs text-slate-300 flex items-center gap-3">
-        <Lightbulb className="w-5 h-5 text-amber-400 shrink-0" />
-        <div>
-          <strong className="text-amber-200 font-cinzel">Tầm nhìn dài hạn:</strong> Trở thành hệ sinh thái AI Concierge du lịch hàng đầu tại Việt Nam có khả năng tự động hóa 100% từ khâu tư vấn, đặt phòng đến điều phối đối tác.
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="relative z-10 pt-3 border-t border-amber-500/20 flex items-center justify-between text-xs text-slate-400">
-        <span>Đồ án 1 • Hướng phát triển</span>
-        <span className="text-amber-300 font-cinzel">PHÍM MŨI TÊN (➔) ĐỂ CHUYỂN SLIDE</span>
       </div>
     </div>
   )

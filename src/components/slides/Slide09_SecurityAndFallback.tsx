@@ -1,99 +1,132 @@
 import React from "react"
 import { motion } from "motion/react"
-import { ShieldAlert, RefreshCw, Lock, Zap } from "lucide-react"
+import { ShieldAlert, RefreshCw, Lock, Zap, CheckCircle2, ShieldCheck } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
 
 export const Slide09_SecurityAndFallback: React.FC<{ isActive: boolean }> = () => {
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-8 md:p-14 lg:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Header */}
       <div className="relative z-10">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-amber-400" />
-          <span className="text-xs md:text-sm font-cinzel font-bold tracking-[0.25em] text-amber-300 uppercase">
-            09 · AN TOÀN & ĐỘ SẴN SÀNG
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+          <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.2em] text-amber-300 uppercase">
+            10 · BẢO MẬT & DỰ PHÒNG CHỊU LỖI
           </span>
         </div>
-        <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-extrabold gold-gradient-text tracking-tight mt-1">
-          Bảo Mật Guardrails & Resilient Smart Fallback
+        <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black gold-gradient-text tracking-tight mt-1">
+          An Toàn Thông Tin & Cơ Chế Chịu Lỗi (Resilient Fallback)
         </h2>
-        <p className="text-xs md:text-sm text-slate-300 mt-1">
-          Hệ thống phòng thủ 2 lớp: Chống tấn công khai thác Prompt và Cơ chế cứu sinh khi AI Gateway mất kết nối.
+        <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+          Bảo vệ hệ thống trước tấn công Prompt Injection, bảo vệ giá niêm yết và kích hoạt bộ cứu sinh cục bộ khi mất kết nối AI Gateway.
         </p>
       </div>
 
-      {/* Main Grid */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 my-auto items-center">
-        {/* Left: Security */}
-        <div className="p-6 rounded-3xl bg-black/40 border border-red-500/30 backdrop-blur-md flex flex-col justify-between h-full">
-          <div>
-            <div className="flex items-center gap-2 pb-3 mb-4 border-b border-red-500/20 text-red-300 font-playfair font-bold text-base">
-              <ShieldAlert className="w-5 h-5 text-red-400" />
-              <span>1. Prompt Guardrails & Rate Limiting</span>
-            </div>
+      {/* Main Split Grid */}
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto items-center">
+        {/* Left: 3 Security Guardrails */}
+        <div className="lg:col-span-6 space-y-3.5">
+          <span className="text-xs font-heading font-bold uppercase tracking-wider text-amber-300 block">
+            HÀNG RÀO PHÒNG VỆ AI (GUARDRAILS)
+          </span>
 
-            <ul className="space-y-3.5 text-xs text-slate-300">
-              <li className="flex items-start gap-2.5">
-                <Lock className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Chống Prompt Injection & Jailbreak:</strong> Chỉ thị rõ ràng trong System Prompt từ chối các câu lệnh <em>"Ignore previous instructions"</em>, không tiết lộ mật khẩu hay mã lệnh VPS.
-                </span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Lock className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Bảo vệ giá niêm yết (Price Protection):</strong> Nghiêm cấm AI tự ý hạ giá dịch vụ để chiều lòng khách hàng.
-                </span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Lock className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Giới hạn tần suất gọi (@Throttle):</strong> 20 lượt gửi/5 phút đối với khách vãng lai, 15 lượt/phút ở Sandbox Admin để phòng chống DDOS.
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="mt-4 p-3 rounded-2xl bg-red-950/40 border border-red-500/30 text-[11px] text-red-200">
-            🛡️ Bảo mật tuyệt đối: Toàn bộ API Keys chỉ lưu tại biến môi trường server-side, không bao giờ lộ ra Client.
-          </div>
+          {[
+            {
+              title: "Chống Prompt Injection & Jailbreak",
+              desc: "Từ chối mọi câu lệnh ép AI đóng vai Hacker, yêu cầu cấp quyền Admin hay đọc mật khẩu hệ thống.",
+              icon: Lock,
+              color: "text-red-400",
+              badge: "Strict Policy",
+            },
+            {
+              title: "Bảo Vệ Giá Niêm Yết Doanh Nghiệp",
+              desc: "Ngăn chặn tuyệt đối việc AI bị khách thao túng để tự ý cam kết giảm giá, chiết khấu sai chính sách.",
+              icon: ShieldCheck,
+              color: "text-emerald-400",
+              badge: "Price Defense",
+            },
+            {
+              title: "Rate Limiting & Giới Hạn Tần Suất",
+              desc: "NestJS Throttler chặn các cuộc gọi ồ ạt, ngăn chặn spam tin nhắn và bảo vệ ngân sách token API.",
+              icon: Zap,
+              color: "text-amber-400",
+              badge: "Anti-Spam",
+            },
+          ].map((item, idx) => {
+            const IconComp = item.icon
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * idx }}
+                className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-amber-400/40 transition-all flex items-start gap-3.5"
+              >
+                <div className="w-9 h-9 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center shrink-0 shadow-md">
+                  <IconComp className={`w-4 h-4 ${item.color}`} />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-0.5">
+                    <h4 className="font-heading text-sm font-bold text-white">{item.title}</h4>
+                    <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-black/40 border border-white/10 text-slate-300">
+                      {item.badge}
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-300 leading-relaxed">{item.desc}</p>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
 
-        {/* Right: Resilient Fallback */}
-        <div className="p-6 rounded-3xl bg-gradient-to-b from-[#092b30]/90 to-[#041619]/90 border border-amber-400/50 shadow-2xl flex flex-col justify-between h-full">
-          <div>
-            <div className="flex items-center gap-2 pb-3 mb-4 border-b border-amber-500/20 text-amber-300 font-playfair font-bold text-base">
-              <RefreshCw className="w-5 h-5 text-amber-400" />
-              <span>2. Resilient Smart Local Fallback (Zero Downtime)</span>
+        {/* Right: Smart Local Fallback */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, x: 20 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-6 p-6 rounded-3xl bg-gradient-to-b from-[#082a30]/95 to-[#031518]/95 border border-emerald-400/40 shadow-2xl backdrop-blur-xl space-y-4"
+        >
+          <div className="flex items-center gap-3 pb-3 border-b border-emerald-500/20">
+            <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center text-emerald-300 shadow-lg shadow-emerald-500/20">
+              <RefreshCw className="w-5 h-5" />
             </div>
+            <div>
+              <span className="text-[10px] font-heading uppercase text-emerald-300 font-bold tracking-wider block">
+                CƠ CHẾ CỨU SINH TỰ ĐỘNG
+              </span>
+              <h3 className="font-heading text-base font-bold text-white">
+                Smart Local Fallback (Zero Downtime)
+              </h3>
+            </div>
+          </div>
 
-            <p className="text-xs text-slate-200 leading-relaxed mb-4">
-              Nếu cổng AI 9router gặp sự cố nghẽn mạng, hàm <code>generateSmartFallback()</code> ngay lập tức tiếp quản mà <strong>không quăng lỗi 500 ra màn hình</strong>.
+          <p className="text-xs text-slate-300 leading-relaxed">
+            Nếu cổng AI 9router hoặc nhà cung cấp LLM cloud gặp sự cố bất khả kháng (timeout, cạn quota), hệ thống NestJS <strong>không bao giờ báo lỗi trắng màn hình</strong> cho khách hàng.
+          </p>
+
+          <div className="p-3.5 rounded-2xl bg-black/50 border border-white/10 space-y-2 text-xs">
+            <div className="flex items-center gap-2 text-emerald-300 font-semibold font-heading">
+              <CheckCircle2 className="w-4 h-4" />
+              <span>Thuật Toán Phân Tích Cục Bộ Tiếp Quản:</span>
+            </div>
+            <p className="text-slate-300 pl-6 leading-relaxed">
+              Tự động nhận diện từ khóa (villa, thuê xe, tour cano, hotline) để phản hồi ngay thông tin liên hệ và lưu số điện thoại khách hàng vào danh sách chờ gọi lại.
             </p>
-
-            <div className="p-3.5 rounded-2xl bg-black/60 border border-amber-500/30 text-[11px] text-slate-300 space-y-2">
-              <div className="flex items-center justify-between text-slate-400 text-[10px]">
-                <span className="font-cinzel">Keyword Matching Engine</span>
-                <span className="text-amber-400 font-mono">100% Offline Rule</span>
-              </div>
-              <p>• Từ khóa: <code>xe</code>, <code>7 chỗ</code>, <code>tự lái</code> ➔ Xuất danh sách xe từ DB</p>
-              <p>• Từ khóa: <code>villa</code>, <code>homestay</code>, <code>phòng</code> ➔ Xuất danh sách phòng kèm giá</p>
-              <p>• Cung cấp số Hotline cứu hộ: <code>0921.724.444</code> để khách gọi ngay</p>
-            </div>
           </div>
 
-          <div className="mt-4 p-3 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-[11px] text-emerald-200">
-            ✨ Trải nghiệm khách hàng luôn thông suốt 100%, không bao giờ xuất hiện màn hình trắng hoặc lỗi code.
+          {/* SLA stat */}
+          <div className="canva-stat-card p-4">
+            <span className="font-heading text-3xl font-black emerald-gradient-text block leading-none mb-1">
+              99.9%
+            </span>
+            <span className="text-[10px] font-heading font-bold tracking-wider text-emerald-300 uppercase block">
+              TÍNH SẴN SÀNG CỦA HỆ THỐNG (UPTIME)
+            </span>
+            <span className="text-[10px] text-slate-400">Không bao giờ để gián đoạn kết nối với khách du lịch</span>
           </div>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="relative z-10 pt-3 border-t border-amber-500/20 flex items-center justify-between text-xs text-slate-400">
-        <span>Độ tin cậy hệ thống cao</span>
-        <span className="text-amber-300 font-mono">Health Check: GET /stayea/ai/health ➔ online</span>
+        </motion.div>
       </div>
     </div>
   )
