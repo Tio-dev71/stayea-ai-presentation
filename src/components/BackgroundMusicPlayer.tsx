@@ -14,7 +14,7 @@ export const BackgroundMusicPlayer: React.FC<BackgroundMusicPlayerProps> = ({
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
   const [isMuted, setIsMuted] = useState<boolean>(false)
-  const [volume, setVolume] = useState<number>(0.6)
+  const [volume, setVolume] = useState<number>(0.4)
   const [hasInteracted, setHasInteracted] = useState<boolean>(false)
   const [showTooltip, setShowTooltip] = useState<boolean>(false)
 
