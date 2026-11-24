@@ -19,6 +19,7 @@ import { SlideOverviewModal } from "./SlideOverviewModal"
 import { SpeakerNotesModal } from "./SpeakerNotesModal"
 import { BackgroundMusicPlayer } from "./BackgroundMusicPlayer"
 import { Pointer3DEffect } from "./Pointer3DEffect"
+import { AtmosphereProvider } from "./CanvaAtmosphere"
 
 export const SlideEngine: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -132,37 +133,45 @@ export const SlideEngine: React.FC = () => {
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [nextSlide, prevSlide, goToSlide, totalSlides])
 
-  // Motion variants for Cinematic 3D PowerPoint-like fluid morph slide transitions
+  // Motion variants for fluid Morph transitions ("thu vào rồi kéo ra"):
+  // - Exit ("thu vào"): Items compress inward toward center with acceleration and soft blur
+  // - Enter ("kéo ra"): Items spring and expand outward from compact core into crisp full display
   const slideVariants = {
     initial: (dir: "next" | "prev") => ({
       opacity: 0,
-      scale: 0.94,
-      rotateY: dir === "next" ? 10 : -10,
-      x: dir === "next" ? 70 : -70,
-      filter: "blur(8px)",
+      scale: 0.82,
+      scaleX: 0.86,
+      scaleY: 0.86,
+      y: dir === "next" ? 32 : -32,
+      filter: "blur(14px)",
+      transformOrigin: "center center",
     }),
     animate: {
       opacity: 1,
       scale: 1,
-      rotateY: 0,
-      x: 0,
+      scaleX: 1,
+      scaleY: 1,
+      y: 0,
       filter: "blur(0px)",
+      transformOrigin: "center center",
       transition: {
         type: "spring" as const,
-        stiffness: 190,
-        damping: 24,
-        mass: 0.85,
+        stiffness: 240,
+        damping: 22,
+        mass: 0.8,
       },
     },
     exit: (dir: "next" | "prev") => ({
       opacity: 0,
-      scale: 1.04,
-      rotateY: dir === "next" ? -10 : 10,
-      x: dir === "next" ? -70 : 70,
-      filter: "blur(8px)",
+      scale: 0.80,
+      scaleX: 0.83,
+      scaleY: 0.83,
+      y: dir === "next" ? -32 : 32,
+      filter: "blur(16px)",
+      transformOrigin: "center center",
       transition: {
-        duration: 0.38,
-        ease: [0.16, 1, 0.3, 1] as const,
+        duration: 0.28,
+        ease: [0.32, 0, 0.67, 0] as const,
       },
     }),
   }
@@ -170,37 +179,43 @@ export const SlideEngine: React.FC = () => {
   const SlideComponent = currentSlide.component
 
   return (
-    <div className="relative w-screen h-screen w-[100vw] h-[100vh] h-[100dvh] bg-[#030e10] text-slate-100 overflow-hidden select-none m-0 p-0 flex flex-col justify-between">
-      {/* Top Slide Progress Bar */}
-      <div className="absolute top-0 left-0 right-0 z-50 h-[3px] bg-black/40">
-        <motion.div
-          className="h-full bg-gradient-to-r from-amber-400 via-emerald-400 to-amber-300 shadow-[0_0_12px_rgba(245,184,56,0.8)]"
-          animate={{
-            width: `${((currentIndex + 1) / totalSlides) * 100}%`,
-          }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        />
-      </div>
-
-      {/* Interactive 3D Cursor Spotlight & Ripple (Pointer Events None) */}
-      <Pointer3DEffect />
-
-      {/* Full-bleed Presentation Canvas (100% Edge-to-Edge Widescreen - Stable Flat Background) */}
-      <main className="relative w-full h-full flex-1 overflow-hidden m-0 p-0 flex flex-col">
-        <AnimatePresence custom={direction} mode="wait">
+    <AtmosphereProvider>
+      <div className="relative w-screen h-screen w-[100vw] h-[100vh] h-[100dvh] bg-[#030e10] text-slate-100 overflow-hidden select-none m-0 p-0 flex flex-col justify-between">
+        {/* Top Slide Progress Bar */}
+        <div className="absolute top-0 left-0 right-0 z-50 h-[3px] bg-black/40">
           <motion.div
-            key={currentSlide.id}
-            custom={direction}
-            variants={slideVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className="w-full h-full flex-1 flex flex-col overflow-hidden"
-          >
-            <SlideComponent isActive={true} />
-          </motion.div>
-        </AnimatePresence>
-      </main>
+            className="h-full bg-gradient-to-r from-amber-400 via-emerald-400 to-amber-300 shadow-[0_0_12px_rgba(245,184,56,0.8)]"
+            animate={{
+              width: `${((currentIndex + 1) / totalSlides) * 100}%`,
+            }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          />
+        </div>
+
+        {/* Interactive 3D Cursor Spotlight & Ripple (Pointer Events None) */}
+        <Pointer3DEffect />
+
+        {/* Full-bleed Presentation Canvas (100% Edge-to-Edge Widescreen - Stable Flat Background) */}
+        <main className="relative w-full h-full flex-1 overflow-hidden m-0 p-0 flex flex-col z-10">
+          <AnimatePresence custom={direction} mode="wait">
+            <motion.div
+              key={currentSlide.id}
+              custom={direction}
+              variants={slideVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="w-full h-full flex-1 flex flex-col overflow-hidden will-change-transform"
+              style={{
+                transformOrigin: "center center",
+                backfaceVisibility: "hidden",
+                WebkitBackfaceVisibility: "hidden",
+              }}
+            >
+              <SlideComponent isActive={true} />
+            </motion.div>
+          </AnimatePresence>
+        </main>
 
       {/* Floating Canva-style Minimalist Controls Dock (Bottom Right / Center) */}
       <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-2 rounded-full bg-black/70 backdrop-blur-xl border border-amber-500/30 shadow-[0_10px_30px_rgba(0,0,0,0.8)] text-xs text-slate-200 transition-all hover:bg-black/85">
@@ -297,5 +312,6 @@ export const SlideEngine: React.FC = () => {
         currentSlide={currentSlide}
       />
     </div>
+  </AtmosphereProvider>
   )
 }

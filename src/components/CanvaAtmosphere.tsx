@@ -1,9 +1,37 @@
-import React from "react"
+import React, { createContext, useContext } from "react"
 import { motion } from "motion/react"
 
-export const CanvaAtmosphere: React.FC<{ theme?: "emerald-gold" | "crimson-gold" }> = () => {
+const AtmosphereContext = createContext<boolean>(false)
+
+/**
+ * AtmosphereProvider provides a single, persistent background canvas for all slides.
+ * This guarantees the starry background, ambient auroras, and golden motifs never shift,
+ * flicker, or scale down when transitioning between slides.
+ */
+export const AtmosphereProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0">
+    <AtmosphereContext.Provider value={true}>
+      <CanvaAtmosphereContent isGlobal={true} />
+      {children}
+    </AtmosphereContext.Provider>
+  )
+}
+
+/**
+ * CanvaAtmosphere is rendered inside individual slides.
+ * When inside an AtmosphereProvider, it returns null to prevent duplicate backgrounds
+ * and ensure that only the slide items (not the background) participate in morph transitions.
+ */
+export const CanvaAtmosphere: React.FC<{ theme?: "emerald-gold" | "crimson-gold" }> = ({ theme }) => {
+  const hasProvider = useContext(AtmosphereContext)
+  if (hasProvider) return null
+
+  return <CanvaAtmosphereContent theme={theme} />
+}
+
+const CanvaAtmosphereContent: React.FC<{ theme?: "emerald-gold" | "crimson-gold"; isGlobal?: boolean }> = ({ isGlobal }) => {
+  return (
+    <div className={`${isGlobal ? "fixed" : "absolute"} inset-0 pointer-events-none overflow-hidden select-none z-0`}>
       {/* Deep Atmospheric Base Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#020b0d] via-[#05181c] to-[#01080a]" />
 
