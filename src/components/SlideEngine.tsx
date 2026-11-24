@@ -154,6 +154,32 @@ export const SlideEngine: React.FC = () => {
     },
   }
 
+  const handleCanvasClick = useCallback(
+    (e: React.MouseEvent<HTMLElement>) => {
+      if (isOverviewOpen || isNotesOpen) return
+      const target = e.target as HTMLElement | null
+      if (
+        target?.closest(
+          'button, a, input, textarea, select, [role="button"], [data-no-slide-nav]'
+        )
+      ) {
+        return
+      }
+      // Ignore if user is selecting text
+      const selection = window.getSelection()?.toString()
+      if (selection && selection.length > 0) return
+
+      const rect = e.currentTarget.getBoundingClientRect()
+      const isRightHalf = e.clientX >= rect.left + rect.width / 2
+      if (isRightHalf) {
+        nextSlide()
+      } else {
+        prevSlide()
+      }
+    },
+    [isOverviewOpen, isNotesOpen, nextSlide, prevSlide]
+  )
+
   const SlideComponent = currentSlide.component
 
   return (
@@ -176,7 +202,10 @@ export const SlideEngine: React.FC = () => {
       <Pointer3DEffect />
 
       {/* Full-bleed Presentation Canvas (100% Edge-to-Edge Widescreen - Stable Flat Background) */}
-      <main className="relative w-full h-full flex-1 overflow-hidden m-0 p-0 flex flex-col z-10">
+      <main
+        onClick={handleCanvasClick}
+        className="relative w-full h-full flex-1 overflow-hidden m-0 p-0 flex flex-col z-10"
+      >
         <AnimatePresence custom={direction} mode="wait">
           <motion.div
             key={currentSlide.id}

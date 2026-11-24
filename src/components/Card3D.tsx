@@ -70,6 +70,7 @@ export const Card3D: React.FC<Card3DProps> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
+      data-no-slide-nav={onClick ? "true" : undefined}
       style={{
         rotateX,
         rotateY,

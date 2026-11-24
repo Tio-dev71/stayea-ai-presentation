@@ -253,7 +253,7 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
                     onClick={() =>
                       setSelectedMemberId(isSelected ? null : member.id)
                     }
-                    className={`group relative flex flex-col justify-between p-4 sm:p-5 rounded-[26px] cursor-pointer transition-all duration-300 backdrop-blur-xl border ${
+                    className={`group relative flex flex-col justify-between p-5 sm:p-6 rounded-[26px] cursor-pointer transition-all duration-300 backdrop-blur-xl border ${
                       isSelected
                         ? `border-amber-400 bg-gradient-to-br from-emerald-950/85 via-[#0a272e]/90 to-black/90 shadow-[0_20px_45px_rgba(245,184,56,0.3)]`
                         : `bg-white/[0.04] hover:bg-white/[0.08] ${member.themeColor.border}`
@@ -269,12 +269,12 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
                     />
 
                     {/* Top Row: Facebook Avatar + Name & Role */}
-                    <div className="flex items-start gap-3.5 relative z-10">
+                    <div className="flex items-start gap-4 relative z-10">
                       {/* Facebook Silhouette Avatar */}
                       <FacebookAvatar
                         gender={member.gender}
                         isLead={member.isLead}
-                        size={58}
+                        size={64}
                         borderColor={member.themeColor.avatarRing}
                         tagColor={member.themeColor.tagGradient}
                         badgeIcon={IconComp}
@@ -283,23 +283,23 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
                       <div className="flex-1 min-w-0">
                         {/* Name with subtle hover transition */}
                         <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="font-heading text-base sm:text-lg font-bold text-white tracking-wide group-hover:text-amber-300 transition-colors leading-snug">
+                          <h3 className="font-heading text-lg sm:text-xl md:text-2xl font-bold text-white tracking-wide group-hover:text-amber-300 transition-colors leading-snug">
                             {member.name}
                           </h3>
                         </div>
 
                         {/* Role Pill */}
-                        <div className="flex items-center gap-2 mt-1">
+                        <div className="flex items-center gap-2 mt-1.5">
                           <span
-                            className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-semibold border ${member.themeColor.badge}`}
+                            className={`inline-flex items-center gap-1 px-3 py-0.5 rounded-full text-xs sm:text-sm font-semibold border ${member.themeColor.badge}`}
                           >
                             {member.role}
                           </span>
                         </div>
 
                         {/* MSSV Tag */}
-                        <div className="mt-1">
-                          <span className="text-[11px] font-mono font-bold text-emerald-300 bg-emerald-950/80 px-2.5 py-0.5 rounded-md border border-emerald-500/30">
+                        <div className="mt-2">
+                          <span className="inline-block text-sm sm:text-base font-mono font-extrabold text-emerald-200 bg-emerald-950/90 px-3 py-1 rounded-lg border border-emerald-400/40 tracking-wide shadow-sm">
                             MSSV: {member.mssv}
                           </span>
                         </div>
@@ -307,18 +307,18 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
                     </div>
 
                     {/* Tasks Section with PowerPoint Morph Chip tags */}
-                    <div className="mt-3.5 pt-3 border-t border-white/10 relative z-10">
-                      <span className="text-[11px] font-heading font-semibold text-amber-300 uppercase tracking-wider block mb-1.5 flex items-center justify-between">
+                    <div className="mt-4 pt-3.5 border-t border-white/10 relative z-10">
+                      <span className="text-xs sm:text-sm font-heading font-semibold text-amber-300 uppercase tracking-wider block mb-2 flex items-center justify-between">
                         <span>Nhiệm vụ chính:</span>
-                        <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-300 transition-colors" />
+                        <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-amber-300 transition-colors" />
                       </span>
 
                       {/* Morphing task tags */}
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap gap-2">
                         {member.taskChips.map((chip, cIdx) => (
                           <span
                             key={cIdx}
-                            className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-white/5 group-hover:bg-white/10 border border-white/10 text-slate-200 transition-colors"
+                            className="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-white/5 group-hover:bg-white/10 border border-white/10 text-slate-200 transition-colors"
                           >
                             {chip}
                           </span>
@@ -333,7 +333,7 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="mt-2.5 pt-2 border-t border-amber-500/30 text-[11px] text-amber-200/90 leading-relaxed font-sans"
+                            className="mt-3 pt-2.5 border-t border-amber-500/30 text-xs sm:text-sm text-amber-200/90 leading-relaxed font-sans"
                           >
                             <span className="font-semibold text-amber-300">Đóng góp chuyên sâu: </span>
                             {member.highlightNote}
@@ -345,19 +345,6 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
                 </motion.div>
               )
             })}
-          </motion.div>
-
-          {/* Bottom helper pill */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="mt-3.5 flex items-center gap-2 text-[11px] text-slate-400 justify-center sm:justify-start"
-          >
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            <span>
-              Thành viên nam/nữ có biểu tượng nhận diện chuẩn · Phối hợp đồng bộ qua GitHub & Trello
-            </span>
           </motion.div>
         </motion.div>
 
@@ -398,7 +385,7 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
             glare={true}
             className="relative rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-[#062429]/90 backdrop-blur-xl"
           >
-            <div className="relative h-48 sm:h-56 md:h-60 w-full overflow-hidden bg-[#031518]">
+            <div className="relative h-56 sm:h-64 md:h-72 w-full overflow-hidden bg-[#031518]">
               <img
                 src="/images/phuquoc.jpg"
                 alt="Phú Quốc Island"
@@ -410,29 +397,13 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#062429] via-[#062429]/20 to-black/20" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#062429]/60 via-transparent to-transparent" />
-              <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
-                <span className="text-[11px] font-heading uppercase text-amber-300 tracking-wider font-bold block mb-0.5">
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <span className="text-xs font-heading uppercase text-amber-300 tracking-wider font-bold block mb-1">
                   VÍ DỤ ÁP DỤNG THỰC TẾ
                 </span>
-                <h4 className="font-heading font-black text-base sm:text-lg">
+                <h4 className="font-heading font-black text-lg sm:text-xl">
                   Hệ Thống Dịch Vụ Du Lịch & Nghỉ Dưỡng
                 </h4>
-              </div>
-            </div>
-
-            {/* Quick Task Summary Box */}
-            <div className="p-4 space-y-2.5 text-xs sm:text-sm">
-              <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                <span className="text-slate-400">Thời gian báo cáo:</span>
-                <span className="text-white font-mono font-bold text-xs sm:text-sm">
-                  Tháng 11 / 2026
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-slate-400">Giảng viên hướng dẫn:</span>
-                <span className="text-emerald-300 font-bold font-heading text-xs sm:text-sm">
-                  Bộ môn Kỹ Thuật Phần Mềm
-                </span>
               </div>
             </div>
           </Card3D>

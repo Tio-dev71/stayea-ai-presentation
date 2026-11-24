@@ -241,6 +241,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
 
   return (
     <div
+      data-no-slide-nav="true"
       className="flex flex-col bg-gradient-to-b from-[#08292f]/98 to-[#031518]/98 border-2 border-amber-400/50 rounded-3xl shadow-2xl overflow-hidden font-sans backdrop-blur-2xl w-full max-w-4xl h-[660px] max-h-[74vh]"
     >
       {/* Widget Header */}
