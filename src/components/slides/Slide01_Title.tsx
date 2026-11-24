@@ -49,7 +49,7 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
     <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 2xl:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
-      {/* Top Header Tagline with 3D Depth */}
+      {/* Top Header Tagline */}
       <motion.div
         initial={{ opacity: 0, y: -20, filter: "blur(6px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -62,14 +62,6 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
             BÁO CÁO ĐỒ ÁN 1 · KHOA CÔNG NGHỆ THÔNG TIN
           </span>
         </div>
-
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="px-4 py-2 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-200 text-xs sm:text-sm font-mono flex items-center gap-2 shadow-xl backdrop-blur-md"
-        >
-          <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
-          <span className="font-semibold">STAYEA AI Concierge v1.0</span>
-        </motion.div>
       </motion.div>
 
       {/* Main Split Body: Left Typography & Stats | Right 3D Interactive Showcase */}
