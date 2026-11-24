@@ -40,7 +40,7 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
           >
             <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-heading font-semibold mb-3 shadow-md">
               <Star className="w-3.5 h-3.5 fill-amber-300" />
-              <span>Đề tài Đồ án chuyên ngành</span>
+              <span>Đề tài Đồ án 1</span>
             </div>
 
             <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[1.05] gold-gradient-text-pure">
@@ -212,7 +212,7 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
                   Nhóm thực hiện: 4 thành viên
                 </span>
                 <span className="text-amber-300 font-heading font-bold flex items-center gap-1">
-                  Đồ án chuyên ngành 1
+                  Đồ án 1
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </div>

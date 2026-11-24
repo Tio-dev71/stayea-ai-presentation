@@ -42,8 +42,8 @@ export const SLIDES: SlideData[] = [
   {
     id: "team",
     number: 2,
-    title: "Thành Viên Trong Nhóm & Phân Công Nhiệm Vụ",
-    subtitle: "Danh sách sinh viên thực hiện & phân chia công việc đề tài Đồ án 1",
+    title: "Giới Thiệu Thành Viên & Phân Công Nhiệm Vụ",
+    subtitle: "Danh sách sinh viên thực hiện & phân chia công việc Đồ án 1",
     category: "Overview",
     component: Slide02_Team,
     speakerNotes: {
