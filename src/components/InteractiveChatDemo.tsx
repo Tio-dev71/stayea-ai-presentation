@@ -241,9 +241,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
 
   return (
     <div
-      className={`flex flex-col bg-gradient-to-b from-[#08292f]/95 to-[#031518]/95 border border-amber-400/40 rounded-3xl shadow-2xl overflow-hidden font-sans backdrop-blur-xl ${
-        isEmbedded ? "w-full h-full max-h-[500px]" : "w-full max-w-2xl h-[600px]"
-      }`}
+      className="flex flex-col bg-gradient-to-b from-[#08292f]/98 to-[#031518]/98 border-2 border-amber-400/50 rounded-3xl shadow-2xl overflow-hidden font-sans backdrop-blur-2xl w-full max-w-4xl h-[660px] max-h-[74vh]"
     >
       {/* Widget Header */}
       <div className="px-4 py-3 bg-[#04191d] border-b border-amber-500/20 flex items-center justify-between">

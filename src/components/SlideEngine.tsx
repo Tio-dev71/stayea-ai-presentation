@@ -185,7 +185,7 @@ export const SlideEngine: React.FC = () => {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="w-full h-full flex-1 flex flex-col overflow-hidden"
+            className="w-full h-full flex-1 flex flex-col overflow-hidden max-w-[1720px] mx-auto"
           >
             <SlideComponent isActive={true} />
           </motion.div>

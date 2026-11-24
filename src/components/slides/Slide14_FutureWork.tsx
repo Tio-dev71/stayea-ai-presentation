@@ -29,59 +29,59 @@ export const Slide14_FutureWork: React.FC<{ isActive: boolean }> = () => {
   ]
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-14 xl:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Header */}
       <div className="relative z-10">
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-          <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.2em] text-amber-300 uppercase">
+        <div className="flex items-center gap-2.5">
+          <span className="w-3 h-3 rounded-full bg-amber-400" />
+          <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
             15 · HẠN CHẾ & HƯỚNG PHÁT TRIỂN
           </span>
         </div>
-        <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black gold-gradient-text tracking-tight mt-1">
+        <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black gold-gradient-text tracking-tight mt-1.5">
           Lộ Trình Nâng Cấp Lên Đồ Án Tốt Nghiệp
         </h2>
-        <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
           Từ nền tảng Đồ án 1, hoàn thiện hệ sinh thái AI Concierge thông minh toàn diện với Voicebot và Đa kênh.
         </p>
       </div>
 
       {/* 3 Expansion Roadmap Cards */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-5 my-auto">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 my-auto">
         {plans.map((p, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 * idx }}
-            className="canva-card p-6 rounded-3xl flex flex-col justify-between hover:border-amber-400/60 transition-all group hover:-translate-y-1.5"
+            className="canva-card p-7 sm:p-8 md:p-9 rounded-3xl flex flex-col justify-between hover:border-amber-400/60 transition-all group hover:-translate-y-2 shadow-2xl"
           >
             <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400/20 to-emerald-500/20 border border-amber-400/40 flex items-center justify-center font-heading font-bold text-amber-300 text-sm">
+              <div className="flex items-center justify-between mb-5">
+                <span className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-amber-400/20 to-emerald-500/20 border border-amber-400/40 flex items-center justify-center font-heading font-black text-amber-300 text-base sm:text-lg shadow-[0_0_15px_rgba(245,184,56,0.3)]">
                   {p.num}
                 </span>
-                <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 font-semibold">
+                <span className="text-xs font-mono px-3 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-300 font-bold">
                   {p.badge}
                 </span>
               </div>
 
-              <h3 className="font-heading font-bold text-white text-base group-hover:text-amber-200 transition-colors mb-1">
+              <h3 className="font-heading font-bold text-white text-lg sm:text-xl md:text-2xl group-hover:text-amber-200 transition-colors mb-1.5">
                 {p.title}
               </h3>
-              <span className="text-[10px] font-mono text-amber-300/80 block mb-2.5">
+              <span className="text-xs sm:text-sm font-mono text-amber-300/90 block mb-3">
                 {p.sub}
               </span>
-              <p className="text-xs text-slate-300/80 leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed">
                 {p.desc}
               </p>
             </div>
 
-            <div className="pt-4 border-t border-white/10 mt-4 flex items-center justify-between text-xs text-amber-300 font-heading font-semibold">
+            <div className="pt-5 border-t border-white/10 mt-5 flex items-center justify-between text-xs sm:text-sm text-amber-300 font-heading font-bold">
               <span>Giai đoạn nghiên cứu kế tiếp</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
             </div>
           </motion.div>
         ))}

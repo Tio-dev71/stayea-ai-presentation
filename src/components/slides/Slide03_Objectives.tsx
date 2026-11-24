@@ -32,61 +32,61 @@ export const Slide03_Objectives: React.FC<{ isActive: boolean }> = () => {
   ]
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-14 xl:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Header */}
       <div className="relative z-10">
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-          <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.2em] text-amber-300 uppercase">
+        <div className="flex items-center gap-2.5">
+          <span className="w-3 h-3 rounded-full bg-amber-400" />
+          <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
             04 · MỤC TIÊU & PHẠM VI NGHIÊN CỨU
           </span>
         </div>
-        <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black gold-gradient-text tracking-tight mt-1">
+        <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black gold-gradient-text tracking-tight mt-1.5">
           4 Trụ Cột Giải Pháp Của Đề Tài
         </h2>
-        <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
-          Chuyển đổi từ mô hình Chatbot hỏi-đáp thông thường sang Agentic AI có khả năng tương tác, ra quyết định và tạo giao dịch.
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
+          Chuyển đổi từ mô hình Chatbot hỏi-đáp thông thường sang Agentic AI có khả năng tương tác, ra quyết định và tạo giao dịch thật.
         </p>
       </div>
 
       {/* 4 Pillars Grid */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-auto">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-auto">
         {items.map((item, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 * idx }}
-            className="canva-card p-5 rounded-3xl flex flex-col justify-between hover:border-amber-400/60 transition-all duration-300 group hover:-translate-y-1"
+            className="canva-card p-6 sm:p-7 md:p-8 rounded-3xl flex flex-col justify-between hover:border-amber-400/60 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl"
           >
             <div>
               {/* Badge & Number */}
-              <div className="flex items-center justify-between mb-4">
-                <span className="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400/20 to-emerald-500/10 border border-amber-400/40 flex items-center justify-center font-heading font-bold text-amber-300 text-sm shadow-[0_0_12px_rgba(245,184,56,0.25)] group-hover:scale-110 transition-transform">
+              <div className="flex items-center justify-between mb-5">
+                <span className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-amber-400/20 to-emerald-500/10 border border-amber-400/40 flex items-center justify-center font-heading font-black text-amber-300 text-base sm:text-lg shadow-[0_0_15px_rgba(245,184,56,0.3)] group-hover:scale-110 transition-transform">
                   {item.num}
                 </span>
-                <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/30">
+                <span className="text-xs font-mono font-bold text-emerald-300 bg-emerald-950/70 px-3 py-1 rounded-full border border-emerald-500/30">
                   Active
                 </span>
               </div>
 
-              <h3 className="font-heading font-bold text-white text-base tracking-wide group-hover:text-amber-300 transition-colors mb-2">
+              <h3 className="font-heading font-bold text-white text-lg sm:text-xl md:text-xl tracking-wide group-hover:text-amber-300 transition-colors mb-3 leading-snug">
                 {item.title}
               </h3>
 
-              <p className="text-xs text-slate-300/80 leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed">
                 {item.desc}
               </p>
             </div>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/10 mt-4">
+            <div className="flex flex-wrap gap-2 pt-5 border-t border-white/10 mt-5">
               {item.tags.map((tag, tIdx) => (
                 <span
                   key={tIdx}
-                  className="px-2 py-0.5 rounded-md bg-white/5 text-amber-200 text-[10px] font-mono border border-white/10"
+                  className="px-2.5 py-1 rounded-lg bg-white/5 text-amber-200 text-xs font-mono border border-white/10"
                 >
                   {tag}
                 </span>

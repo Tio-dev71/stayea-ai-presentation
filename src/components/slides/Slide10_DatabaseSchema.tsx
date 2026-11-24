@@ -36,66 +36,66 @@ export const Slide10_DatabaseSchema: React.FC<{ isActive: boolean }> = () => {
   ]
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-14 xl:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Header */}
       <div className="relative z-10">
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-          <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.2em] text-amber-300 uppercase">
+        <div className="flex items-center gap-2.5">
+          <span className="w-3 h-3 rounded-full bg-amber-400" />
+          <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
             11 · THIẾT KẾ CƠ SỞ DỮ LIỆU
           </span>
         </div>
-        <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-black gold-gradient-text tracking-tight mt-1">
+        <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black gold-gradient-text tracking-tight mt-1.5">
           Kiến Trúc Dữ Liệu PostgreSQL & Drizzle ORM
         </h2>
-        <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
           Thiết kế chuẩn hóa Type-safe 100%, phân tách rõ ràng giữa Quản trị Prompt, Quản lý Phiên chat và Lưu trữ Đơn hàng.
         </p>
       </div>
 
       {/* 4 Database Entities Grid */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-auto">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-auto">
         {tables.map((tbl, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 * idx }}
-            className="canva-card p-5 rounded-3xl flex flex-col justify-between hover:border-amber-400/60 transition-all group hover:-translate-y-1"
+            className="canva-card p-6 sm:p-7 md:p-8 rounded-3xl flex flex-col justify-between hover:border-amber-400/60 transition-all group hover:-translate-y-2 shadow-xl"
           >
             <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="p-2 rounded-xl bg-amber-500/10 border border-amber-400/30 text-amber-300">
-                  <Table className="w-4 h-4" />
+              <div className="flex items-center justify-between mb-4">
+                <span className="p-3 rounded-2xl bg-amber-500/15 border border-amber-400/30 text-amber-300">
+                  <Table className="w-5 h-5" />
                 </span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-950/60 text-emerald-300 border border-emerald-500/30">
+                <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-950/70 text-emerald-300 border border-emerald-500/30">
                   {tbl.badge}
                 </span>
               </div>
 
-              <h3 className="font-heading font-bold text-white text-base group-hover:text-amber-200 transition-colors">
+              <h3 className="font-heading font-bold text-white text-lg sm:text-xl group-hover:text-amber-200 transition-colors">
                 {tbl.label}
               </h3>
-              <p className="font-mono text-[11px] text-amber-300/80 mb-2">
+              <p className="font-mono text-xs sm:text-sm text-amber-300/90 mb-3">
                 {tbl.name}
               </p>
-              <p className="text-xs text-slate-300 leading-relaxed mb-3">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
                 {tbl.desc}
               </p>
             </div>
 
             {/* Fields pill list */}
-            <div className="pt-3 border-t border-white/10 space-y-1">
-              <span className="text-[9px] font-heading uppercase text-slate-400 block tracking-wider font-semibold">
+            <div className="pt-4 border-t border-white/10 space-y-2">
+              <span className="text-xs font-heading uppercase text-slate-400 block tracking-wider font-bold">
                 TRƯỜNG CỐT LÕI:
               </span>
-              <div className="flex flex-wrap gap-1">
+              <div className="flex flex-wrap gap-1.5">
                 {tbl.fields.map((f, fIdx) => (
                   <span
                     key={fIdx}
-                    className="px-2 py-0.5 rounded bg-black/40 text-[10px] font-mono text-slate-300 border border-white/5"
+                    className="px-2.5 py-1 rounded-lg bg-black/50 text-xs font-mono text-slate-200 border border-white/10"
                   >
                     {f}
                   </span>
