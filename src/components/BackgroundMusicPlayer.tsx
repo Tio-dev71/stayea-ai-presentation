@@ -14,7 +14,7 @@ export const BackgroundMusicPlayer: React.FC<BackgroundMusicPlayerProps> = ({
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
   const [isMuted, setIsMuted] = useState<boolean>(false)
-  const [volume, setVolume] = useState<number>(0.5)
+  const [volume, setVolume] = useState<number>(0.6)
   const [hasInteracted, setHasInteracted] = useState<boolean>(false)
   const [showTooltip, setShowTooltip] = useState<boolean>(false)
 
@@ -166,7 +166,7 @@ export const BackgroundMusicPlayer: React.FC<BackgroundMusicPlayerProps> = ({
                 exit={{ opacity: 0, y: 8, scale: 0.95 }}
                 className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-black/90 backdrop-blur-md border border-emerald-500/40 text-[11px] font-medium text-emerald-200 whitespace-nowrap shadow-xl pointer-events-none z-50 flex items-center gap-1.5"
               >
-                <span>{isPlaying ? "🎵 Nhạc nền: Đang phát (Bấm dừng)" : "🔇 Nhạc nền: Đã tắt (Bấm phát)"}</span>
+                <span>{isPlaying ? `🎵 Nhạc nền (${Math.round(volume * 100)}%): Đang phát (Bấm dừng)` : `🔇 Nhạc nền: Đã tắt (Bấm phát)`}</span>
               </motion.div>
             )}
           </AnimatePresence>

@@ -17,6 +17,7 @@ import {
 } from "lucide-react"
 import { CanvaAtmosphere } from "../CanvaAtmosphere"
 import { FacebookAvatar } from "../FacebookAvatar"
+import { Card3D } from "../Card3D"
 
 interface Member {
   id: string
@@ -160,7 +161,7 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
   }
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-5 sm:p-8 md:p-10 lg:p-12 xl:p-14 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 2xl:p-16 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Top Header */}
@@ -195,9 +196,9 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
         </motion.div>
       </motion.div>
 
-      {/* Main Split Layout: Left 2x2 Morph Cards Grid | Elegant Divider | Right Canva Graphic */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-12 my-auto items-center">
-        {/* Left Col (7 cols): Modern 2x2 Morph Cards (NO MORE BOXINESS!) */}
+      {/* Main Split Layout: Left 2x2 Morph Cards Grid | Elegant Divider | Right 3D Visual Card */}
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-12 2xl:gap-14 my-auto items-center">
+        {/* Left Col (7 cols): Modern 2x2 Morph Cards with 3D Parallax Tilt */}
         <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center">
           {/* Subheading with Morph entrance */}
           <motion.div
@@ -212,130 +213,123 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
                 DANH SÁCH SINH VIÊN THỰC HIỆN
               </span>
               <p className="text-xs sm:text-sm text-slate-300">
-                4 thành viên phối hợp theo phân chia công việc rõ ràng
+                4 thành viên phối hợp chặt chẽ theo phân chia công việc rõ ràng
               </p>
             </div>
 
-            <span className="hidden sm:inline-block text-[11px] font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400">
+            <span className="hidden sm:inline-block text-[11px] font-mono px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 backdrop-blur-md">
               Chạm thẻ để xem chi tiết
             </span>
           </motion.div>
 
-          {/* 2x2 Morph Cards Grid with organic pillowy borders and smooth spring transitions */}
+          {/* 2x2 Morph Cards Grid with 3D Tilt, Glare, and Spring Morphing */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 xl:gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 xl:gap-4.5"
           >
             {members.map((member) => {
               const IconComp = member.icon
               const isSelected = selectedMemberId === member.id
 
               return (
-                <motion.div
-                  key={member.id}
-                  layout
-                  variants={morphItemVariants}
-                  whileHover={{
-                    y: -5,
-                    scale: 1.02,
-                    boxShadow: `0 20px 35px -10px ${member.themeColor.glow}`,
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() =>
-                    setSelectedMemberId(isSelected ? null : member.id)
-                  }
-                  className={`group relative flex flex-col justify-between p-4 sm:p-4.5 rounded-[26px] cursor-pointer transition-all duration-300 backdrop-blur-xl border ${
-                    isSelected
-                      ? `border-amber-400 bg-gradient-to-br from-emerald-950/80 via-[#0a272e]/90 to-black/90 shadow-2xl`
-                      : `bg-white/[0.04] hover:bg-white/[0.08] ${member.themeColor.border}`
-                  } shadow-lg`}
-                  style={{
-                    borderRadius: "24px",
-                  }}
-                >
-                  {/* Subtle inner ambient light effect */}
-                  <div
-                    className="absolute inset-0 rounded-[24px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      background: `radial-gradient(circle at 20% 20%, ${member.themeColor.glow}, transparent 70%)`,
-                    }}
-                  />
-
-                  {/* Top Row: Facebook Avatar + Name & Role */}
-                  <div className="flex items-start gap-3.5 relative z-10">
-                    {/* Facebook Silhouette Avatar */}
-                    <FacebookAvatar
-                      gender={member.gender}
-                      isLead={member.isLead}
-                      size={58}
-                      borderColor={member.themeColor.avatarRing}
-                      tagColor={member.themeColor.tagGradient}
-                      badgeIcon={IconComp}
+                <motion.div key={member.id} variants={morphItemVariants} layout>
+                  <Card3D
+                    intensity={10}
+                    glare={true}
+                    onClick={() =>
+                      setSelectedMemberId(isSelected ? null : member.id)
+                    }
+                    className={`group relative flex flex-col justify-between p-4 sm:p-5 rounded-[26px] cursor-pointer transition-all duration-300 backdrop-blur-xl border ${
+                      isSelected
+                        ? `border-amber-400 bg-gradient-to-br from-emerald-950/85 via-[#0a272e]/90 to-black/90 shadow-[0_20px_45px_rgba(245,184,56,0.3)]`
+                        : `bg-white/[0.04] hover:bg-white/[0.08] ${member.themeColor.border}`
+                    } shadow-lg`}
+                    style={{ borderRadius: "26px" }}
+                  >
+                    {/* Inner ambient light effect */}
+                    <div
+                      className="absolute inset-0 rounded-[26px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      style={{
+                        background: `radial-gradient(circle at 20% 20%, ${member.themeColor.glow}, transparent 70%)`,
+                      }}
                     />
 
-                    <div className="flex-1 min-w-0">
-                      {/* Name with subtle hover transition */}
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <h3 className="font-heading text-sm sm:text-base md:text-lg font-bold text-white tracking-wide group-hover:text-amber-300 transition-colors leading-snug">
-                          {member.name}
-                        </h3>
-                      </div>
+                    {/* Top Row: Facebook Avatar + Name & Role */}
+                    <div className="flex items-start gap-3.5 relative z-10">
+                      {/* Facebook Silhouette Avatar */}
+                      <FacebookAvatar
+                        gender={member.gender}
+                        isLead={member.isLead}
+                        size={58}
+                        borderColor={member.themeColor.avatarRing}
+                        tagColor={member.themeColor.tagGradient}
+                        badgeIcon={IconComp}
+                      />
 
-                      {/* Role Pill */}
-                      <div className="flex items-center gap-2 mt-1">
-                        <span
-                          className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-semibold border ${member.themeColor.badge}`}
-                        >
-                          {member.role}
-                        </span>
-                      </div>
+                      <div className="flex-1 min-w-0">
+                        {/* Name with subtle hover transition */}
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className="font-heading text-base sm:text-lg font-bold text-white tracking-wide group-hover:text-amber-300 transition-colors leading-snug">
+                            {member.name}
+                          </h3>
+                        </div>
 
-                      {/* MSSV Tag */}
-                      <div className="mt-1">
-                        <span className="text-[11px] font-mono font-bold text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded-md border border-emerald-500/30">
-                          MSSV: {member.mssv}
-                        </span>
+                        {/* Role Pill */}
+                        <div className="flex items-center gap-2 mt-1">
+                          <span
+                            className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-semibold border ${member.themeColor.badge}`}
+                          >
+                            {member.role}
+                          </span>
+                        </div>
+
+                        {/* MSSV Tag */}
+                        <div className="mt-1">
+                          <span className="text-[11px] font-mono font-bold text-emerald-300 bg-emerald-950/80 px-2.5 py-0.5 rounded-md border border-emerald-500/30">
+                            MSSV: {member.mssv}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Tasks Section with PowerPoint Morph Chip tags */}
-                  <div className="mt-3 pt-3 border-t border-white/10 relative z-10">
-                    <span className="text-[11px] font-heading font-semibold text-amber-300 uppercase tracking-wider block mb-1.5 flex items-center justify-between">
-                      <span>Nhiệm vụ chính:</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-300 transition-colors" />
-                    </span>
+                    {/* Tasks Section with PowerPoint Morph Chip tags */}
+                    <div className="mt-3.5 pt-3 border-t border-white/10 relative z-10">
+                      <span className="text-[11px] font-heading font-semibold text-amber-300 uppercase tracking-wider block mb-1.5 flex items-center justify-between">
+                        <span>Nhiệm vụ chính:</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-300 transition-colors" />
+                      </span>
 
-                    {/* Morphing task tags */}
-                    <div className="flex flex-wrap gap-1.5">
-                      {member.taskChips.map((chip, cIdx) => (
-                        <span
-                          key={cIdx}
-                          className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-white/5 group-hover:bg-white/10 border border-white/10 text-slate-200 transition-colors"
-                        >
-                          {chip}
-                        </span>
-                      ))}
+                      {/* Morphing task tags */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {member.taskChips.map((chip, cIdx) => (
+                          <span
+                            key={cIdx}
+                            className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-white/5 group-hover:bg-white/10 border border-white/10 text-slate-200 transition-colors"
+                          >
+                            {chip}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Expanded note on selection (Morphing detail drawer) */}
+                      <AnimatePresence>
+                        {isSelected && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="mt-2.5 pt-2 border-t border-amber-500/30 text-[11px] text-amber-200/90 leading-relaxed font-sans"
+                          >
+                            <span className="font-semibold text-amber-300">Đóng góp chuyên sâu: </span>
+                            {member.highlightNote}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
-
-                    {/* Expanded note on selection (Morphing detail drawer) */}
-                    <AnimatePresence>
-                      {isSelected && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="mt-2.5 pt-2 border-t border-amber-500/30 text-[11px] text-amber-200/90 leading-relaxed font-sans"
-                        >
-                          <span className="font-semibold text-amber-300">Đóng góp: </span>
-                          {member.highlightNote}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
+                  </Card3D>
                 </motion.div>
               )
             })}
@@ -360,7 +354,7 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
           <div className="canva-double-line" />
         </div>
 
-        {/* Right Col (4 cols): Canva Large Title & Thematic Visual Card */}
+        {/* Right Col (4 cols): Canva Large Title & 3D Thematic Visual Card */}
         <motion.div
           initial={{ opacity: 0, x: 35, filter: "blur(6px)" }}
           animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
@@ -390,10 +384,10 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
             </p>
           </div>
 
-          {/* Thematic Visual Card with Real Island Picture */}
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          {/* 3D Thematic Visual Card with Real Island Picture */}
+          <Card3D
+            intensity={10}
+            glare={true}
             className="relative rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-[#062429]/90 backdrop-blur-xl"
           >
             <div className="relative h-44 sm:h-52 md:h-56 w-full overflow-hidden">
@@ -428,7 +422,7 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
                 </span>
               </div>
             </div>
-          </motion.div>
+          </Card3D>
         </motion.div>
       </div>
     </div>

@@ -131,34 +131,37 @@ export const SlideEngine: React.FC = () => {
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [nextSlide, prevSlide, goToSlide, totalSlides])
 
-  // Motion variants for PowerPoint-like fluid morph slide transitions
+  // Motion variants for Cinematic 3D PowerPoint-like fluid morph slide transitions
   const slideVariants = {
     initial: (dir: "next" | "prev") => ({
       opacity: 0,
-      scale: 0.98,
-      x: dir === "next" ? 35 : -35,
-      filter: "blur(6px)",
+      scale: 0.94,
+      rotateY: dir === "next" ? 10 : -10,
+      x: dir === "next" ? 70 : -70,
+      filter: "blur(8px)",
     }),
     animate: {
       opacity: 1,
       scale: 1,
+      rotateY: 0,
       x: 0,
       filter: "blur(0px)",
       transition: {
         type: "spring" as const,
-        stiffness: 220,
+        stiffness: 190,
         damping: 24,
-        mass: 0.8,
+        mass: 0.85,
       },
     },
     exit: (dir: "next" | "prev") => ({
       opacity: 0,
-      scale: 1.02,
-      x: dir === "next" ? -35 : 35,
-      filter: "blur(6px)",
+      scale: 1.04,
+      rotateY: dir === "next" ? -10 : 10,
+      x: dir === "next" ? -70 : 70,
+      filter: "blur(8px)",
       transition: {
-        duration: 0.3,
-        ease: [0.22, 1, 0.36, 1] as const,
+        duration: 0.38,
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     }),
   }
@@ -178,8 +181,8 @@ export const SlideEngine: React.FC = () => {
         />
       </div>
 
-      {/* Full-bleed Presentation Canvas (NO inner box, 100% Edge-to-Edge like Canva) */}
-      <main className="relative w-full h-full flex-1 overflow-hidden m-0 p-0 flex flex-col">
+      {/* Full-bleed Presentation Canvas (100% Edge-to-Edge Widescreen with 3D Depth) */}
+      <main className="relative w-full h-full flex-1 overflow-hidden m-0 p-0 flex flex-col [perspective:1400px]">
         <AnimatePresence custom={direction} mode="wait">
           <motion.div
             key={currentSlide.id}
@@ -188,7 +191,7 @@ export const SlideEngine: React.FC = () => {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="w-full h-full flex-1 flex flex-col overflow-hidden max-w-[1720px] mx-auto"
+            className="w-full h-full flex-1 flex flex-col overflow-hidden [transform-style:preserve-3d]"
           >
             <SlideComponent isActive={true} />
           </motion.div>
