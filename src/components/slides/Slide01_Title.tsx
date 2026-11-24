@@ -74,40 +74,40 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
 
       {/* Main Split Body: Left Typography & Stats | Right 3D Interactive Showcase */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 2xl:gap-16 my-auto items-center">
-        {/* Left Column (7 cols): Giant Title, Value Pillars & Stats */}
-        <div className="lg:col-span-7 space-y-5 xl:space-y-6">
-          {/* Main Giant Title with 3D Morph Stagger */}
+        {/* Left Column (7 cols): Giant Title, Value Pillars & Stats with Generous Spacing */}
+        <div className="lg:col-span-7 space-y-6 xl:space-y-7">
+          {/* Main Giant Title with Generous Line-Height & Distance */}
           <motion.div
             initial={{ opacity: 0, x: -35, filter: "blur(6px)" }}
             animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             transition={{ type: "spring", stiffness: 220, damping: 22, delay: 0.1 }}
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-heading font-semibold mb-3 shadow-md backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-heading font-semibold mb-4 shadow-md backdrop-blur-md">
               <Star className="w-3.5 h-3.5 fill-amber-300" />
               <span>Đề tài Đồ án 1 · Kỹ Thuật Phần Mềm</span>
             </div>
 
-            <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[1.02] gold-gradient-text-pure">
+            <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[1.15] gold-gradient-text-pure">
               CHATBOT AI
             </h1>
 
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white mt-1 drop-shadow-2xl">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white mt-2.5 mb-3.5 drop-shadow-2xl leading-[1.25]">
               Chăm Sóc Khách Hàng
             </h2>
 
-            <p className="text-sm sm:text-base md:text-lg text-slate-200 font-medium tracking-wide mt-3 leading-relaxed max-w-3xl">
+            <p className="text-sm sm:text-base md:text-lg text-slate-200 font-medium tracking-wide mt-4 mb-2 leading-relaxed sm:leading-[1.9] max-w-3xl">
               Hệ thống Trợ lý ảo Du lịch & Tự động điều phối dịch vụ độc bản trên nền tảng{" "}
               <strong className="text-amber-300 font-bold">STAYEA Phú Quốc</strong> kết hợp cổng định tuyến{" "}
               <strong className="text-emerald-300 font-bold">AI 9router Gateway</strong>.
             </p>
           </motion.div>
 
-          {/* 3 Value Pillars with Interactive 3D Lift */}
+          {/* 3 Value Pillars with Generous Line-Height & Vertical Distance */}
           <motion.div
             initial={{ opacity: 0, y: 25, filter: "blur(6px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ type: "spring", stiffness: 200, damping: 22, delay: 0.2 }}
-            className="space-y-2.5 pt-1"
+            className="space-y-4 xl:space-y-5 pt-2"
           >
             {[
               {
@@ -130,16 +130,16 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
                 key={idx}
                 whileHover={{ x: 6, scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 350, damping: 25 }}
-                className="flex items-start gap-3.5 p-3 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-400/50 transition-all duration-300 shadow-md backdrop-blur-md cursor-pointer group"
+                className="flex items-start gap-4 p-4 sm:p-4.5 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-400/50 transition-all duration-300 shadow-md backdrop-blur-md cursor-pointer group"
               >
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-emerald-500/30 via-teal-500/20 to-amber-500/20 border border-emerald-400/50 flex items-center justify-center shrink-0 text-emerald-300 font-heading font-black text-sm shadow-[0_0_15px_rgba(52,211,153,0.3)] group-hover:scale-110 transition-transform">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-emerald-500/30 via-teal-500/20 to-amber-500/20 border border-emerald-400/50 flex items-center justify-center shrink-0 text-emerald-300 font-heading font-black text-sm sm:text-base shadow-[0_0_15px_rgba(52,211,153,0.3)] group-hover:scale-110 transition-transform">
                   {item.letter}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-sm sm:text-base font-heading font-bold text-white tracking-wide group-hover:text-amber-300 transition-colors">
+                  <h4 className="text-base sm:text-lg font-heading font-bold text-white tracking-wide mb-1 leading-snug group-hover:text-amber-300 transition-colors">
                     {item.text}
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-snug mt-0.5">
+                  <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed sm:leading-[1.8] mt-1">
                     {item.sub}
                   </p>
                 </div>
@@ -147,52 +147,52 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
             ))}
           </motion.div>
 
-          {/* Key Metric Highlights with 3D Pill Elevation */}
+          {/* Key Metric Highlights with Generous Padding & Margin */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 200, damping: 22, delay: 0.3 }}
-            className="grid grid-cols-3 gap-3.5 pt-1"
+            className="grid grid-cols-3 gap-4 sm:gap-6 pt-4 sm:pt-6"
           >
-            <div className="canva-stat-card p-3.5 sm:p-4 rounded-2xl hover:border-amber-400/60 transition-colors">
-              <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black gold-gradient-text block leading-none mb-1">
+            <div className="canva-stat-card p-4 sm:p-5 rounded-2xl hover:border-amber-400/60 transition-colors">
+              <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black gold-gradient-text block leading-none mb-2">
                 &lt; 1.2s
               </span>
-              <span className="text-[11px] sm:text-xs font-heading font-bold tracking-wider text-amber-200/90 uppercase block">
+              <span className="text-[11px] sm:text-xs font-heading font-bold tracking-wider text-amber-200/90 uppercase block mb-1 leading-normal">
                 ĐỘ TRỄ PHẢN HỒI
               </span>
-              <span className="text-[10px] sm:text-xs text-slate-400">
+              <span className="text-[10px] sm:text-xs text-slate-400 leading-relaxed">
                 Qua 9router Gateway
               </span>
             </div>
 
-            <div className="canva-stat-card p-3.5 sm:p-4 rounded-2xl hover:border-amber-400/60 transition-colors">
-              <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black gold-gradient-text block leading-none mb-1">
+            <div className="canva-stat-card p-4 sm:p-5 rounded-2xl hover:border-amber-400/60 transition-colors">
+              <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black gold-gradient-text block leading-none mb-2">
                 100%
               </span>
-              <span className="text-[11px] sm:text-xs font-heading font-bold tracking-wider text-amber-200/90 uppercase block">
+              <span className="text-[11px] sm:text-xs font-heading font-bold tracking-wider text-amber-200/90 uppercase block mb-1 leading-normal">
                 CHÍNH XÁC KHO GIÁ
               </span>
-              <span className="text-[10px] sm:text-xs text-slate-400">
+              <span className="text-[10px] sm:text-xs text-slate-400 leading-relaxed">
                 Chống ảo giác AI
               </span>
             </div>
 
-            <div className="canva-stat-card p-3.5 sm:p-4 rounded-2xl hover:border-emerald-400/60 transition-colors">
-              <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black emerald-gradient-text block leading-none mb-1">
+            <div className="canva-stat-card p-4 sm:p-5 rounded-2xl hover:border-emerald-400/60 transition-colors">
+              <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black emerald-gradient-text block leading-none mb-2">
                 24 / 7
               </span>
-              <span className="text-[11px] sm:text-xs font-heading font-bold tracking-wider text-emerald-300 uppercase block">
+              <span className="text-[11px] sm:text-xs font-heading font-bold tracking-wider text-emerald-300 uppercase block mb-1 leading-normal">
                 TỰ ĐỘNG HÓA
               </span>
-              <span className="text-[10px] sm:text-xs text-slate-400">
+              <span className="text-[10px] sm:text-xs text-slate-400 leading-relaxed">
                 Chốt đơn tức thì
               </span>
             </div>
           </motion.div>
         </div>
 
-        {/* Right Column (5 cols): 3D Interactive Showcase with Real Images & Specular Light */}
+        {/* Right Column (5 cols): Crisp High-Quality Cover Image with 3D Tilt */}
         <motion.div
           initial={{ opacity: 0, scale: 0.94, x: 40, filter: "blur(8px)" }}
           animate={{ opacity: 1, scale: 1, x: 0, filter: "blur(0px)" }}
@@ -209,14 +209,14 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
             className="w-full rounded-[28px] overflow-hidden bg-gradient-to-b from-[#062429]/95 to-[#021114]/98 border-2 border-emerald-500/40 shadow-[0_30px_90px_rgba(0,0,0,0.85)] backdrop-blur-2xl"
           >
             {/* Interactive Service Switcher Ribbon on Top */}
-            <div className="p-2.5 bg-black/40 border-b border-white/10 flex items-center gap-1.5 justify-between">
+            <div className="p-3 bg-black/50 border-b border-white/10 flex items-center gap-2 justify-between">
               {services.map((svc, sIdx) => (
                 <button
                   key={sIdx}
                   onClick={() => setActiveService(sIdx)}
-                  className={`flex-1 py-1 px-2 rounded-xl text-[11px] font-heading font-semibold transition-all flex items-center justify-center gap-1.5 ${
+                  className={`flex-1 py-1.5 px-2.5 rounded-xl text-[11px] font-heading font-semibold transition-all flex items-center justify-center gap-1.5 ${
                     activeService === sIdx
-                      ? "bg-gradient-to-r from-emerald-500/30 to-amber-500/30 text-amber-300 border border-amber-400/50 shadow-md"
+                      ? "bg-gradient-to-r from-emerald-500/35 to-amber-500/35 text-amber-300 border border-amber-400/50 shadow-md"
                       : "text-slate-400 hover:text-white hover:bg-white/5 border border-transparent"
                   }`}
                 >
@@ -225,43 +225,48 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
               ))}
             </div>
 
-            {/* Dynamic Morphing Image Showcase */}
-            <div className="relative h-60 sm:h-68 md:h-72 lg:h-80 xl:h-88 w-full overflow-hidden">
+            {/* Dynamic Morphing Image Showcase with Crisp Object-Cover and Generous Height */}
+            <div className="relative h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[400px] 2xl:h-[440px] w-full overflow-hidden bg-[#031518]">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={currentSvc.image}
                   src={currentSvc.image}
                   alt={currentSvc.title}
-                  initial={{ opacity: 0, scale: 1.08 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="w-full h-full object-cover object-center filter brightness-95 contrast-105"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                  className="w-full h-full object-cover object-center"
+                  style={{
+                    imageRendering: "-webkit-optimize-contrast",
+                    transform: "translateZ(0)",
+                    backfaceVisibility: "hidden",
+                  }}
                 />
               </AnimatePresence>
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#062429] via-transparent to-black/30 pointer-events-none" />
 
               {/* Floating 3D Pill on Image */}
-              <div className="absolute top-3.5 left-3.5 flex items-center gap-2 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white text-xs font-semibold shadow-lg">
+              <div className="absolute top-4 left-4 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white text-xs font-semibold shadow-lg">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
                 <span>Phú Quốc Sanctuary</span>
               </div>
 
-              {/* Dynamic Service Title on Image */}
-              <div className="absolute bottom-3.5 left-4 right-4">
-                <span className="text-[11px] font-heading font-bold text-amber-300 uppercase tracking-widest block mb-0.5">
+              {/* Dynamic Service Title on Image with Generous Spacing */}
+              <div className="absolute bottom-4 left-5 right-5">
+                <span className="text-xs font-heading font-bold text-amber-300 uppercase tracking-widest block mb-1">
                   {currentSvc.tag}
                 </span>
-                <h3 className="text-white font-heading font-black text-lg sm:text-xl leading-tight">
+                <h3 className="text-white font-heading font-black text-lg sm:text-xl leading-snug">
                   {currentSvc.title}
                 </h3>
               </div>
             </div>
 
-            {/* Bottom Card Specs & AI Feature Highlights */}
-            <div className="p-5 space-y-3.5">
-              <div className="flex items-center justify-between text-xs pb-2 border-b border-white/10">
+            {/* Bottom Card Specs & AI Feature Highlights with Clean Spacing */}
+            <div className="p-5 sm:p-6 space-y-4">
+              <div className="flex items-center justify-between text-xs sm:text-sm pb-2.5 border-b border-white/10">
                 <span className="text-slate-400 font-medium">Khả năng AI:</span>
                 <span className="text-emerald-300 font-bold font-mono text-xs sm:text-sm">
                   {currentSvc.metric}
@@ -269,17 +274,17 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
               </div>
 
               {/* 2 Big Architecture / Security Pills */}
-              <div className="grid grid-cols-2 gap-2.5">
-                <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/10 text-center">
-                  <span className="text-[10px] text-slate-400 block font-heading uppercase tracking-wider mb-0.5">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-center">
+                  <span className="text-[10px] text-slate-400 block font-heading uppercase tracking-wider mb-1 leading-normal">
                     KIẾN TRÚC
                   </span>
                   <span className="text-amber-300 font-black font-mono text-xs sm:text-sm">
                     Agentic + 9router
                   </span>
                 </div>
-                <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/10 text-center">
-                  <span className="text-[10px] text-slate-400 block font-heading uppercase tracking-wider mb-0.5">
+                <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-center">
+                  <span className="text-[10px] text-slate-400 block font-heading uppercase tracking-wider mb-1 leading-normal">
                     BẢO MẬT
                   </span>
                   <span className="text-emerald-300 font-black font-mono text-xs sm:text-sm">
@@ -289,7 +294,7 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
               </div>
 
               {/* Team teaser note */}
-              <div className="flex items-center justify-between pt-0.5 text-xs text-slate-300">
+              <div className="flex items-center justify-between pt-1 text-xs text-slate-300">
                 <span className="flex items-center gap-1.5 text-slate-400 font-medium">
                   <Users className="w-3.5 h-3.5 text-emerald-400" />
                   Nhóm thực hiện: 4 thành viên

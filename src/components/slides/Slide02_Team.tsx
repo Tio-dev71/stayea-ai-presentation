@@ -390,11 +390,15 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
             glare={true}
             className="relative rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-[#062429]/90 backdrop-blur-xl"
           >
-            <div className="relative h-44 sm:h-52 md:h-56 w-full overflow-hidden">
+            <div className="relative h-48 sm:h-56 md:h-60 w-full overflow-hidden bg-[#031518]">
               <img
                 src="/images/phuquoc.jpg"
                 alt="Phú Quốc Island"
-                className="w-full h-full object-cover object-center filter brightness-95 hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                style={{
+                  imageRendering: "-webkit-optimize-contrast",
+                  transform: "translateZ(0)",
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#062429] via-transparent to-black/30" />
               <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
