@@ -394,13 +394,14 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
               <img
                 src="/images/phuquoc.jpg"
                 alt="Phú Quốc Island"
-                className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                className="w-full h-full object-cover object-[75%_center] transition-transform duration-700 hover:scale-105"
                 style={{
                   imageRendering: "-webkit-optimize-contrast",
                   transform: "translateZ(0)",
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#062429] via-transparent to-black/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#062429] via-[#062429]/20 to-black/20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#062429]/60 via-transparent to-transparent" />
               <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
                 <span className="text-[11px] font-heading uppercase text-amber-300 tracking-wider font-bold block mb-0.5">
                   ĐỊA BÀN NGHIÊN CỨU & TRIỂN KHAI

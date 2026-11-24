@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react"
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "motion/react"
+import { motion, AnimatePresence } from "motion/react"
 import confetti from "canvas-confetti"
 import {
   ChevronLeft,
@@ -18,7 +18,6 @@ import { SLIDES } from "../data/slidesData"
 import { SlideOverviewModal } from "./SlideOverviewModal"
 import { SpeakerNotesModal } from "./SpeakerNotesModal"
 import { BackgroundMusicPlayer } from "./BackgroundMusicPlayer"
-import { Pointer3DEffect } from "./Pointer3DEffect"
 
 export const SlideEngine: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -27,28 +26,6 @@ export const SlideEngine: React.FC = () => {
   const [isNotesOpen, setIsNotesOpen] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [showToolbar, setShowToolbar] = useState(true)
-
-  // Global 3D Parallax Tilt driven by mouse pointer
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-
-  const springX = useSpring(mouseX, { stiffness: 220, damping: 28 })
-  const springY = useSpring(mouseY, { stiffness: 220, damping: 28 })
-
-  const canvasRotateX = useTransform(springY, [-0.5, 0.5], [3, -3])
-  const canvasRotateY = useTransform(springX, [-0.5, 0.5], [-3, 3])
-
-  useEffect(() => {
-    const handlePointerMove = (e: PointerEvent) => {
-      const xPct = e.clientX / window.innerWidth - 0.5
-      const yPct = e.clientY / window.innerHeight - 0.5
-      mouseX.set(xPct)
-      mouseY.set(yPct)
-    }
-
-    window.addEventListener("pointermove", handlePointerMove, { passive: true })
-    return () => window.removeEventListener("pointermove", handlePointerMove)
-  }, [mouseX, mouseY])
 
   const currentSlide = SLIDES[currentIndex]
   const totalSlides = SLIDES.length
@@ -204,33 +181,21 @@ export const SlideEngine: React.FC = () => {
         />
       </div>
 
-      {/* Interactive Global 3D Pointer Halo & Specular Spotlight */}
-      <Pointer3DEffect />
-
-      {/* Full-bleed Presentation Canvas (100% Edge-to-Edge Widescreen with 3D Depth & Pointer Parallax) */}
-      <main className="relative w-full h-full flex-1 overflow-hidden m-0 p-0 flex flex-col [perspective:1400px]">
-        <motion.div
-          style={{
-            rotateX: canvasRotateX,
-            rotateY: canvasRotateY,
-            transformStyle: "preserve-3d",
-          }}
-          className="w-full h-full flex-1 flex flex-col overflow-hidden"
-        >
-          <AnimatePresence custom={direction} mode="wait">
-            <motion.div
-              key={currentSlide.id}
-              custom={direction}
-              variants={slideVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              className="w-full h-full flex-1 flex flex-col overflow-hidden [transform-style:preserve-3d]"
-            >
-              <SlideComponent isActive={true} />
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
+      {/* Full-bleed Presentation Canvas (100% Edge-to-Edge Widescreen - Stable Flat Background) */}
+      <main className="relative w-full h-full flex-1 overflow-hidden m-0 p-0 flex flex-col">
+        <AnimatePresence custom={direction} mode="wait">
+          <motion.div
+            key={currentSlide.id}
+            custom={direction}
+            variants={slideVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="w-full h-full flex-1 flex flex-col overflow-hidden"
+          >
+            <SlideComponent isActive={true} />
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       {/* Floating Canva-style Minimalist Controls Dock (Bottom Right / Center) */}
