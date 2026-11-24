@@ -18,6 +18,7 @@ import { SLIDES } from "../data/slidesData"
 import { SlideOverviewModal } from "./SlideOverviewModal"
 import { SpeakerNotesModal } from "./SpeakerNotesModal"
 import { BackgroundMusicPlayer } from "./BackgroundMusicPlayer"
+import { Pointer3DEffect } from "./Pointer3DEffect"
 
 export const SlideEngine: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -180,6 +181,9 @@ export const SlideEngine: React.FC = () => {
           transition={{ duration: 0.4, ease: "easeOut" }}
         />
       </div>
+
+      {/* Interactive 3D Cursor Spotlight & Ripple (Pointer Events None) */}
+      <Pointer3DEffect />
 
       {/* Full-bleed Presentation Canvas (100% Edge-to-Edge Widescreen - Stable Flat Background) */}
       <main className="relative w-full h-full flex-1 overflow-hidden m-0 p-0 flex flex-col">
