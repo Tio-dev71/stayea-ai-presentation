@@ -49,8 +49,8 @@ export const Slide02_Problem: React.FC<{ isActive: boolean }> = () => {
             {[
               {
                 letter: "⚠️",
-                title: "Cây kịch bản (Rule-based) cứng nhắc",
-                desc: "Khách hỏi lệch một từ là bot báo lỗi 'Xin lỗi tôi không hiểu', gây ức chế và làm gián đoạn cảm xúc.",
+                title: "Chatbot kịch bản cứng (Rule-based)",
+                desc: "Hoạt động theo từ khóa cố định: khách hỏi lệch một từ là bot báo lỗi 'Xin lỗi tôi không hiểu', làm gián đoạn trải nghiệm.",
               },
               {
                 letter: "⏳",

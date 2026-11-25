@@ -13,26 +13,26 @@ export const Slide03_Objectives: React.FC<{ isActive: boolean }> = () => {
     {
       num: "01",
       title: "Trợ Lý AI CSKH Tùy Biến Prompt 24/7",
-      desc: "Xây dựng Chatbot AI CSKH có khả năng tùy biến ngữ cảnh & kịch bản linh hoạt qua System Prompt, thử nghiệm chuyên sâu trên dịch vụ du lịch.",
-      tags: ["Gemini 2.5 Flash", "Zero Latency"],
+      desc: "Tùy biến ngữ cảnh & văn phong qua System Prompt (bộ lệnh thiết lập vai trò và quy tắc cho AI), áp dụng linh hoạt đa ngành nghề.",
+      tags: ["System Prompt", "Phản hồi < 1.2s"],
     },
     {
       num: "02",
       title: "Tích Hợp Cổng AI 9router Gateway",
-      desc: "Độc lập hoàn toàn với một hãng AI duy nhất, tự động cân bằng tải, bảo mật tuyệt đối API key và phản hồi mượt theo thời gian thực.",
-      tags: ["9router Proxy", "Đa Mô Hình"],
+      desc: "Cổng trung gian (Proxy) giúp cân bằng tải đa mô hình, bảo mật khóa API và không bị phụ thuộc một nhà cung cấp duy nhất.",
+      tags: ["9router Gateway", "Đa Mô Hình"],
     },
     {
       num: "03",
-      title: "Tự Động Chốt Đơn & Giữ Chỗ",
-      desc: "Hiểu ý định tự nhiên của khách hàng, tự động trích xuất thông tin và khởi tạo phiếu đặt dịch vụ sơ bộ sẵn sàng cho nhân viên duyệt.",
-      tags: ["Hành Động Tự Động", "Auto Order"],
+      title: "Agentic AI Tự Động Tạo Đơn",
+      desc: "AI có khả năng tự hành động: trích xuất thông tin khách, kiểm tra lịch trống và khởi tạo phiếu giữ chỗ sơ bộ sẵn sàng duyệt.",
+      tags: ["Agentic AI", "Auto Order"],
     },
     {
       num: "04",
       title: "Mô Hình Hybrid CSKH 2 Chiều",
-      desc: "Chuyển tiếp mượt mà từ trợ lý AI sang nhân viên tư vấn trực tiếp khi có yêu cầu đặc biệt, kèm bảng điều khiển Admin Sandbox.",
-      tags: ["Human-in-Loop", "Admin Sandbox"],
+      desc: "Áp dụng Human-in-the-Loop (con người kiểm duyệt & hỗ trợ ca khó), kèm khung Sandbox (môi trường thử nghiệm an toàn) cho Admin.",
+      tags: ["Human-in-Loop", "Sandbox Test"],
     },
   ]
 

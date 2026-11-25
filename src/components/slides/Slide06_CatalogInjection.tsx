@@ -142,37 +142,37 @@ export const Slide06_CatalogInjection: React.FC<{ isActive: boolean }> = () => {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="lg:col-span-5 space-y-4 xl:space-y-5"
+          className="lg:col-span-5 space-y-3.5 xl:space-y-4"
         >
-          <div className="p-5 sm:p-6 rounded-3xl bg-white/[0.05] border border-amber-500/25 backdrop-blur-md">
-            <h3 className="font-heading font-bold text-white text-base sm:text-lg flex items-center gap-2.5 mb-2">
-              <ShieldCheck className="w-5 h-5 text-emerald-400" />
-              Triệt Tiêu Hoàn Toàn Ảo Giác (Zero-Hallucination)
+          <div className="p-4 sm:p-5 rounded-3xl bg-white/[0.05] border border-amber-500/25 backdrop-blur-md">
+            <h3 className="font-heading font-bold text-white text-base sm:text-lg flex items-center gap-2 mb-1.5">
+              <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0" />
+              <span>Chống Ảo Giác AI (Zero-Hallucination)</span>
             </h3>
-            <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed">
-              Mô hình AI thông thường có thể tự bịa đặt giá rẻ để làm vui lòng người dùng. Nhờ Dynamic Injection, <strong>100% dữ liệu tư vấn</strong> đều phản ánh trung thực kho phòng và giá xe thực tế.
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <strong className="text-amber-200">Ảo giác AI</strong> là lỗi mô hình tự bịa đặt giá rẻ hoặc dịch vụ không có thật. Nhờ nạp danh mục thực tế theo thời gian thực, <strong>100% dữ liệu tư vấn</strong> đều khớp đúng kho phòng và giá xe.
             </p>
           </div>
 
-          <div className="p-5 sm:p-6 rounded-3xl bg-white/[0.05] border border-amber-500/25 backdrop-blur-md">
-            <h3 className="font-heading font-bold text-white text-base sm:text-lg flex items-center gap-2.5 mb-2">
-              <Database className="w-5 h-5 text-amber-400" />
-              Cập Nhật Tức Thì Không Cần Fine-Tuning
+          <div className="p-4 sm:p-5 rounded-3xl bg-white/[0.05] border border-amber-500/25 backdrop-blur-md">
+            <h3 className="font-heading font-bold text-white text-base sm:text-lg flex items-center gap-2 mb-1.5">
+              <Database className="w-5 h-5 text-amber-400 shrink-0" />
+              <span>Cập Nhật Tức Thì Không Cần Fine-Tuning</span>
             </h3>
-            <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed">
-              Khi đối tác thêm Villa mới hoặc điều chỉnh giá xe ngày Lễ/Tết, hệ thống cập nhật tức thì vào phiên chat kế tiếp mà <strong>không tốn chi phí huấn luyện lại mô hình</strong>.
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <strong className="text-amber-200">Fine-Tuning</strong> là việc huấn luyện lại mô hình AI rất tốn kém mỗi khi dữ liệu đổi. Giải pháp của nhóm nạp dữ liệu động từ DB nên đổi giá Lễ/Tết là AI cập nhật ngay lập tức.
             </p>
           </div>
 
           {/* Stat Card */}
-          <div className="canva-stat-card p-5 sm:p-6">
-            <span className="font-heading text-4xl sm:text-5xl md:text-6xl font-black gold-gradient-text block leading-none mb-1.5">
+          <div className="canva-stat-card p-4 sm:p-5">
+            <span className="font-heading text-3xl sm:text-4xl 2xl:text-5xl font-black gold-gradient-text block leading-none mb-1">
               100%
             </span>
-            <span className="text-xs sm:text-sm font-heading font-bold tracking-wider text-amber-200 uppercase block mb-1">
+            <span className="text-xs sm:text-sm font-heading font-bold tracking-wider text-amber-200 uppercase block mb-0.5">
               CHÍNH XÁC KHO GIÁ & THÔNG SỐ
             </span>
-            <span className="text-xs sm:text-sm text-slate-400">Dữ liệu nguồn duy nhất từ bảng dịch vụ PostgreSQL</span>
+            <span className="text-xs text-slate-400">Dữ liệu nguồn duy nhất lấy trực tiếp từ hệ thống quản trị</span>
           </div>
         </motion.div>
       </div>

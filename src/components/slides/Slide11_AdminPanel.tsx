@@ -69,12 +69,14 @@ export const Slide11_AdminPanel: React.FC<{ isActive: boolean }> = () => {
               </div>
 
               <div>
-                <label className="text-slate-300 block mb-1.5 font-heading text-xs uppercase tracking-wider font-bold">ĐỘ SÁNG TẠO (TEMPERATURE):</label>
+                <label className="text-slate-300 block mb-1.5 font-heading text-xs uppercase tracking-wider font-bold">
+                  ĐỘ SÁNG TẠO (TEMPERATURE — MỨC ỔN ĐỊNH CÂU TRẢ LỜI):
+                </label>
                 <div className="flex items-center gap-4 p-3 rounded-2xl bg-black/50 border border-white/10">
                   <div className="flex-1 h-2 rounded-full bg-white/10 relative overflow-hidden">
                     <div className="w-[30%] h-full bg-amber-400" />
                   </div>
-                  <span className="font-mono text-amber-300 font-black text-sm">0.3 (Chống ảo giác)</span>
+                  <span className="font-mono text-amber-300 font-black text-sm">0.3 (Ổn định · Chống bịa đặt)</span>
                 </div>
               </div>
 

@@ -142,8 +142,10 @@ export const Slide04_TechStack: React.FC<{ isActive: boolean }> = () => {
             <div className="flex items-start gap-3 p-4 rounded-2xl bg-black/50 border border-white/10">
               <Cpu className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
               <div>
-                <strong className="text-white block font-heading mb-0.5">Tối ưu Tốc Độ TTFT:</strong>
-                Độ trễ bắt đầu phát sinh từ (Time to First Token) đạt dưới 1.2s, tạo cảm giác đàm thoại tức thì.
+                <strong className="text-white block font-heading mb-0.5">
+                  Tối ưu Tốc Độ TTFT (Phản hồi chữ đầu tiên):
+                </strong>
+                TTFT (Time To First Token — thời gian từ lúc gửi đến khi chữ đầu tiên xuất hiện) đạt dưới 1.2s, tạo cảm giác trò chuyện tức thì.
               </div>
             </div>
           </div>

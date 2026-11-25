@@ -32,7 +32,7 @@ export const Slide08_HybridCSKH: React.FC<{ isActive: boolean }> = () => {
           Hợp Lực Giữa AI & Chuyên Viên Trực Tiếp
         </h2>
         <p className="text-xs sm:text-sm md:text-base 2xl:text-lg text-slate-200 mt-1.5 max-w-4xl leading-relaxed">
-          Mô hình Human-in-the-loop: AI đảm nhiệm 80% câu hỏi thường gặp và tạo đơn sơ bộ; chuyên viên can thiệp xử lý các tình huống cá nhân hóa cao cấp.
+          Mô hình <strong className="text-amber-200">Human-in-the-loop</strong> (AI xử lý tự động kết hợp con người kiểm duyệt): AI đảm nhiệm 80% câu hỏi lặp lại và tạo đơn sơ bộ; chuyên viên xử lý các tình huống cá nhân hóa cao cấp.
         </p>
       </motion.div>
 

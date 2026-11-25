@@ -12,11 +12,13 @@ import {
   Sparkles,
   Bot,
   Play,
+  BookOpen,
 } from "lucide-react"
 
 import { SLIDES } from "../data/slidesData"
 import { SlideOverviewModal } from "./SlideOverviewModal"
 import { SpeakerNotesModal } from "./SpeakerNotesModal"
+import { GlossaryModal } from "./GlossaryModal"
 import { BackgroundMusicPlayer } from "./BackgroundMusicPlayer"
 import { Pointer3DEffect } from "./Pointer3DEffect"
 import { CanvaAtmosphere } from "./CanvaAtmosphere"
@@ -26,6 +28,7 @@ export const SlideEngine: React.FC = () => {
   const [direction, setDirection] = useState<"next" | "prev">("next")
   const [isOverviewOpen, setIsOverviewOpen] = useState(false)
   const [isNotesOpen, setIsNotesOpen] = useState(false)
+  const [isGlossaryOpen, setIsGlossaryOpen] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [showToolbar, setShowToolbar] = useState(true)
 
@@ -121,6 +124,11 @@ export const SlideEngine: React.FC = () => {
           e.preventDefault()
           setIsNotesOpen((prev) => !prev)
           break
+        case "g":
+        case "G":
+          e.preventDefault()
+          setIsGlossaryOpen((prev) => !prev)
+          break
         case "f":
         case "F":
           e.preventDefault()
@@ -156,7 +164,7 @@ export const SlideEngine: React.FC = () => {
 
   const handleCanvasClick = useCallback(
     (e: React.MouseEvent<HTMLElement>) => {
-      if (isOverviewOpen || isNotesOpen) return
+      if (isOverviewOpen || isNotesOpen || isGlossaryOpen) return
       const target = e.target as HTMLElement | null
       if (
         target?.closest(
@@ -177,7 +185,7 @@ export const SlideEngine: React.FC = () => {
         prevSlide()
       }
     },
-    [isOverviewOpen, isNotesOpen, nextSlide, prevSlide]
+    [isOverviewOpen, isNotesOpen, isGlossaryOpen, nextSlide, prevSlide]
   )
 
   const SlideComponent = currentSlide.component
@@ -293,6 +301,20 @@ export const SlideEngine: React.FC = () => {
           <Mic className="w-3.5 h-3.5" />
         </button>
 
+        {/* Glossary / Tech Terms */}
+        <button
+          onClick={() => setIsGlossaryOpen(!isGlossaryOpen)}
+          className={`flex items-center gap-1 px-2.5 py-1 rounded-full transition-all text-[11px] font-semibold ${
+            isGlossaryOpen
+              ? "bg-emerald-500 text-black font-bold"
+              : "hover:bg-white/15 text-emerald-300 border border-emerald-500/30"
+          }`}
+          title="Giải thích thuật ngữ chuyên ngành (Phím G)"
+        >
+          <BookOpen className="w-3 h-3" />
+          <span className="hidden sm:inline">Thuật ngữ</span>
+        </button>
+
         {/* Background Music Player */}
         <BackgroundMusicPlayer compact={true} />
 
@@ -319,6 +341,12 @@ export const SlideEngine: React.FC = () => {
         isOpen={isNotesOpen}
         onClose={() => setIsNotesOpen(false)}
         currentSlide={currentSlide}
+      />
+
+      {/* Technical Terms Glossary Modal */}
+      <GlossaryModal
+        isOpen={isGlossaryOpen}
+        onClose={() => setIsGlossaryOpen(false)}
       />
     </div>
   )

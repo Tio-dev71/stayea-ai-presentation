@@ -24,10 +24,10 @@ export const Slide09_SecurityAndFallback: React.FC<{ isActive: boolean }> = () =
           </span>
         </div>
         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl xl:text-4xl 2xl:text-6xl font-black gold-gradient-text tracking-tight mt-1">
-          An Toàn Thông Tin & Cơ Chế Chịu Lỗi (Resilient Fallback)
+          An Toàn Thông Tin & Cơ Chế Dự Phòng (Resilient Fallback)
         </h2>
         <p className="text-xs sm:text-sm md:text-base 2xl:text-lg text-slate-200 mt-1.5 max-w-4xl leading-relaxed">
-          Bảo vệ hệ thống trước tấn công Prompt Injection, bảo vệ giá niêm yết và kích hoạt bộ cứu sinh cục bộ khi mất kết nối AI Gateway.
+          Bảo vệ hệ thống trước tấn công đánh lừa AI, giữ nguyên giá niêm yết và tự động chuyển sang bộ dự phòng cục bộ khi mất kết nối AI Gateway.
         </p>
       </motion.div>
 
@@ -42,30 +42,30 @@ export const Slide09_SecurityAndFallback: React.FC<{ isActive: boolean }> = () =
           className="lg:col-span-6 space-y-3 xl:space-y-4"
         >
           <span className="text-xs sm:text-sm font-heading font-bold uppercase tracking-wider text-amber-300 block">
-            HÀNG RÀO PHÒNG VỆ AI (GUARDRAILS)
+            HÀNG RÀO PHÒNG VỆ AI (GUARDRAILS — QUY TẮC BẢO VỆ)
           </span>
 
           {[
             {
               title: "Chống Prompt Injection & Jailbreak",
-              desc: "Từ chối mọi câu lệnh ép AI đóng vai Hacker, yêu cầu cấp quyền Admin hay đọc mật khẩu hệ thống.",
+              desc: "Ngăn tấn công chèn lệnh giả / vượt rào: từ chối mọi câu lệnh ép AI đóng vai Hacker, yêu cầu cấp quyền hay đọc mật khẩu nội bộ.",
               icon: Lock,
               color: "text-red-400",
-              badge: "Strict Policy",
+              badge: "Chống Đánh Lừa",
             },
             {
               title: "Bảo Vệ Giá Niêm Yết Doanh Nghiệp",
               desc: "Ngăn chặn tuyệt đối việc AI bị khách thao túng để tự ý cam kết giảm giá, chiết khấu sai chính sách.",
               icon: ShieldCheck,
               color: "text-emerald-400",
-              badge: "Price Defense",
+              badge: "Bảo Vệ Giá",
             },
             {
-              title: "Rate Limiting & Giới Hạn Tần Suất",
-              desc: "NestJS Throttler chặn các cuộc gọi ồ ạt, ngăn chặn spam tin nhắn và bảo vệ ngân sách token API.",
+              title: "Rate Limiting (Giới Hạn Tần Suất)",
+              desc: "Kiểm soát số lượt nhắn tin mỗi phút để chặn cuộc gọi ồ ạt, ngăn spam và bảo vệ ngân sách token AI.",
               icon: Zap,
               color: "text-amber-400",
-              badge: "Anti-Spam",
+              badge: "Chống Spam",
             },
           ].map((item, idx) => {
             const IconComp = item.icon
@@ -105,7 +105,7 @@ export const Slide09_SecurityAndFallback: React.FC<{ isActive: boolean }> = () =
             </div>
             <div>
               <span className="text-[11px] font-heading uppercase text-emerald-300 font-bold tracking-wider block mb-0.5">
-                CƠ CHẾ CỨU SINH TỰ ĐỘNG
+                CƠ CHẾ DỰ PHÒNG TỰ ĐỘNG (KHÔNG GIÁN ĐOẠN)
               </span>
               <h3 className="font-heading text-base sm:text-lg md:text-xl font-black text-white">
                 Smart Local Fallback (Zero Downtime)
@@ -114,7 +114,7 @@ export const Slide09_SecurityAndFallback: React.FC<{ isActive: boolean }> = () =
           </div>
 
           <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
-            Nếu cổng AI 9router hoặc nhà cung cấp LLM cloud gặp sự cố bất khả kháng (timeout, cạn quota), hệ thống <strong>không bao giờ báo lỗi trắng màn hình</strong> cho khách hàng.
+            <strong className="text-amber-200">Smart Local Fallback:</strong> Nếu cổng AI 9router hoặc máy chủ AI cloud quá tải, mất kết nối hay hết hạn mức, hệ thống tự chuyển sang bộ xử lý dự phòng cục bộ — đảm bảo <strong>Zero Downtime</strong> (không bao giờ gián đoạn hay báo lỗi trắng màn hình).
           </p>
 
           <div className="p-3.5 sm:p-4 rounded-2xl bg-black/60 border border-white/10 space-y-1.5 text-xs sm:text-sm">

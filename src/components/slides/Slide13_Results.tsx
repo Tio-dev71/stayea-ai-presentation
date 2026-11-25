@@ -8,15 +8,15 @@ export const Slide13_Results: React.FC<{ isActive: boolean }> = () => {
   const metrics = [
     {
       value: "< 1.2s",
-      label: "ĐỘ TRỄ PHẢN HỒI (TTFT)",
-      desc: "Thời gian bắt đầu phát sinh token đầu tiên qua cổng AI 9router nội bộ",
+      label: "ĐỘ TRỄ PHẢN HỒI ĐẦU TIÊN (TTFT)",
+      desc: "Time To First Token: thời gian từ lúc gửi đến khi chữ đầu tiên hiện ra qua 9router",
       color: "gold-gradient-text",
       isLeft: true,
     },
     {
       value: "100%",
       label: "CHÍNH XÁC GIÁ & DỊCH VỤ",
-      desc: "Kỹ thuật Dynamic Catalog Injection triệt tiêu hoàn toàn hiện tượng ảo giác",
+      desc: "Kỹ thuật nạp danh mục thực tế (Dynamic Catalog Injection) chống AI bịa đặt giá",
       color: "emerald-gradient-text",
       isLeft: true,
     },
