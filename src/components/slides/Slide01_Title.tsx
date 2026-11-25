@@ -52,7 +52,7 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
   const currentSvc = services[activeService]
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 2xl:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-5 sm:p-6 md:p-7 lg:p-8 xl:p-9 2xl:p-14 pb-16 sm:pb-16 lg:pb-18 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Top Header Tagline */}
@@ -61,49 +61,49 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
         initial="initial"
         animate="animate"
         exit="exit"
-        className="relative z-10 flex items-center justify-between"
+        className="relative z-10 flex items-center justify-between mb-1"
       >
-        <div className="flex items-center gap-3">
-          <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399] animate-pulse" />
-          <span className="text-xs sm:text-sm md:text-base font-heading font-black tracking-[0.25em] text-emerald-300 uppercase">
+        <div className="flex items-center gap-2.5">
+          <span className="w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399] animate-pulse" />
+          <span className="text-xs sm:text-sm font-heading font-black tracking-[0.22em] text-emerald-300 uppercase">
             BÁO CÁO ĐỒ ÁN 1 · KHOA CÔNG NGHỆ THÔNG TIN
           </span>
         </div>
       </motion.div>
 
       {/* Main Split Body: Left Typography & Stats | Right 3D Interactive Showcase */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 2xl:gap-16 my-auto items-center">
-        {/* Left Column (7 cols): Giant Title, Value Pillars & Stats with Generous Spacing */}
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 2xl:gap-14 my-auto items-center">
+        {/* Left Column (7 cols): Title, Value Pillars & Stats optimized for 14-inch & large screens */}
         <motion.div
           variants={morphLeftVariants}
           initial="initial"
           animate="animate"
           exit="exit"
-          className="lg:col-span-7 space-y-6 xl:space-y-7"
+          className="lg:col-span-7 space-y-3.5 xl:space-y-4 2xl:space-y-6"
         >
-          {/* Main Giant Title with Generous Line-Height & Distance */}
+          {/* Main Giant Title */}
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-heading font-semibold mb-4 shadow-md backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 text-xs font-heading font-semibold mb-2 shadow-md backdrop-blur-md">
               <Star className="w-3.5 h-3.5 fill-amber-300" />
               <span>Đề tài Đồ án 1 · Kỹ Thuật Phần Mềm</span>
             </div>
 
-            <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[1.15] gold-gradient-text-pure">
+            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl xl:text-6xl 2xl:text-8xl font-black tracking-tight leading-[1.08] gold-gradient-text-pure">
               CHATBOT AI
             </h1>
 
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white mt-2.5 mb-3.5 drop-shadow-2xl leading-[1.25]">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl xl:text-4xl 2xl:text-6xl font-extrabold tracking-tight text-white mt-1 mb-2 drop-shadow-2xl leading-[1.15]">
               Chăm Sóc Khách Hàng
             </h2>
 
-            <p className="text-sm sm:text-base md:text-lg text-slate-200 font-medium tracking-wide mt-4 mb-2 leading-relaxed sm:leading-[1.9] max-w-3xl">
+            <p className="text-xs sm:text-sm md:text-base 2xl:text-lg text-slate-200 font-medium tracking-wide mt-2 mb-1 leading-relaxed max-w-2xl 2xl:max-w-3xl">
               Hệ thống Trợ lý ảo Chăm sóc khách hàng tự động đa kịch bản với khả năng tùy biến linh hoạt qua System Prompt, kết hợp cổng định tuyến{" "}
-              <strong className="text-emerald-300 font-bold">AI 9router Gateway</strong> và tự động hóa quy trình nghiệp vụ (Function Calling).
+              <strong className="text-emerald-300 font-bold">AI 9router Gateway</strong> và tự động hóa quy trình nghiệp vụ.
             </p>
           </div>
 
-          {/* 3 Value Pillars with Generous Line-Height & Vertical Distance */}
-          <div className="space-y-4 xl:space-y-5 pt-2">
+          {/* 3 Value Pillars */}
+          <div className="space-y-2.5 xl:space-y-3 2xl:space-y-4 pt-1">
             {[
               {
                 letter: "01",
@@ -113,26 +113,26 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
               {
                 letter: "02",
                 text: "Cổng Điều Phối AI 9router Gateway",
-                sub: "Độc lập, bảo mật API Key, cân bằng tải đa mô hình và chuẩn hóa phản hồi Real-time Streaming SSE.",
+                sub: "Độc lập, bảo mật API Key, cân bằng tải đa mô hình và chuẩn hóa phản hồi thời gian thực.",
               },
               {
                 letter: "03",
-                text: "Function Calling & Tự Động Tạo Đơn / Giữ Chỗ",
-                sub: "Tự động trích xuất thông tin khách và khởi tạo đơn đặt sơ bộ trực tiếp vào cơ sở dữ liệu PostgreSQL.",
+                text: "Tự Động Chốt Đơn & Khởi Tạo Phiếu Giữ Chỗ",
+                sub: "Tự động trích xuất thông tin khách và khởi tạo đơn đặt sơ bộ trực tiếp vào hệ thống quản trị.",
               },
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-4 p-4 sm:p-4.5 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-400/50 transition-all duration-300 shadow-md backdrop-blur-md cursor-pointer group"
+                className="flex items-start gap-3.5 p-3 sm:p-3.5 2xl:p-4.5 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-400/50 transition-all duration-300 shadow-md backdrop-blur-md cursor-pointer group"
               >
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-emerald-500/30 via-teal-500/20 to-amber-500/20 border border-emerald-400/50 flex items-center justify-center shrink-0 text-emerald-300 font-heading font-black text-sm sm:text-base shadow-[0_0_15px_rgba(52,211,153,0.3)] group-hover:scale-110 transition-transform">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-emerald-500/30 via-teal-500/20 to-amber-500/20 border border-emerald-400/50 flex items-center justify-center shrink-0 text-emerald-300 font-heading font-black text-xs sm:text-sm shadow-[0_0_15px_rgba(52,211,153,0.3)] group-hover:scale-110 transition-transform">
                   {item.letter}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-base sm:text-lg font-heading font-bold text-white tracking-wide mb-1 leading-snug group-hover:text-amber-300 transition-colors">
+                  <h4 className="text-sm sm:text-base font-heading font-bold text-white tracking-wide mb-0.5 leading-snug group-hover:text-amber-300 transition-colors">
                     {item.text}
                   </h4>
-                  <p className="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed sm:leading-[1.8] mt-1">
+                  <p className="text-xs sm:text-[13px] 2xl:text-sm text-slate-300 leading-relaxed">
                     {item.sub}
                   </p>
                 </div>
@@ -140,40 +140,40 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
             ))}
           </div>
 
-          {/* Key Metric Highlights with Generous Padding & Margin */}
-          <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-4 sm:pt-6">
-            <div className="canva-stat-card p-4 sm:p-5 rounded-2xl hover:border-amber-400/60 transition-colors">
-              <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black gold-gradient-text block leading-none mb-2">
+          {/* Key Metric Highlights */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-4 2xl:gap-6 pt-1 2xl:pt-3">
+            <div className="canva-stat-card p-3 sm:p-3.5 2xl:p-5 rounded-2xl hover:border-amber-400/60 transition-colors">
+              <span className="font-heading text-xl sm:text-2xl xl:text-3xl 2xl:text-4xl font-black gold-gradient-text block leading-none mb-1.5">
                 &lt; 1.2s
               </span>
-              <span className="text-[11px] sm:text-xs font-heading font-bold tracking-wider text-amber-200/90 uppercase block mb-1 leading-normal">
+              <span className="text-[10px] sm:text-xs font-heading font-bold tracking-wider text-amber-200/90 uppercase block mb-0.5 leading-normal">
                 ĐỘ TRỄ PHẢN HỒI
               </span>
-              <span className="text-[10px] sm:text-xs text-slate-400 leading-relaxed">
+              <span className="text-[10px] sm:text-[11px] text-slate-400 leading-relaxed">
                 Qua 9router Gateway
               </span>
             </div>
 
-            <div className="canva-stat-card p-4 sm:p-5 rounded-2xl hover:border-amber-400/60 transition-colors">
-              <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black gold-gradient-text block leading-none mb-2">
+            <div className="canva-stat-card p-3 sm:p-3.5 2xl:p-5 rounded-2xl hover:border-amber-400/60 transition-colors">
+              <span className="font-heading text-xl sm:text-2xl xl:text-3xl 2xl:text-4xl font-black gold-gradient-text block leading-none mb-1.5">
                 100%
               </span>
-              <span className="text-[11px] sm:text-xs font-heading font-bold tracking-wider text-amber-200/90 uppercase block mb-1 leading-normal">
+              <span className="text-[10px] sm:text-xs font-heading font-bold tracking-wider text-amber-200/90 uppercase block mb-0.5 leading-normal">
                 CHÍNH XÁC KHO GIÁ
               </span>
-              <span className="text-[10px] sm:text-xs text-slate-400 leading-relaxed">
+              <span className="text-[10px] sm:text-[11px] text-slate-400 leading-relaxed">
                 Chống ảo giác AI
               </span>
             </div>
 
-            <div className="canva-stat-card p-4 sm:p-5 rounded-2xl hover:border-emerald-400/60 transition-colors">
-              <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black emerald-gradient-text block leading-none mb-2">
+            <div className="canva-stat-card p-3 sm:p-3.5 2xl:p-5 rounded-2xl hover:border-emerald-400/60 transition-colors">
+              <span className="font-heading text-xl sm:text-2xl xl:text-3xl 2xl:text-4xl font-black emerald-gradient-text block leading-none mb-1.5">
                 24 / 7
               </span>
-              <span className="text-[11px] sm:text-xs font-heading font-bold tracking-wider text-emerald-300 uppercase block mb-1 leading-normal">
+              <span className="text-[10px] sm:text-xs font-heading font-bold tracking-wider text-emerald-300 uppercase block mb-0.5 leading-normal">
                 TỰ ĐỘNG HÓA
               </span>
-              <span className="text-[10px] sm:text-xs text-slate-400 leading-relaxed">
+              <span className="text-[10px] sm:text-[11px] text-slate-400 leading-relaxed">
                 Chốt đơn tức thì
               </span>
             </div>
@@ -223,8 +223,8 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
               ))}
             </div>
 
-            {/* Dynamic Morphing Image Showcase with Crisp Object-Cover and Generous Height */}
-            <div className="relative h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[400px] 2xl:h-[440px] w-full overflow-hidden bg-[#031518]">
+            {/* Dynamic Morphing Image Showcase with Crisp Object-Cover */}
+            <div className="relative h-52 sm:h-56 md:h-60 lg:h-64 xl:h-64 2xl:h-[400px] w-full overflow-hidden bg-[#031518]">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={currentSvc.image}
@@ -246,53 +246,53 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#062429] via-transparent to-black/30 pointer-events-none" />
 
               {/* Floating 3D Pill on Image */}
-              <div className="absolute top-4 left-4 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-white text-xs font-semibold shadow-lg">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="absolute top-3 left-3 flex items-center gap-2 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-white text-xs font-semibold shadow-lg">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span>Ví dụ áp dụng: CSKH Du Lịch (STAYEA)</span>
               </div>
 
-              {/* Dynamic Service Title on Image with Generous Spacing */}
-              <div className="absolute bottom-4 left-5 right-5">
-                <span className="text-xs font-heading font-bold text-amber-300 uppercase tracking-widest block mb-1">
+              {/* Dynamic Service Title on Image */}
+              <div className="absolute bottom-3 left-4 right-4">
+                <span className="text-[11px] font-heading font-bold text-amber-300 uppercase tracking-widest block mb-0.5">
                   {currentSvc.tag}
                 </span>
-                <h3 className="text-white font-heading font-black text-lg sm:text-xl leading-snug">
+                <h3 className="text-white font-heading font-black text-base sm:text-lg leading-snug">
                   {currentSvc.title}
                 </h3>
               </div>
             </div>
 
-            {/* Bottom Card Specs & AI Feature Highlights with Clean Spacing */}
-            <div className="p-5 sm:p-6 space-y-4">
-              <div className="flex items-center justify-between text-xs sm:text-sm pb-2.5 border-b border-white/10">
+            {/* Bottom Card Specs & AI Feature Highlights */}
+            <div className="p-3.5 sm:p-4 2xl:p-5 space-y-2.5 2xl:space-y-4">
+              <div className="flex items-center justify-between text-xs pb-2 border-b border-white/10">
                 <span className="text-slate-400 font-medium">Khả năng AI:</span>
-                <span className="text-emerald-300 font-bold font-mono text-xs sm:text-sm">
+                <span className="text-emerald-300 font-bold font-mono text-xs">
                   {currentSvc.metric}
                 </span>
               </div>
 
               {/* 2 Big Architecture / Security Pills */}
-              <div className="grid grid-cols-2 gap-3">
-                <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-center">
-                  <span className="text-[10px] text-slate-400 block font-heading uppercase tracking-wider mb-1 leading-normal">
+              <div className="grid grid-cols-2 gap-2.5">
+                <div className="p-2.5 2xl:p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-center">
+                  <span className="text-[10px] text-slate-400 block font-heading uppercase tracking-wider mb-0.5 leading-normal">
                     KIẾN TRÚC
                   </span>
-                  <span className="text-amber-300 font-black font-mono text-xs sm:text-sm">
+                  <span className="text-amber-300 font-black font-mono text-xs">
                     Agentic + 9router
                   </span>
                 </div>
-                <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-center">
-                  <span className="text-[10px] text-slate-400 block font-heading uppercase tracking-wider mb-1 leading-normal">
+                <div className="p-2.5 2xl:p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-center">
+                  <span className="text-[10px] text-slate-400 block font-heading uppercase tracking-wider mb-0.5 leading-normal">
                     BẢO MẬT
                   </span>
-                  <span className="text-emerald-300 font-black font-mono text-xs sm:text-sm">
+                  <span className="text-emerald-300 font-black font-mono text-xs">
                     Human-in-the-Loop
                   </span>
                 </div>
               </div>
 
               {/* Team teaser note */}
-              <div className="flex items-center justify-between pt-1 text-xs text-slate-300">
+              <div className="flex items-center justify-between pt-0.5 text-xs text-slate-300">
                 <span className="flex items-center gap-1.5 text-slate-400 font-medium">
                   <Users className="w-3.5 h-3.5 text-emerald-400" />
                   Nhóm thực hiện: 4 thành viên

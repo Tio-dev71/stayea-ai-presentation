@@ -166,7 +166,7 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
   }
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 2xl:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-5 sm:p-6 md:p-7 lg:p-8 xl:p-9 2xl:p-14 pb-16 sm:pb-16 lg:pb-18 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Top Header */}

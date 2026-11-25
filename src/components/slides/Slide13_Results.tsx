@@ -37,7 +37,7 @@ export const Slide13_Results: React.FC<{ isActive: boolean }> = () => {
   ]
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-14 xl:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-5 sm:p-6 md:p-7 lg:p-8 xl:p-9 2xl:p-14 pb-16 sm:pb-16 lg:pb-18 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Header */}
@@ -49,21 +49,21 @@ export const Slide13_Results: React.FC<{ isActive: boolean }> = () => {
         className="relative z-10"
       >
         <div className="flex items-center gap-2.5">
-          <span className="w-3 h-3 rounded-full bg-amber-400" />
-          <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+          <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.22em] text-amber-300 uppercase">
             14 · KẾT QUẢ ĐẠT ĐƯỢC
           </span>
         </div>
-        <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black gold-gradient-text tracking-tight mt-1.5">
+        <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl xl:text-4xl 2xl:text-6xl font-black gold-gradient-text tracking-tight mt-1">
           Hiệu Quả Thực Nghiệm & Đo Lường Thực Tế
         </h2>
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
+        <p className="text-xs sm:text-sm md:text-base 2xl:text-lg text-slate-200 mt-1.5 max-w-4xl leading-relaxed">
           Đánh giá dựa trên hơn 500 phiên đối thoại mô phỏng và kiểm thử thực nghiệm trên kịch bản CSKH (Case Study: Dịch vụ du lịch).
         </p>
       </motion.div>
 
-      {/* 4 Stat Cards Grid (Large, Royal, Impactful) */}
-      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-auto">
+      {/* 4 Stat Cards Grid */}
+      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-5 2xl:gap-6 my-auto">
         {metrics.map((m, idx) => (
           <motion.div
             key={idx}
@@ -71,10 +71,10 @@ export const Slide13_Results: React.FC<{ isActive: boolean }> = () => {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="canva-stat-card p-7 sm:p-8 md:p-9 flex flex-col justify-between hover:border-amber-400/60 transition-all duration-300 group hover:-translate-y-2 shadow-2xl"
+            className="canva-stat-card p-5 sm:p-6 2xl:p-9 flex flex-col justify-between hover:border-amber-400/60 transition-all duration-300 group hover:-translate-y-2 shadow-2xl"
           >
             <div>
-              <span className={`font-heading text-5xl sm:text-6xl md:text-7xl font-black ${m.color} block leading-none mb-4`}>
+              <span className={`font-heading text-4xl sm:text-5xl 2xl:text-7xl font-black ${m.color} block leading-none mb-3`}>
                 {m.value}
               </span>
               <h3 className="font-heading font-bold text-xs sm:text-sm md:text-base text-amber-200 tracking-wider uppercase mb-2">

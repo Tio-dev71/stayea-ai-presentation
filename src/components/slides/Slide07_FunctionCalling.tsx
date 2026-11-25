@@ -10,7 +10,7 @@ import {
 
 export const Slide07_FunctionCalling: React.FC<{ isActive: boolean }> = () => {
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-14 xl:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-5 sm:p-6 md:p-7 lg:p-8 xl:p-9 2xl:p-14 pb-16 sm:pb-16 lg:pb-18 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Header with Morph Top */}
@@ -22,21 +22,21 @@ export const Slide07_FunctionCalling: React.FC<{ isActive: boolean }> = () => {
         className="relative z-10"
       >
         <div className="flex items-center gap-2.5">
-          <span className="w-3 h-3 rounded-full bg-amber-400" />
-          <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
-            08 · CƠ CHẾ FUNCTION CALLING & TỰ ĐỘNG LÊN ĐƠN
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+          <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.22em] text-amber-300 uppercase">
+            08 · TỰ ĐỘNG TRÍCH XUẤT & LÊN ĐƠN
           </span>
         </div>
-        <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black gold-gradient-text tracking-tight mt-1.5">
+        <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl xl:text-4xl 2xl:text-6xl font-black gold-gradient-text tracking-tight mt-1">
           Từ Hội Thoại Tự Nhiên Đến Đơn Đặt Thực Tế
         </h2>
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
-          AI Concierge tự động trích xuất thông tin khách hàng, số lượng khách, ngày check-in và tính toán tổng tiền để khởi tạo đơn giữ chỗ sơ bộ.
+        <p className="text-xs sm:text-sm md:text-base 2xl:text-lg text-slate-200 mt-1.5 max-w-4xl leading-relaxed">
+          Trợ lý AI tự động trích xuất thông tin khách hàng, số lượng, ngày sử dụng và tính toán tổng tiền để khởi tạo đơn giữ chỗ sơ bộ.
         </p>
       </motion.div>
 
       {/* Main Split Content */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 my-auto items-center">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 my-auto items-center">
         {/* Left Col (6 cols): The Journey from Chat to Booking Card with Morph Left */}
         <motion.div
           variants={morphLeftVariants}

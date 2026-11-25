@@ -54,7 +54,7 @@ export const Slide05_ArchitectureFlow: React.FC<{ isActive: boolean }> = () => {
   ]
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-14 xl:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-5 sm:p-6 md:p-7 lg:p-8 xl:p-9 2xl:p-14 pb-16 sm:pb-16 lg:pb-18 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Header with Morph Top */}
@@ -66,21 +66,21 @@ export const Slide05_ArchitectureFlow: React.FC<{ isActive: boolean }> = () => {
         className="relative z-10"
       >
         <div className="flex items-center gap-2.5">
-          <span className="w-3 h-3 rounded-full bg-amber-400" />
-          <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+          <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.22em] text-amber-300 uppercase">
             06 · HỆ THỐNG LÀM ĐƯỢC GÌ?
           </span>
         </div>
-        <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black gold-gradient-text tracking-tight mt-1.5">
+        <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl xl:text-4xl 2xl:text-6xl font-black gold-gradient-text tracking-tight mt-1">
           Quy Trình Tư Vấn & Chốt Đơn Khép Kín
         </h2>
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
+        <p className="text-xs sm:text-sm md:text-base 2xl:text-lg text-slate-200 mt-1.5 max-w-4xl leading-relaxed">
           Không chỉ trả lời câu hỏi, hệ thống biến cuộc hội thoại thành đơn hàng thực tế một cách chính xác và có kiểm soát.
         </p>
       </motion.div>
 
       {/* Step Cards Horizontal / Grid with Directional Morph */}
-      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 my-auto">
+      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 2xl:gap-5 my-auto">
         {steps.map((step, idx) => (
           <motion.div
             key={idx}

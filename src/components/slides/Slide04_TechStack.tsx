@@ -10,7 +10,7 @@ import {
 
 export const Slide04_TechStack: React.FC<{ isActive: boolean }> = () => {
   return (
-    <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-14 xl:p-16 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col justify-between p-5 sm:p-6 md:p-7 lg:p-8 xl:p-9 2xl:p-14 pb-16 sm:pb-16 lg:pb-18 overflow-hidden select-none">
       <CanvaAtmosphere />
 
       {/* Header */}
@@ -22,28 +22,28 @@ export const Slide04_TechStack: React.FC<{ isActive: boolean }> = () => {
         className="relative z-10"
       >
         <div className="flex items-center gap-2.5">
-          <span className="w-3 h-3 rounded-full bg-amber-400" />
-          <span className="text-xs sm:text-sm md:text-base font-heading font-bold tracking-[0.25em] text-amber-300 uppercase">
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+          <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.22em] text-amber-300 uppercase">
             05 · CÔNG NGHỆ & HẠ TẦNG KỸ THUẬT
           </span>
         </div>
-        <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black gold-gradient-text tracking-tight mt-1.5">
+        <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl xl:text-4xl 2xl:text-6xl font-black gold-gradient-text tracking-tight mt-1">
           Kiến Trúc Độc Lập & Cổng AI 9router
         </h2>
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mt-2 max-w-4xl leading-relaxed">
-          Mô hình Full-stack Monorepo tách biệt rõ ràng giữa Client Widget, NestJS Orchestrator và AI Gateway trung gian.
+        <p className="text-xs sm:text-sm md:text-base 2xl:text-lg text-slate-200 mt-1.5 max-w-4xl leading-relaxed">
+          Mô hình 3 tầng tách biệt rõ ràng giữa Giao diện Widget, Bộ não xử lý nghiệp vụ và Cổng điều phối AI Gateway trung gian.
         </p>
       </motion.div>
 
       {/* Main Split Grid */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 my-auto items-center">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 my-auto items-center">
         {/* Left Col (7 cols): 3 Tiers Architecture */}
         <motion.div
           variants={morphLeftVariants}
           initial="initial"
           animate="animate"
           exit="exit"
-          className="lg:col-span-7 space-y-4 xl:space-y-5"
+          className="lg:col-span-7 space-y-3 xl:space-y-3.5"
         >
           {[
             {
@@ -73,25 +73,25 @@ export const Slide04_TechStack: React.FC<{ isActive: boolean }> = () => {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.1 * idx }}
-              className="p-5 sm:p-6 rounded-2xl bg-white/[0.05] border border-amber-500/25 hover:border-amber-400/50 backdrop-blur-md transition-all group"
+              className="p-4 sm:p-4.5 2xl:p-6 rounded-2xl bg-white/[0.05] border border-amber-500/25 hover:border-amber-400/50 backdrop-blur-md transition-all group"
             >
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="text-xs font-heading font-bold tracking-widest text-amber-300 uppercase">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-[11px] sm:text-xs font-heading font-bold tracking-widest text-amber-300 uppercase">
                   {item.tier}
                 </span>
-                <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-300">
+                <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-300">
                   {item.badge}
                 </span>
               </div>
-              <h3 className="text-lg sm:text-xl font-heading font-bold text-white group-hover:text-amber-200 transition-colors">
+              <h3 className="text-base sm:text-lg font-heading font-bold text-white group-hover:text-amber-200 transition-colors">
                 {item.title}
               </h3>
-              <p className="text-xs sm:text-sm md:text-base text-slate-300 mt-1.5 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
                 {item.desc}
               </p>
-              <div className="flex flex-wrap gap-2 mt-3">
+              <div className="flex flex-wrap gap-1.5 mt-2.5">
                 {item.tech.map((t, tIdx) => (
-                  <span key={tIdx} className="text-xs font-mono px-2.5 py-1 rounded bg-black/40 border border-white/10 text-slate-300">
+                  <span key={tIdx} className="text-[11px] font-mono px-2.5 py-0.5 rounded bg-black/40 border border-white/10 text-slate-300">
                     {t}
                   </span>
                 ))}
@@ -106,7 +106,7 @@ export const Slide04_TechStack: React.FC<{ isActive: boolean }> = () => {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="lg:col-span-5 p-7 sm:p-8 rounded-3xl bg-gradient-to-b from-[#082a30]/95 to-[#031518]/98 border-2 border-amber-400/40 shadow-2xl space-y-5 backdrop-blur-2xl"
+          className="lg:col-span-5 p-5 sm:p-6 2xl:p-8 rounded-3xl bg-gradient-to-b from-[#082a30]/95 to-[#031518]/98 border-2 border-amber-400/40 shadow-2xl space-y-3.5 2xl:space-y-5 backdrop-blur-2xl"
         >
           <div className="flex items-center gap-4 pb-4 border-b border-amber-500/20">
             <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-black shadow-lg shadow-amber-500/40">
