@@ -563,7 +563,9 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = () => {
           </div>
         )}
 
-        {messages.map((m) => (
+        {messages.map((m) => {
+          if (!m.content && !m.bookingCard) return null
+          return (
           <motion.div
             key={m.id}
             initial={{ opacity: 0, y: 10, scale: 0.98 }}
@@ -649,10 +651,11 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = () => {
               )}
             </div>
           </motion.div>
-        ))}
+          )
+        })}
 
         {/* Typing indicator (only while awaiting first stream token) */}
-        {isTyping && messages[messages.length - 1]?.role !== "assistant" && (
+        {isTyping && (messages[messages.length - 1]?.role !== "assistant" || !messages[messages.length - 1]?.content) && (
           <div className="flex items-center gap-1.5 text-emerald-400 px-3.5 py-2.5 bg-[#0c3136] rounded-2xl rounded-tl-none w-fit border border-emerald-500/20">
             <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
             <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
