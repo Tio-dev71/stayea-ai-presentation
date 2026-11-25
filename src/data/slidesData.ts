@@ -47,7 +47,7 @@ export const SLIDES: SlideData[] = [
     component: Slide02_Team,
     speakerNotes: {
       script:
-        "Kính thưa quý thầy cô, nhóm thực hiện đề tài gồm 4 thành viên: Em Nguyễn Đình Thọ - Trưởng nhóm phụ trách lên ý tưởng, thiết kế slide và kiểm tra nội dung; bạn Nguyễn Việt Tiến phụ trách thuyết trình báo cáo; bạn Ngô Thị Thùy Linh và bạn Đỗ Hà Linh phụ trách nghiên cứu tài liệu và hoàn thiện nội dung đề tài.",
+        "Kính thưa quý thầy cô, nhóm thực hiện đề tài gồm 4 thành viên: Nguyễn Đình Thọ - Trưởng nhóm phụ trách lên ý tưởng, thiết kế slide và kiểm tra nội dung; Nguyễn Việt Tiến phụ trách thuyết trình báo cáo; bạn Ngô Thị Thùy Linh và bạn Đỗ Hà Linh phụ trách nghiên cứu tài liệu và hoàn thiện nội dung đề tài.",
       keyPoints: [
         "Giới thiệu 4 thành viên nhóm và mã số sinh viên.",
         "Nêu rõ vai trò và phân chia nhiệm vụ cụ thể của từng thành viên trong quá trình thực hiện đồ án.",
