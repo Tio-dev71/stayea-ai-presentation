@@ -121,7 +121,7 @@ export const Slide02_Problem: React.FC<{ isActive: boolean }> = () => {
               <h3 className="font-heading text-lg sm:text-xl md:text-2xl font-black text-white">
                 Chatbot AI CSKH Đa Kịch Bản
               </h3>
-              <span className="text-[11px] font-mono text-emerald-300">Case Study: Dịch vụ du lịch STAYEA</span>
+              <span className="text-[11px] font-mono text-emerald-300">Đa nền tảng · Case Study: Dịch vụ du lịch</span>
             </div>
           </div>
 

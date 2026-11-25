@@ -172,7 +172,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
               id: `ai-${Date.now()}`,
               role: "assistant",
               content:
-                "Dạ em đã ghi nhận yêu cầu và tạo **Phiếu Đặt Dịch Vụ Sơ Bộ** chuyển vào Hàng chờ xét duyệt của Admin STAYEA.\n\nChuyên viên điều phối của STAYEA sẽ kiểm tra lịch xe với đối tác nhà xe và liên hệ qua số **0987.654.321** để xác nhận bàn giao xe chu đáo nhất cho anh Tuấn ạ!",
+                "Dạ em đã ghi nhận yêu cầu và tạo **Phiếu Đặt Dịch Vụ Sơ Bộ** chuyển vào Hàng chờ xét duyệt của Quản trị viên.\n\nChuyên viên điều phối sẽ kiểm tra lịch xe với đối tác và liên hệ qua số **0987.654.321** để xác nhận bàn giao xe chu đáo nhất cho anh Tuấn ạ!",
               timestamp: new Date().toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }),
               bookingCard: newBooking,
               toolExecuted: "create_booking_draft",
@@ -194,7 +194,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
               id: `ai-${Date.now()}`,
               role: "assistant",
               content:
-                "Dạ STAYEA hiện có căn **Sunset Luxury Villa Bãi Trường (3PN)** và **Seaview Dương Đông Villa** đang mở bán trực tiếp:\n\n🏡 **1. Sunset Luxury Villa** (Mã: `svc_villa_01`)\n• Giá niêm yết: **3.500.000 ₫/đêm**\n• Tiện ích: Hồ bơi vô cực view biển, 3 phòng ngủ king-size, bếp BBQ riêng.\n\n🏡 **2. Dương Đông Beachfront Villa** (Mã: `svc_villa_02`)\n• Giá niêm yết: **2.800.000 ₫/đêm**\n• Vị trí: Cách chợ đêm 5 phút, có lối đi thẳng ra bãi biển.\n\nAnh/chị dự kiến đi vào ngày nào để em giữ chỗ gửi Quản trị viên duyệt điều phối ngay ạ?",
+                "Dạ hệ thống hiện có căn **Sunset Luxury Villa Bãi Trường (3PN)** và **Seaview Dương Đông Villa** đang mở bán trực tiếp:\n\n🏡 **1. Sunset Luxury Villa** (Mã: `svc_villa_01`)\n• Giá niêm yết: **3.500.000 ₫/đêm**\n• Tiện ích: Hồ bơi vô cực view biển, 3 phòng ngủ king-size, bếp BBQ riêng.\n\n🏡 **2. Dương Đông Beachfront Villa** (Mã: `svc_villa_02`)\n• Giá niêm yết: **2.800.000 ₫/đêm**\n• Vị trí: Cách chợ đêm 5 phút, có lối đi thẳng ra bãi biển.\n\nAnh/chị dự kiến đi vào ngày nào để em giữ chỗ gửi Quản trị viên duyệt điều phối ngay ạ?",
               timestamp: new Date().toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }),
               toolExecuted: "search_services",
             },
@@ -215,7 +215,7 @@ export const InteractiveChatDemo: React.FC<{ isEmbedded?: boolean }> = ({ isEmbe
               id: `ai-${Date.now()}`,
               role: "assistant",
               content:
-                "🚤 Dạ STAYEA xin giới thiệu **Tour Cano 4 Đảo VIP & Lặn Ngắm San Hô Tự Nhiên**:\n\n• **Lộ trình:** Hòn Mây Rút Trong - Hòn Móng Tay - Hòn Gầm Ghì - Hòn Thơm.\n• **Dịch vụ bao gồm:** Cano SB cao tốc riêng, flycam chụp ảnh kỷ niệm, kính lặn & ống thở chuyên dụng, bữa trưa hải sản 8 món trên đảo.\n• **Giá niêm yết:** **1.150.000 ₫/khách** (Khởi hành hàng ngày từ cảng An Thới).\n\nQuý khách dự kiến đi bao nhiêu người để em hỗ trợ sắp xếp cano riêng chu đáo nhất ạ?",
+                "🚤 Dạ bên em xin giới thiệu **Tour Cano 4 Đảo VIP & Lặn Ngắm San Hô Tự Nhiên**:\n\n• **Lộ trình:** Hòn Mây Rút Trong - Hòn Móng Tay - Hòn Gầm Ghì - Hòn Thơm.\n• **Dịch vụ bao gồm:** Cano SB cao tốc riêng, flycam chụp ảnh kỷ niệm, kính lặn & ống thở chuyên dụng, bữa trưa hải sản 8 món trên đảo.\n• **Giá niêm yết:** **1.150.000 ₫/khách** (Khởi hành hàng ngày từ cảng An Thới).\n\nQuý khách dự kiến đi bao nhiêu người để em hỗ trợ sắp xếp cano riêng chu đáo nhất ạ?",
               timestamp: new Date().toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }),
               toolExecuted: "search_services",
             },

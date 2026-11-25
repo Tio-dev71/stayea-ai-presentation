@@ -29,7 +29,7 @@ export const Slide12_LiveDemo: React.FC<{ isActive: boolean }> = () => {
             Demo Tương Tác: Chatbot AI Chăm Sóc Khách Hàng
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 mt-0.5">
-            Ví dụ áp dụng thực tế trong việc chăm sóc khách hàng du lịch cho các hệ thống cung cấp dịch vụ du lịch (STAYEA Case Study).
+            Ví dụ áp dụng thực tế trong việc chăm sóc khách hàng du lịch cho các hệ thống cung cấp dịch vụ du lịch (Minh họa đa nền tảng).
           </p>
         </div>
 

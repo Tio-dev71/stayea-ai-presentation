@@ -248,7 +248,7 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
               {/* Floating 3D Pill on Image */}
               <div className="absolute top-3 left-3 flex items-center gap-2 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-white text-xs font-semibold shadow-lg">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Ví dụ áp dụng: CSKH Du Lịch (STAYEA)</span>
+                <span>Ví dụ áp dụng: CSKH Du Lịch & Nghỉ Dưỡng</span>
               </div>
 
               {/* Dynamic Service Title on Image */}

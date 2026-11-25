@@ -375,7 +375,7 @@ export const Slide02_Team: React.FC<{ isActive: boolean }> = () => {
 
             <p className="text-xs sm:text-sm md:text-base text-slate-200 font-medium mt-2 leading-relaxed">
               Báo cáo tiến độ phân chia công việc, nghiên cứu kiến trúc hệ thống và kiểm thử đề tài{" "}
-              <strong className="text-amber-300 font-bold">Chatbot AI CSKH Tự Động</strong> (Ví dụ áp dụng: Hệ sinh thái du lịch STAYEA).
+              <strong className="text-amber-300 font-bold">Chatbot AI CSKH Đa Nền Tảng</strong> (Ví dụ minh họa: Hệ thống dịch vụ du lịch).
             </p>
           </div>
 

@@ -20,12 +20,12 @@ export const SLIDES: SlideData[] = [
     id: "title",
     number: 1,
     title: "Chatbot AI Chăm Sóc Khách Hàng",
-    subtitle: "Trợ Lý Ảo CSKH Tự Động Đa Kịch Bản & Cổng AI 9router (Ví dụ: Du lịch STAYEA)",
+    subtitle: "Trợ Lý Ảo CSKH Tự Động Đa Nền Tảng & Cổng AI 9router (Ví dụ: Dịch vụ Du lịch)",
     category: "Overview",
     component: Slide01_Title,
     speakerNotes: {
       script:
-        "Kính thưa quý thầy cô trong hội đồng chấm Đồ án 1. Hôm nay em xin phép được báo cáo đề tài 'Hệ thống Chatbot AI Chăm Sóc Khách Hàng Tự Động Đa Kịch Bản' với khả năng tùy biến System Prompt linh hoạt, kết hợp cổng điều phối AI 9router. Đề tài lựa chọn case study thực tế là hệ thống du lịch STAYEA để minh họa và kiểm thử toàn diện khả năng tư vấn, tra cứu kho phòng và tạo đơn giữ chỗ tự động.",
+        "Kính thưa quý thầy cô trong hội đồng chấm Đồ án 1. Hôm nay em xin phép được báo cáo đề tài 'Hệ thống Chatbot AI Chăm Sóc Khách Hàng Tự Động Đa Nền Tảng' với khả năng tùy biến System Prompt linh hoạt, kết hợp cổng điều phối AI 9router. Đề tài sử dụng mảng dịch vụ du lịch làm ví dụ minh họa thực tế để kiểm thử toàn diện khả năng tư vấn, tra cứu kho phòng và tạo đơn giữ chỗ tự động.",
       keyPoints: [
         "Giới thiệu ngắn gọn tên đề tài và công nghệ chính (AI 9router, Gemini 2.5 Flash, NestJS).",
         "Nêu rõ: Hệ thống có thể tùy biến prompt cho nhiều ngành nghề; áp dụng case study du lịch (Villa, Xe tự lái, Tour cano) để minh họa trực quan.",
@@ -203,7 +203,7 @@ export const SLIDES: SlideData[] = [
     component: Slide08_HybridCSKH,
     speakerNotes: {
       script:
-        "Hệ thống áp dụng mô hình Human-in-the-loop: AI xử lý 80% câu hỏi lặp lại và thu thập thông tin đơn sơ bộ. Khi khách cần giải quyết khiếu nại hoặc trao đổi riêng, khách có thể bấm chuyển sang tab 'Chat Chuyên Viên' để nhân viên STAYEA VIP phản hồi trực tiếp.",
+        "Hệ thống áp dụng mô hình Human-in-the-loop: AI xử lý 80% câu hỏi lặp lại và thu thập thông tin đơn sơ bộ. Khi khách cần giải quyết khiếu nại hoặc trao đổi riêng, khách có thể bấm chuyển sang tab 'Chat Chuyên Viên' để nhân viên CSKH phản hồi trực tiếp.",
       keyPoints: [
         "Dual-Mode Chat trên cùng 1 giao diện người dùng.",
         "Đơn hàng tạo từ AI luôn ở trạng thái chờ duyệt (pending_admin) để con người kiểm tra trước.",
@@ -299,7 +299,7 @@ export const SLIDES: SlideData[] = [
       faq: [
         {
           q: "Đơn này sau khi tạo sẽ đi đâu?",
-          a: "Đơn được ghi vào PostgreSQL với mã ORD-AI-XXXXXX và xuất hiện ngay tại trang Quản lý Đơn hàng của Admin STAYEA.",
+          a: "Đơn được ghi vào cơ sở dữ liệu với mã ORD-AI-XXXXXX và xuất hiện ngay tại trang Quản lý Đơn hàng của Quản trị viên.",
         },
       ],
     },
