@@ -27,10 +27,10 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        display: ['Montserrat', 'Playfair Display', 'sans-serif'],
-        heading: ['Montserrat', 'Be Vietnam Pro', 'sans-serif'],
-        sans: ['Be Vietnam Pro', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        serif: ['Barlow Condensed', 'serif'],
+        display: ['Big Shoulders Display', 'Barlow Condensed', 'sans-serif'],
+        heading: ['Barlow Condensed', 'Big Shoulders Display', 'sans-serif'],
+        sans: ['Barlow', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       animation: {

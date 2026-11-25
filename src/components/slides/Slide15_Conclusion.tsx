@@ -21,7 +21,7 @@ export const Slide15_Conclusion: React.FC<{ isActive: boolean }> = () => {
           <Sparkles className="w-4 h-4 text-amber-300" />
           <span>TỔNG KẾT BÁO CÁO ĐỒ ÁN 1</span>
         </div>
-        <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black gold-gradient-text-pure tracking-tight leading-tight">
+        <h2 className="font-display text-5xl sm:text-6xl md:text-7xl xl:text-7xl font-black gold-gradient-text-pure leading-[1.02]">
           Cảm Ơn Quý Thầy Cô!
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-slate-200 mt-3 max-w-2xl mx-auto leading-relaxed">

@@ -88,11 +88,11 @@ export const Slide01_Title: React.FC<{ isActive: boolean }> = () => {
               <span>Đề tài Đồ án 1 · Kỹ Thuật Phần Mềm</span>
             </div>
 
-            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl xl:text-6xl 2xl:text-8xl font-black tracking-tight leading-[1.08] gold-gradient-text-pure">
+            <h1 className="font-display text-6xl sm:text-7xl xl:text-7xl 2xl:text-8xl font-black leading-[0.98] gold-gradient-text-pure">
               CHATBOT AI
             </h1>
 
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl xl:text-4xl 2xl:text-6xl font-extrabold tracking-tight text-white mt-1 mb-2 drop-shadow-2xl leading-[1.15]">
+            <h2 className="font-display text-4xl sm:text-5xl xl:text-5xl 2xl:text-6xl font-extrabold text-[#f4eed9] mt-1.5 mb-2 leading-[1.06]">
               Chăm Sóc Khách Hàng
             </h2>
 
